@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Progress | Study Space</title>
+<link rel="stylesheet" href="../style.css">
+<link rel="stylesheet" href="../css/progress.css">
+</head>
+<body class="progress-page">
+<div class="app-layout">
+<!-- =========================
+SIDEBAR
+========================= -->
+<aside class="sidebar">
+<div class="sidebar-logo">
+<div class="logo-icon">☕︎</div>
+<h2>Study Space</h2>
+</div>
+<nav class="sidebar-nav">
+<div class="nav-group">
+<p class="nav-title">HOME</p>
+<button onclick="goHome()">🖳 Desk</button>
+</div>
+<div class="nav-group">
+<p class="nav-title">PRODUCTIVITY</p>
+<button onclick="openPomodoro()">⌛︎ Focus</button>
+<button onclick="openTasks()">☑ Tasks</button>
+<button onclick="openCalendar()">🗓 Calendar</button>
+<button onclick="openPlanner()">◔ Planner</button>
+</div>
+<div class="nav-group">
+<p class="nav-title">WORKSPACE</p>
+<button onclick="openNotes()">🗐 Notes</button>
+</div>
+<div class="nav-group">
+<p class="nav-title">PERSONAL</p>
+<button onclick="openBuddy()">˙𐃷˙ Study buddy</button>
+<button onclick="openGoals()">⚽︎ Goals</button>
+<!--<button onclick="openAchievements()">★ Achievements</button>-->
+</div>
+<div class="nav-group">
+<p class="nav-title">SYSTEM</p>
+<button onclick="openProgress()">◔ Progress</button>
+<button onclick="openSettings()">⏣ Settings</button>
+</div>
+</nav>
+<div class="sidebar-bottom">
+<button onclick="toggleTheme()" id="themeButton">⏾ Theme</button>
+</div>
+</aside>
+
+<!--main content-->
+<main class="progress-content">
+<header class="progress-header">
+<div>
+<p class="page-label">ACADEMIC PROGRESS</p>
+<h1>Your Progress</h1>
+<p class="page-subtitle">Compare your exam results and see how your performance changes over time.</p>
+</div>
+</header>
+<section class="exam-section">
+<div class="section-header">
+<div>
+<p class="section-label">EXAMS</p>
+<h2>Exam Results</h2>
+<p>Compare your results across different examinations.</p>
+</div>
+<button class="add-exam-button" id="addExamButton">Add Exam</button>
+</div>
+<div class="exam-scroll-container" id="examScrollContainer">
+<div class="exam-grid" id="examGrid"></div>
+</div>
+<div class="empty-exams" id="emptyExams">
+<h3>No exam results yet</h3>
+<p>Add your first examination to start tracking your progress.</p>
+<button class="empty-add-exam-button" id="emptyAddExamButton">Add Your First Exam</button>
+</div>
+</section>
+<section class="performance-section">
+<div class="section-header">
+<div>
+<p class="section-label">OVERVIEW</p>
+<h2>Performance Summary</h2>
+</div>
+</div>
+<div class="summary-grid">
+<article class="summary-card">
+<p>Overall Average</p>
+<h3 id="overallAverage">-</h3>
+<span id="averageChange">No comparison yet</span>
+</article>
+<article class="summary-card">
+<p>Current GPA</p>
+<h3 id="currentGPA">-</h3>
+<span id="gpaChange">No comparison yet</span>
+</article>
+<article class="summary-card">
+<p>Total Marks</p>
+<h3 id="totalMarks">-</h3>
+<span id="totalSubjects">No results yet</span>
+</article>
+<article class="summary-card">
+<p>Exams Recorded</p>
+<h3 id="examCount">0</h3>
+<span>Examinations</span>
+</article>
+</div>
+<div class="highlight-grid">
+<article class="highlight-card">
+<p>Biggest Improvement</p>
+<h3 id="biggestImprovement">-</h3>
+<span id="improvementPercentage">No comparison yet</span>
+</article>
+<article class="highlight-card">
+<p>Biggest Drop</p>
+<h3 id="biggestDrop">-</h3>
+<span id="dropPercentage">No comparison yet</span>
+</article>
+</div>
+</section>
+<section class="analysis-section">
+<div class="section-header">
+<div>
+<p class="section-label">COMPARISON</p>
+<h2>Subject Analysis</h2>
+<p>See which subjects improved and which ones dropped.</p>
+</div>
+</div>
+<div class="subject-analysis" id="subjectAnalysis">
+<div class="empty-analysis">
+<h3>No comparison available</h3>
+<p>Add at least two exams with matching subjects to compare your results.</p>
+</div>
+</div>
+</section>
+<section class="trend-section">
+<div class="section-header">
+<div>
+<p class="section-label">TREND</p>
+<h2>Academic Trend</h2>
+<p>Track how your average changes from exam to exam.</p>
+</div>
+</div>
+<div class="trend-card">
+<div class="trend-chart-wrapper">
+<div class="trend-y-axis">
+<span>100</span><span>75</span><span>50</span><span>25</span><span>0</span>
+</div>
+<div class="trend-chart" id="trendChart">
+<div class="empty-chart">
+<p>Add exam results to see your academic trend.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+</main>
+<div class="exam-panel-overlay" id="examPanelOverlay">
+<aside class="exam-panel">
+<div class="exam-panel-header">
+<div>
+<p class="section-label">EXAMINATION</p>
+<h2 id="examPanelTitle">Add Exam</h2>
+</div>
+<button class="close-exam-panel" id="closeExamPanel">Close</button>
+</div>
+<div class="exam-form">
+<div class="form-group">
+<label for="examName">Exam Name</label>
+<input type="text" id="examName" placeholder="Example: Mid-Year Examination">
+</div>
+<div class="form-group">
+<label for="examDate">Exam Date</label>
+<input type="date" id="examDate">
+</div>
+<div class="subjects-form-section">
+<div class="subjects-form-header">
+<div>
+<h3>Subjects</h3>
+<p>Add the subjects you sat for this exam.</p>
+</div>
+<button class="add-subject-button" id="addSubjectButton">Add Subject</button>
+</div>
+<div class="subject-input-list" id="subjectInputList"></div>
+</div>
+</div>
+<div class="exam-panel-footer">
+<button class="delete-exam-button" id="deleteExamButton">Delete Exam</button>
+<div class="exam-panel-actions">
+<button class="cancel-exam-button" id="cancelExamButton">Cancel</button>
+<button class="save-exam-button" id="saveExamButton">Save Exam</button>
+</div>
+</div>
+</aside>
+</div>
+<script src="../js/storage.js"></script>
+<script src="../js/sidebar.js"></script>
+<script src="../js/progress.js"></script>
+<script src="../js/theme.js"></script>
+</body>
+</html>

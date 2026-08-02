@@ -1,0 +1,1243 @@
+/* =========================================================
+   STUDY SPACE — TASKS PAGE
+   ========================================================= */
+
+/* =========================================================
+   PAGE
+   ========================================================= */
+.tasks-page {
+    min-height: 100vh;
+    padding: 36px 42px 60px;
+}
+.tasks-header {
+    margin-bottom: 32px;
+}
+.page-label {
+    margin: 0 0 7px;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    opacity: 0.6;
+}
+.tasks-header h1 {
+    margin: 0;
+    font-size: 34px;
+    font-weight: 700;
+}
+.tasks-subtitle {
+    margin: 8px 0 0;
+    font-size: 14px;
+    opacity: 0.65;
+}
+/* =========================================================
+   TASKS PAGE — MAIN LAYOUT FIX
+   ========================================================= */
+
+/*
+   The sidebar is fixed on the left.
+   Main content must leave room for it.
+*/
+
+:root {
+    --sidebar-width: 250px;
+}
+
+
+/* =========================================================
+   APP LAYOUT
+   ========================================================= */
+
+.app-layout {
+    width: 100%;
+    min-height: 100vh;
+}
+
+
+/* =========================================================
+   SIDEBAR
+   ========================================================= */
+
+.sidebar {
+    position: fixed;
+
+    top: 0;
+    left: 0;
+
+    width: var(--sidebar-width);
+    height: 100vh;
+
+    box-sizing: border-box;
+
+    z-index: 1000;
+}
+
+
+/* =========================================================
+   MAIN CONTENT
+   ========================================================= */
+
+.main-content {
+    width: calc(100% - var(--sidebar-width));
+
+    min-height: 100vh;
+
+    margin-left: var(--sidebar-width);
+
+    box-sizing: border-box;
+}
+
+
+/* =========================================================
+   TASKS PAGE
+   ========================================================= */
+
+.tasks-page {
+    min-height: 100vh;
+
+    padding: 36px 42px 60px;
+
+    box-sizing: border-box;
+}
+
+
+/* =========================================================
+   MAKE CONTENT USE AVAILABLE SPACE
+   ========================================================= */
+
+.tasks-page > * {
+    width: 100%;
+    max-width: none;
+}
+
+
+/* =========================================================
+   TODO COLUMNS
+   ========================================================= */
+
+.todo-columns {
+    width: 100%;
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(2, minmax(0, 1fr));
+
+    gap: 22px;
+}
+
+
+/* =========================================================
+   TASK LIST
+   ========================================================= */
+
+.task-list {
+    width: 100%;
+}
+
+
+/* =========================================================
+   TASK CARDS
+   ========================================================= */
+
+.task-card {
+    width: 100%;
+    box-sizing: border-box;
+}
+
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+
+@media (max-width: 1000px) {
+
+    :root {
+        --sidebar-width: 220px;
+    }
+
+    .tasks-page {
+        padding: 30px;
+    }
+
+}
+
+
+@media (max-width: 800px) {
+
+    /*
+       On smaller screens the sidebar should no longer
+       permanently take up the left side.
+    */
+
+    :root {
+        --sidebar-width: 0px;
+    }
+
+    .sidebar {
+        position: relative;
+
+        width: 100%;
+        height: auto;
+    }
+
+    .main-content {
+        width: 100%;
+
+        margin-left: 0;
+    }
+
+    .tasks-page {
+        padding: 25px 20px 45px;
+    }
+
+    .todo-columns {
+        grid-template-columns: 1fr;
+    }
+
+}
+
+/* =========================================================
+   SECTION HEADINGS
+   ========================================================= */
+.section-heading {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 15px;
+}
+.section-heading h2 {
+    margin: 0;
+    font-size: 22px;
+}
+.section-heading p {
+    margin: 5px 0 0;
+    font-size: 13px;
+    opacity: 0.6;
+}
+
+/* =========================================================
+   TODO SECTION
+   ========================================================= */
+.todo-section {
+    width: 100%;
+    margin-bottom: 38px;
+}
+.todo-columns {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 22px;
+}
+
+/* =========================================================
+   TODO CARD
+   ========================================================= */
+.todo-card {
+    min-height: 220px;
+    padding: 22px;
+    border-radius: 18px;
+    background: var(--card-bg, #f7f0e7);
+    border: 1px solid var(--border-color, #ded2c3);
+    display: flex;
+    flex-direction: column;
+    transition:
+        background 0.2s ease,
+        border-color 0.2s ease;
+}
+.todo-card-header {
+    margin-bottom: 18px;
+}
+.todo-card-header h3 {
+    margin: 0;
+    font-size: 17px;
+    font-weight: 700;
+}
+
+/* =========================================================
+   TODO LIST
+   ========================================================= */
+.todo-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    flex: 1;
+    min-height: 40px;
+}
+
+/* Individual todo */
+.todo-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    min-height: 34px;
+    font-size: 14px;
+}
+
+/* Todo text */
+.todo-item-text {
+    flex: 1;
+    min-width: 0;
+    line-height: 1.4;
+    word-break: break-word;
+}
+
+/* Delete "-" */
+.todo-delete {
+    width: 24px;
+    height: 24px;
+    padding: 0;
+    border: none;
+    background: transparent;
+    font-size: 19px;
+    line-height: 1;
+    cursor: pointer;
+    opacity: 0.5;
+    transition:
+        opacity 0.15s ease,
+        transform 0.15s ease;
+}
+.todo-delete:hover {
+    opacity: 1;
+    transform: scale(1.12);
+}
+
+/* =========================================================
+   TODO INPUT
+   ========================================================= */
+.todo-input-wrapper {
+    margin-top: 18px;
+}
+.todo-input {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 11px 13px;
+    border-radius: 10px;
+    border: 1px solid var(--border-color, #d8cbbb);
+    background: var(--input-bg, #fffaf4);
+    color: var(--text-color, #3e3026);
+    font-family: inherit;
+    font-size: 13px;
+    outline: none;
+    transition:
+        border-color 0.2s ease,
+        box-shadow 0.2s ease,
+        background 0.2s ease;
+}
+.todo-input::placeholder {
+    color: var(--muted-text, #927f6e);
+}
+.todo-input:focus {
+    border-color: var(--accent-color, #8a6549);
+    box-shadow:
+        0 0 0 3px
+        rgba(138, 101, 73, 0.10);
+}
+
+/* =========================================================
+   TASKS SECTION
+   ========================================================= */
+.tasks-section {
+    width: 100%;
+}
+.tasks-section-heading {
+    margin-bottom: 15px;
+}
+
+/* =========================================================
+   ADD TASK BUTTON
+   ========================================================= */
+.add-task-button {
+    border: none;
+    padding: 11px 17px;
+    border-radius: 10px;
+    background: var(--accent-color, #76533b);
+    color: #ffffff;
+    font-family: inherit;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    transition:
+        transform 0.15s ease,
+        opacity 0.15s ease,
+        box-shadow 0.15s ease;
+}
+.add-task-button:hover {
+    transform: translateY(-1px);
+    opacity: 0.92;
+    box-shadow:
+        0 5px 14px rgba(0, 0, 0, 0.10);
+}
+.add-task-button:active {
+    transform: translateY(0);
+}
+
+/* =========================================================
+   TASK LIST
+   ========================================================= */
+.task-list {
+    display: flex;
+    flex-direction: column;
+    gap: 13px;
+}
+
+/* =========================================================
+   TASK CARD
+   ========================================================= */
+.task-card {
+    position: relative;
+    padding: 20px 22px;
+    border-radius: 16px;
+    background: var(--card-bg, #f7f0e7);
+    border: 1px solid var(--border-color, #ded2c3);
+    transition:
+        transform 0.18s ease,
+        border-color 0.18s ease,
+        background 0.2s ease;
+}
+.task-card:hover {
+    transform: translateY(-1px);
+}
+
+/* =========================================================
+   TASK CARD HEADER
+   ========================================================= */
+.task-card-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 15px;
+}
+.task-card-title {
+    margin: 0;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 1.4;
+}
+
+/* =========================================================
+   THREE DOT BUTTON
+   ========================================================= */
+.task-menu-wrapper {
+    position: relative;
+    flex-shrink: 0;
+}
+.task-menu-button {
+    width: 32px;
+    height: 32px;
+    padding: 0;
+    border: none;
+    border-radius: 8px;
+    background: transparent;
+    color: inherit;
+    font-size: 20px;
+    line-height: 1;
+    cursor: pointer;
+    opacity: 0.6;
+    transition:
+        background 0.15s ease,
+        opacity 0.15s ease;
+}
+.task-menu-button:hover {
+    opacity: 1;
+    background: rgba(120, 90, 65, 0.10);
+}
+
+/* =========================================================
+   TASK MENU
+   ========================================================= */
+.task-menu {
+    position: absolute;
+    top: 38px;
+    right: 0;
+    min-width: 120px;
+    padding: 6px;
+    border-radius: 10px;
+    background: var(--menu-bg, #fffaf4);
+    border: 1px solid var(--border-color, #ded2c3);
+    box-shadow:
+        0 10px 25px rgba(0, 0, 0, 0.12);
+    z-index: 20;
+    display: none;
+}
+.task-menu.open {
+    display: block;
+}
+.task-menu button {
+    display: block;
+    width: 100%;
+    padding: 9px 10px;
+    border: none;
+    border-radius: 7px;
+    background: transparent;
+    color: inherit;
+    text-align: left;
+    font-family: inherit;
+    font-size: 13px;
+    cursor: pointer;
+}
+.task-menu button:hover {
+    background: rgba(120, 90, 65, 0.10);
+}
+.task-menu-delete {
+    color: #a34d43 !important;
+}
+
+/* =========================================================
+   TASK DETAILS
+   ========================================================= */
+.task-details {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 12px;
+}
+.task-detail {
+    display: inline-flex;
+    align-items: center;
+    padding: 5px 9px;
+    border-radius: 7px;
+    background: var(--tag-bg, #eee3d6);
+    font-size: 11px;
+    opacity: 0.85;
+}
+
+/* =========================================================
+   TASK DESCRIPTION
+   ========================================================= */
+.task-description {
+    margin: 13px 0 0;
+    font-size: 13px;
+    line-height: 1.55;
+    opacity: 0.68;
+}
+
+/* =========================================================
+   PRIORITY
+   ========================================================= */
+.task-priority {
+    font-weight: 600;
+}
+.task-priority-high {
+    color: #a34d43;
+}
+.task-priority-medium {
+    color: #9a713c;
+}
+.task-priority-low {
+    color: #607b62;
+}
+
+/* =========================================================
+   EMPTY TASK STATE
+   ========================================================= */
+.empty-task-state {
+    padding: 38px 20px;
+    text-align: center;
+    border-radius: 16px;
+    border: 1px dashed var(--border-color, #d8cbbb);
+    opacity: 0.6;
+}
+.empty-task-state p {
+    margin: 0;
+    font-size: 13px;
+}
+
+/* =========================================================
+   SIDE PANEL OVERLAY
+   ========================================================= */
+.task-panel-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(25, 18, 14, 0.35);
+    opacity: 0;
+    visibility: hidden;
+    transition:
+        opacity 0.25s ease,
+        visibility 0.25s ease;
+    z-index: 100;
+}
+.task-panel-overlay.open {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* =========================================================
+   SIDE PANEL
+   ========================================================= */
+.task-panel {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: min(430px, 92vw);
+    height: 100vh;
+    box-sizing: border-box;
+    padding: 30px;
+    background: var(--panel-bg, #fbf6ef);
+    color: var(--text-color, #3e3026);
+    border-left: 1px solid var(--border-color, #ded2c3);
+    overflow-y: auto;
+    transform: translateX(100%);
+    transition:
+        transform 0.28s ease;
+    z-index: 101;
+}
+.task-panel.open {
+    transform: translateX(0);
+}
+
+/* =========================================================
+   PANEL HEADER
+   ========================================================= */
+.task-panel-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 20px;
+    margin-bottom: 28px;
+}
+.panel-label {
+    margin: 0 0 6px;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 1.8px;
+    opacity: 0.55;
+}
+.task-panel-header h2 {
+    margin: 0;
+    font-size: 24px;
+}
+
+/* Close button */
+.close-panel-button {
+    width: 34px;
+    height: 34px;
+    padding: 0;
+    border: none;
+    border-radius: 9px;
+    background: transparent;
+    color: inherit;
+    font-size: 24px;
+    line-height: 1;
+    cursor: pointer;
+    opacity: 0.6;
+    transition:
+        background 0.15s ease,
+        opacity 0.15s ease;
+}
+.close-panel-button:hover {
+    opacity: 1;
+    background: rgba(120, 90, 65, 0.10);
+}
+
+/* =========================================================
+   FORM
+   ========================================================= */
+#taskForm {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+}
+.form-group label {
+    font-size: 12px;
+    font-weight: 600;
+    opacity: 0.78;
+}
+.form-group input,
+.form-group select,
+.form-group textarea {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 11px 12px;
+    border-radius: 9px;
+    border: 1px solid var(--border-color, #d8cbbb);
+    background: var(--input-bg, #fffaf4);
+    color: var(--text-color, #3e3026);
+    font-family: inherit;
+    font-size: 13px;
+    outline: none;
+    transition:
+        border-color 0.2s ease,
+        box-shadow 0.2s ease,
+        background 0.2s ease;
+}
+.form-group textarea {
+    resize: vertical;
+    min-height: 100px;
+}
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+    color: var(--muted-text, #927f6e);
+}
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    border-color: var(--accent-color, #8a6549);
+    box-shadow:
+        0 0 0 3px
+        rgba(138, 101, 73, 0.10);
+}
+
+/* =========================================================
+   DURATION
+   ========================================================= */
+.duration-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 9px;
+}
+
+/* =========================================================
+   PANEL BUTTONS
+   ========================================================= */
+.task-panel-actions {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-top: 10px;
+    padding-top: 8px;
+}
+.cancel-task-button,
+.save-task-button {
+    min-height: 43px;
+    border-radius: 10px;
+    font-family: inherit;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    transition:
+        opacity 0.15s ease,
+        transform 0.15s ease;
+}
+.cancel-task-button {
+    border: 1px solid var(--border-color, #d8cbbb);
+    background: transparent;
+    color: inherit;
+}
+.save-task-button {
+    border: none;
+    background: var(--accent-color, #76533b);
+    color: #ffffff;
+}
+.cancel-task-button:hover,
+.save-task-button:hover {
+    opacity: 0.88;
+}
+.cancel-task-button:active,
+.save-task-button:active {
+    transform: scale(0.98);
+}
+
+/* =========================================================
+   DARK THEME
+   IMPORTANT:
+   NO WHITE BACKGROUNDS
+   ========================================================= */
+body.dark-mode {
+    --card-bg: #28221e;
+    --panel-bg: #211c19;
+    --input-bg: #302923;
+    --menu-bg: #2b2420;
+    --border-color: #4a3c33;
+    --text-color: #eee4da;
+    --muted-text: #a99787;
+    --tag-bg: #3a3029;
+    --accent-color: #a77b58;
+}
+
+/* Dark page */
+body.dark-mode .tasks-page {
+    background: transparent;
+}
+
+/* Dark todo cards */
+body.dark-mode .todo-card {
+    background: #28221e;
+    border-color: #4a3c33;
+}
+
+/* Dark task cards */
+body.dark-mode .task-card {
+    background: #28221e;
+    border-color: #4a3c33;
+}
+
+/* Dark inputs */
+body.dark-mode .todo-input,
+body.dark-mode .form-group input,
+body.dark-mode .form-group select,
+body.dark-mode .form-group textarea {
+    background: #302923;
+    color: #eee4da;
+    border-color: #4a3c33;
+}
+
+/* Dark panel */
+body.dark-mode .task-panel {
+    background: #211c19;
+    color: #eee4da;
+    border-color: #4a3c33;
+}
+
+/* Dark menu */
+body.dark-mode .task-menu {
+    background: #2b2420;
+    border-color: #4a3c33;
+}
+
+/* Dark tags */
+body.dark-mode .task-detail {
+    background: #3a3029;
+}
+
+/* Dark empty state */
+body.dark-mode .empty-task-state {
+    border-color: #4a3c33;
+}
+
+/* Dark hover states */
+body.dark-mode .task-menu-button:hover,
+body.dark-mode .task-menu button:hover,
+body.dark-mode .close-panel-button:hover {
+    background: rgba(255, 255, 255, 0.06);
+}
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+@media (max-width: 850px) {
+    .tasks-page {
+        padding: 28px 24px 50px;
+    }
+    .todo-columns {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 600px) {
+    .tasks-page {
+        padding: 22px 16px 40px;
+    }
+    .tasks-header h1 {
+        font-size: 28px;
+    }
+    .tasks-section-heading {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 14px;
+    }
+    .add-task-button {
+        width: 100%;
+    }
+    .todo-card {
+        padding: 18px;
+    }
+    .task-card {
+        padding: 17px;
+    }
+    .task-panel {
+        width: 100%;
+        padding: 24px 20px;
+    }
+}
+
+/* =========================================================
+   TODO CHECKBOX
+   ========================================================= */
+
+.todo-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+
+/* Checkbox */
+
+.todo-checkbox {
+    width: 18px;
+    height: 18px;
+
+    margin: 0;
+
+    flex-shrink: 0;
+
+    appearance: none;
+
+    border: 1.5px solid var(--border-color, #cdbdad);
+    border-radius: 50%;
+
+    background: transparent;
+
+    cursor: pointer;
+
+    position: relative;
+
+    transition:
+        background 0.15s ease,
+        border-color 0.15s ease;
+}
+
+
+/* Checked todo */
+
+.todo-checkbox:checked {
+    background: var(--accent-color, #76533b);
+    border-color: var(--accent-color, #76533b);
+}
+
+
+/* Tick */
+
+.todo-checkbox:checked::after {
+    content: "✓";
+
+    position: absolute;
+
+    left: 50%;
+    top: 50%;
+
+    transform: translate(-50%, -52%);
+
+    color: #ffffff;
+
+    font-size: 11px;
+    font-weight: 700;
+}
+
+
+/* Completed todo */
+
+.todo-item.completed .todo-item-text {
+    text-decoration: line-through;
+    opacity: 0.45;
+}
+
+
+/* =========================================================
+   TASK CHECKBOX
+   ========================================================= */
+
+.task-main-row {
+    display: flex;
+
+    align-items: flex-start;
+
+    gap: 11px;
+
+    min-width: 0;
+
+    flex: 1;
+}
+
+
+.task-checkbox {
+    width: 19px;
+    height: 19px;
+
+    margin-top: 1px;
+
+    flex-shrink: 0;
+
+    appearance: none;
+
+    border: 1.5px solid var(--border-color, #cdbdad);
+    border-radius: 50%;
+
+    background: transparent;
+
+    cursor: pointer;
+
+    position: relative;
+
+    transition:
+        background 0.15s ease,
+        border-color 0.15s ease;
+}
+
+
+.task-checkbox:checked {
+    background: var(--accent-color, #76533b);
+    border-color: var(--accent-color, #76533b);
+}
+
+
+.task-checkbox:checked::after {
+    content: "✓";
+
+    position: absolute;
+
+    left: 50%;
+    top: 50%;
+
+    transform: translate(-50%, -52%);
+
+    color: #ffffff;
+
+    font-size: 12px;
+    font-weight: 700;
+}
+
+
+/* Completed task */
+
+.task-card.completed {
+    opacity: 0.58;
+}
+
+
+.task-card.completed .task-card-title {
+    text-decoration: line-through;
+}
+
+
+/* =========================================================
+   DARK MODE — CHECKBOXES
+   ========================================================= */
+
+body.dark-mode .todo-checkbox,
+body.dark-mode .task-checkbox {
+    background: #302923;
+    border-color: #665448;
+}
+
+
+body.dark-mode .todo-checkbox:checked,
+body.dark-mode .task-checkbox:checked {
+    background: #a77b58;
+    border-color: #a77b58;
+}
+
+
+/* =========================================================
+   DARK MODE — SIDE PANEL
+   ========================================================= */
+
+/*
+   We explicitly override the panel here so it can NEVER
+   become white when dark mode is active.
+*/
+
+body.dark-mode .task-panel {
+    background: #211c19 !important;
+    color: #bbb2aa !important;
+
+    border-left-color: #4a3c33 !important;
+}
+
+
+body.dark-mode .task-panel input,
+body.dark-mode .task-panel select,
+body.dark-mode .task-panel textarea {
+    background: #302923 !important;
+    color: #eee4da !important;
+
+    border-color: #4a3c33 !important;
+}
+
+
+body.dark-mode .task-panel input::placeholder,
+body.dark-mode .task-panel textarea::placeholder {
+    color: #c7bcb2;
+}
+
+
+/* Browser date/time controls */
+
+body.dark-mode .task-panel input[type="date"],
+body.dark-mode .task-panel input[type="time"] {
+    color-scheme: dark;
+}
+
+
+/* Dark panel buttons */
+
+body.dark-mode .cancel-task-button {
+    background: #2b2420;
+    color: #eee4da;
+
+    border-color: #4a3c33;
+}
+
+
+body.dark-mode .save-task-button {
+    background: #8f684b;
+    color: #ffffff;
+}
+
+
+/* Dark close button */
+
+body.dark-mode .close-panel-button {
+    color: #eee4da;
+}
+
+
+/* =========================================================
+   EXTRA DARK-MODE SAFETY
+   ========================================================= */
+
+/*
+   This also catches setups where the theme class is placed
+   on <html> instead of <body>.
+*/
+
+html.dark-mode .task-panel {
+    background: #211c19 !important;
+    color: #eee4da !important;
+
+    border-left-color: #4a3c33 !important;
+}
+
+html.dark-mode .task-panel input,
+html.dark-mode .task-panel select,
+html.dark-mode .task-panel textarea {
+    background: #302923 !important;
+    color: #eee4da !important;
+
+    border-color: #4a3c33 !important;
+}
+/* =========================================
+   TASK PANEL — DARK MODE
+   Study Space uses body.dark
+========================================= */
+
+
+/* PANEL */
+
+body.dark .task-panel {
+
+    background:#211b17 !important;
+
+    color:#eee3d8 !important;
+
+    border-left:1px solid #3d332b !important;
+
+    box-shadow:
+        -10px 0 30px rgba(0,0,0,.35);
+
+}
+
+
+/* EVERYTHING INSIDE PANEL */
+
+body.dark .task-panel h1,
+body.dark .task-panel h2,
+body.dark .task-panel h3,
+body.dark .task-panel p,
+body.dark .task-panel label,
+body.dark .task-panel span {
+
+    color:#eee3d8 !important;
+
+}
+
+
+/* INPUTS */
+
+body.dark .task-panel input,
+body.dark .task-panel select,
+body.dark .task-panel textarea {
+
+    background:#30251e !important;
+
+    color:#eee3d8 !important;
+
+    border:1px solid #59483a !important;
+
+}
+
+
+/* PLACEHOLDER */
+
+body.dark .task-panel input::placeholder,
+body.dark .task-panel textarea::placeholder {
+
+    color:#a89584 !important;
+
+}
+
+
+/* DATE + TIME */
+
+body.dark .task-panel input[type="date"],
+body.dark .task-panel input[type="time"] {
+
+    color-scheme:dark;
+
+}
+
+
+/* SELECT OPTIONS */
+
+body.dark .task-panel select option {
+
+    background:#30251e;
+
+    color:#eee3d8;
+
+}
+
+
+/* CLOSE BUTTON */
+
+body.dark .task-panel .close-panel-button {
+
+    background:transparent !important;
+
+    color:#eee3d8 !important;
+
+}
+
+
+/* CANCEL */
+
+body.dark .task-panel .cancel-task-button {
+
+    background:#30251e !important;
+
+    color:#eee3d8 !important;
+
+    border:1px solid #59483a !important;
+
+}
+
+
+/* SAVE */
+
+body.dark .task-panel .save-task-button {
+
+    background:#8b5e3c !important;
+
+    color:white !important;
+
+}
+
+
+/* INPUT FOCUS */
+
+body.dark .task-panel input:focus,
+body.dark .task-panel select:focus,
+body.dark .task-panel textarea:focus {
+
+    background:#352a22 !important;
+
+    border-color:#b9895b !important;
+
+    outline:none;
+
+}
+
+
+/* PANEL OVERLAY */
+
+body.dark .task-panel-overlay {
+
+    background:rgba(0,0,0,.65) !important;
+
+}

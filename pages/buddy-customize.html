@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+<title>Customize Your Buddy</title>
+
+
+<link rel="stylesheet" href="../style.css?v=101">
+
+
+<script>
+
+(function(){
+
+const theme =
+localStorage.getItem("theme");
+
+
+if(theme === "dark"){
+
+document.documentElement.classList.add("dark");
+
+}
+
+})();
+
+</script>
+
+</head>
+
+
+
+<body>
+
+
+
+<div class="customize-page">
+
+
+
+
+
+<h1>
+Personalize Your Study Buddy 
+</h1>
+
+
+
+
+<p class="quote">
+Give your little companion a mind and personality. /ᐠ. .ᐟ\ฅ
+</p>
+
+
+
+
+
+
+
+
+<!-- ===============================
+     BUDDY PREVIEW
+================================ -->
+
+
+<div class="custom-preview">
+
+
+
+<img
+id="buddyImage"
+src=""
+alt="Your Study Buddy">
+
+
+
+
+
+<h2 id="animalName">
+Your Buddy
+</h2>
+
+
+
+</div>
+
+
+
+
+
+
+
+
+
+<!-- ===============================
+     NAME
+================================ -->
+
+
+<label>
+Name
+</label>
+
+
+
+<input
+
+type="text"
+
+id="buddyName"
+
+placeholder="Example: Almond">
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- ===============================
+     MBTI
+================================ -->
+
+
+<h2>
+MBTI
+</h2>
+
+
+
+
+
+<select
+
+id="buddyMBTI">
+
+
+
+<option value="">
+Choose MBTI
+</option>
+
+
+
+<option value="INTJ">
+INTJ
+</option>
+
+
+<option value="INTP">
+INTP
+</option>
+
+
+<option value="ENTJ">
+ENTJ
+</option>
+
+
+<option value="ENTP">
+ENTP
+</option>
+
+
+<option value="INFJ">
+INFJ
+</option>
+
+
+<option value="INFP">
+INFP
+</option>
+
+
+<option value="ENFJ">
+ENFJ
+</option>
+
+
+<option value="ENFP">
+ENFP
+</option>
+
+
+<option value="ISTJ">
+ISTJ
+</option>
+
+
+<option value="ISFJ">
+ISFJ
+</option>
+
+
+<option value="ESTJ">
+ESTJ
+</option>
+
+
+<option value="ESFJ">
+ESFJ
+</option>
+
+
+<option value="ISTP">
+ISTP
+</option>
+
+
+<option value="ISFP">
+ISFP
+</option>
+
+
+<option value="ESTP">
+ESTP
+</option>
+
+
+<option value="ESFP">
+ESFP
+</option>
+
+
+
+</select>
+
+
+
+
+
+
+
+
+
+<!-- ===============================
+     BUDDY PERSONALITY
+================================ -->
+
+
+<h2>
+Buddy Personality
+</h2>
+
+
+
+
+<select
+
+id="buddyPersonality"
+
+onchange="showBuddyPersonality()">
+
+
+
+<option value="">
+Choose personality
+</option>
+
+
+
+<option value="Caring">
+♡  Caring
+</option>
+
+
+
+<option value="Playful">
+⚔ playful
+</option>
+
+
+
+<option value="Strict">
+⚠    Strict
+</option>
+
+
+
+<option value="Funny">
+✌︎︎    Funny
+</option>
+
+
+
+<option value="Motivational">
+ദ്ദി✧ Motivational
+</option>
+
+
+
+<option value="Calm">
+𓏲ּ𝄢    Calm
+</option>
+
+
+
+<option value="Protective">
+⛨     Protective
+</option>
+
+
+
+<option value="Cheerful">
+𓆩❤︎𓆪  Cheerful
+</option>
+
+
+
+<option value="Flirty">
+:Þ  Flirty
+</option>
+
+
+
+<option value="LZZ">
+|°ᴗ°|     LZZ
+</option>
+
+
+
+<option value="sa">
+⁴⁰⁴            sa
+</option>
+
+</select>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- ===============================
+     PERSONALITY RESULT
+================================ -->
+
+
+<div id="personalityResult">
+
+
+<p>
+Choose your buddy's personality (˶>⩊<˶)
+</p>
+
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- ===============================
+     MESSAGE
+================================ -->
+
+
+<p id="message"></p>
+
+
+
+
+
+
+
+
+
+<!-- ===============================
+     CREATE BUTTON
+================================ -->
+
+
+<button
+
+class="main-button"
+
+onclick="createBuddy()">
+
+
+Create My Buddy
+
+
+</button>
+
+
+
+
+
+
+
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- ===============================
+     JAVASCRIPT
+================================ -->
+
+
+
+<script src="../js/storage.js?v=101"></script>
+
+
+<script src="../js/buddy-customize.js?v=101"></script>
+
+
+<script src="../js/theme.js?v=101"></script>
+
+
+
+
+</body>
+
+
+</html>

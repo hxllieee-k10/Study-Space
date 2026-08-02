@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Edit Study Buddy</title>
+
+<link rel="stylesheet" href="../style.css">
+
+
+<script>
+
+(function(){
+
+const theme =
+localStorage.getItem("theme");
+
+
+if(theme === "dark"){
+
+document.documentElement.classList.add("dark");
+
+}
+
+})();
+
+</script>
+
+</head>
+
+
+
+<body class="has-sidebar">
+
+
+<!-- =========================
+SIDEBAR
+========================= -->
+
+<aside class="sidebar">
+
+<div class="sidebar-logo">
+
+<div class="logo-icon">
+☕︎
+</div>
+
+<h2>
+Study Space
+</h2>
+
+</div>
+
+
+
+<nav class="sidebar-nav">
+
+<div class="nav-group">
+
+<p class="nav-title">
+HOME
+</p>
+
+<button onclick="goHome()">
+🖳 Desk
+</button>
+
+</div>
+
+
+
+
+
+<div class="nav-group">
+
+<p class="nav-title">
+PRODUCTIVITY
+</p>
+
+<button onclick="openPomodoro()">
+⌛︎ Focus
+</button>
+
+<button onclick="openTasks()">
+☑ Tasks
+</button>
+
+<button onclick="openCalendar()">
+🗓 Calendar
+</button>
+
+<button onclick="openPlanner()">
+◔ Planner
+</button>
+
+</div>
+
+
+
+
+
+
+<div class="nav-group">
+
+<p class="nav-title">
+WORKSPACE
+</p>
+
+<!--<button onclick="openMusic()">
+♬ Music
+</button>-->
+
+<button onclick="openNotes()">
+🗐 Notes
+</button>
+
+</div>
+
+
+
+
+
+
+<div class="nav-group">
+
+<p class="nav-title">
+PERSONAL
+</p>
+
+<button onclick="openBuddy()">
+˙𐃷˙ Study buddy
+</button>
+
+<button onclick="openGoals()">
+⚽︎ Goals
+</button>
+
+<!--<button onclick="openAchievements()">
+★ Achievements
+</button>
+
+</div>
+-->
+
+
+
+
+
+
+<div class="nav-group">
+
+<p class="nav-title">
+SYSTEM
+</p>
+
+<button onclick="openProgress()">
+◔ Progress
+</button>
+
+<button onclick="openSettings()">
+⏣ Settings
+</button>
+
+</div>
+
+</nav>
+
+
+
+
+
+<div class="sidebar-bottom">
+
+<button onclick="toggleTheme()"
+        id="themeButton">
+
+⏾ Theme
+
+</button>
+
+</div>
+
+</aside>
+
+
+
+
+
+<div class="buddy-edit-page">
+
+
+
+<h1>
+Edit Your Study Buddy ˙𐃷˙
+</h1>
+
+
+<p class="quote">
+Update your companion's details.
+</p>
+
+
+
+
+
+
+<!-- PREVIEW -->
+
+
+<div class="edit-preview">
+
+
+<img
+id="editBuddyImage"
+src="">
+
+
+
+<h2 id="editBuddyAnimal">
+Buddy
+</h2>
+
+
+</div>
+
+
+
+
+
+
+
+<!-- NAME -->
+
+
+<label>
+Buddy Name
+</label>
+
+
+<input
+id="editBuddyName"
+type="text"
+placeholder="Name">
+
+
+
+
+
+
+
+<!-- ANIMAL -->
+
+
+<label>
+Buddy Avatar
+</label>
+
+
+<div class="edit-avatar-box">
+
+<img
+id="editBuddyImage"
+src=""
+>
+
+
+<button
+class="avatar-change-btn"
+onclick="changeAvatar()">
+
+Change Avatar
+
+</button>
+
+
+</div>
+
+
+
+
+
+
+
+<!-- MBTI -->
+
+
+<label>
+MBTI
+</label>
+
+
+<select id="editMBTI">
+
+
+<option value="INTJ">INTJ</option>
+<option value="INTP">INTP</option>
+<option value="ENTJ">ENTJ</option>
+<option value="ENTP">ENTP</option>
+
+<option value="INFJ">INFJ</option>
+<option value="INFP">INFP</option>
+<option value="ENFJ">ENFJ</option>
+<option value="ENFP">ENFP</option>
+
+<option value="ISTJ">ISTJ</option>
+<option value="ISFJ">ISFJ</option>
+<option value="ESTJ">ESTJ</option>
+<option value="ESFJ">ESFJ</option>
+
+<option value="ISTP">ISTP</option>
+<option value="ISFP">ISFP</option>
+<option value="ESTP">ESTP</option>
+<option value="ESFP">ESFP</option>
+
+
+</select>
+
+
+
+<!-- PERSONALITY -->
+
+
+
+<label>
+Buddy Personality
+</label>
+
+
+<select id="editPersonality">
+
+
+<option value="Caring">
+Caring
+</option>
+
+
+<option value="Playful">
+Playful
+</option>
+
+
+<option value="Strict">
+Strict
+</option>
+
+
+<option value="Funny">
+Funny
+</option>
+
+
+<option value="Motivational">
+Motivational
+</option>
+
+
+<option value="Calm">
+Calm
+</option>
+
+
+<option value="Protective">
+Protective
+</option>
+
+
+<option value="Cheerful">
+Cheerful
+</option>
+
+
+<option value="Flirty">
+Flirty
+</option>
+
+
+
+
+</select>
+
+
+
+
+
+
+<!-- PROFILE -->
+
+
+<label>
+Bio
+</label>
+
+
+<textarea
+id="editBio"
+placeholder="Tell something about your buddy...">
+</textarea>
+
+
+
+
+
+<label>
+Birthday
+</label>
+
+
+<input
+id="editBirthday"
+type="date">
+
+
+
+
+
+<label>
+Age
+</label>
+
+
+<input
+id="editAge"
+type="number">
+
+
+
+
+
+
+<label>
+Hobbies
+</label>
+
+
+<input
+id="editHobbies"
+placeholder="Reading, music, drawing...">
+
+
+
+
+
+
+<label>
+Currently struggling with
+</label>
+
+
+<textarea
+id="editStruggle"
+placeholder="What challenges is your buddy facing?">
+</textarea>
+
+
+
+
+
+
+
+
+<label>
+Dreams & Ambitions
+</label>
+
+
+<textarea
+id="editDreams"
+placeholder="What does your buddy dream of?">
+</textarea>
+
+
+
+
+
+
+
+<p id="editMessage"></p>
+
+
+
+
+
+<button
+class="main-button"
+onclick="saveBuddyEdit()">
+
+Save Changes
+
+</button>
+
+
+
+
+</div>
+
+
+
+
+
+
+
+<script src="../js/storage.js"></script>
+
+<script src="../js/buddies.js"></script>
+<script src="../js/dashboard.js"></script>
+<script src="../js/buddy-edit.js"></script>
+<script src="../js/theme.js"></script>
+
+
+</body>
+
+</html>

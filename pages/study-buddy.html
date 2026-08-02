@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Study Buddy</title>
+
+<link rel="stylesheet" href="../style.css">
+
+<script>
+
+(function(){
+
+const theme =
+localStorage.getItem("theme");
+
+if(theme === "dark"){
+
+document.documentElement.classList.add("dark");
+
+}
+
+})();
+
+</script>
+
+</head>
+
+
+<body>
+
+
+
+
+<!-- =========================
+SIDEBAR
+========================= -->
+
+<aside class="sidebar">
+
+<div class="sidebar-logo">
+
+<div class="logo-icon">
+☕︎
+</div>
+
+<h2>
+Study Space
+</h2>
+
+</div>
+
+
+
+<nav class="sidebar-nav">
+
+<div class="nav-group">
+
+<p class="nav-title">
+HOME
+</p>
+
+<button onclick="goHome()">
+🖳 Desk
+</button>
+
+</div>
+
+
+
+
+
+<div class="nav-group">
+
+<p class="nav-title">
+PRODUCTIVITY
+</p>
+
+<button onclick="openPomodoro()">
+⌛︎ Focus
+</button>
+
+<button onclick="openTasks()">
+☑ Tasks
+</button>
+
+<button onclick="openCalendar()">
+🗓 Calendar
+</button>
+
+<button onclick="openPlanner()">
+◔ Planner
+</button>
+
+</div>
+
+
+
+
+
+
+<div class="nav-group">
+
+<p class="nav-title">
+WORKSPACE
+</p>
+
+<!--<button onclick="openMusic()">
+♬ Music
+</button>-->
+
+<button onclick="openNotes()">
+🗐 Notes
+</button>
+
+</div>
+
+
+
+
+
+
+<div class="nav-group">
+
+<p class="nav-title">
+PERSONAL
+</p>
+
+<button onclick="openBuddy()">
+˙𐃷˙ Study buddy
+</button>
+
+<button onclick="openGoals()">
+⚽︎ Goals
+</button>
+
+<!--<button onclick="openAchievements()">
+★ Achievements
+</button>
+-->
+</div>
+
+
+
+
+
+
+
+<div class="nav-group">
+
+<p class="nav-title">
+SYSTEM
+</p>
+
+<button onclick="openProgress()">
+◔ Progress
+</button>
+
+<button onclick="openSettings()">
+⏣ Settings
+</button>
+
+</div>
+
+</nav>
+
+
+
+
+
+<div class="sidebar-bottom">
+
+<button onclick="toggleTheme()"
+        id="themeButton">
+
+⏾ Theme
+
+</button>
+
+</div>
+
+</aside>
+
+
+
+
+
+
+
+
+<div class="study-buddy-page">
+
+
+
+<header class="buddy-profile-header">
+
+<h1>
+My Study Buddy ˙𐃷˙
+</h1>
+
+
+<p>
+Your little companion on your learning journey.
+</p>
+
+
+</header>
+
+
+
+
+
+<!-- BUDDY CARD -->
+
+
+<section class="buddy-profile-card">
+
+
+<div class="buddy-preview-left">
+
+
+<img
+id="profileBuddyImage"
+src=""
+alt="Study Buddy">
+
+
+</div>
+
+
+
+
+
+<div class="buddy-profile-info">
+
+
+<h2 id="profileBuddyName">
+Buddy
+</h2>
+
+
+
+<p id="profileBuddyAnimal">
+Animal
+</p>
+
+
+
+
+<div class="buddy-tags">
+
+
+<span id="profileMBTI">
+MBTI
+</span>
+
+
+<span id="profilePersonality">
+Personality
+</span>
+
+
+</div>
+
+
+
+
+
+<div class="friendship-box">
+
+
+<h3>
+Friendship Level:
+<span id="friendshipLevel">
+New Friend 🌱
+</span>
+</h3>
+
+
+
+<p>
+Together for:
+<span id="friendshipDays">
+0 days
+</span>
+</p>
+
+
+
+<p>
+Study Time:
+<span id="studyTime">
+0h 0min
+</span>
+</p>
+
+
+
+
+<p>
+Closeness:
+<span id="closenessPercent">
+0%
+</span>
+</p>
+
+
+
+<div class="friendship-bar">
+
+
+<div 
+id="friendshipProgress">
+
+</div>
+
+
+</div>
+
+
+</div>
+
+
+</div>
+
+
+
+</section>
+
+
+
+
+<div class="buddy-extra-grid">
+
+<div class="buddy-extra-card">
+<h3>Friendship</h3>
+<p>New Study Partner 🌱</p>
+</div>
+
+
+<div class="buddy-extra-card">
+<h3>Study Progress</h3>
+<p>0 sessions completed</p>
+</div>
+
+
+<div class="buddy-extra-card">
+<h3>Notes To Self</h3>
+<p>Keep going.</p>
+</div>
+
+</div>
+
+
+
+
+
+<!-- MOTIVATION -->
+
+
+<section class="buddy-motivation">
+
+
+<h2>
+Study Motivation  ദ്ദി(˵ •̀ ᴗ - ˵ ) ✧
+</h2>
+
+
+<p id="buddyMotivation">
+
+Loading motivation...
+
+</p>
+
+
+</section>
+
+
+<section class="buddy-reminder">
+
+<h2>
+Buddy Reminder 
+</h2>
+
+<p id="buddyReminder">
+Loading reminder...
+</p>
+
+</section>
+
+
+
+
+
+<!-- DETAILS -->
+
+
+<section class="buddy-details">
+
+
+<h2>
+About My Buddy
+</h2>
+
+
+
+<div class="detail-grid">
+
+
+<div>
+<h3>
+Bio
+</h3>
+
+<p id="buddyBio">
+Not added yet.
+</p>
+
+</div>
+
+
+
+
+<div>
+<h3>
+Hobbies
+</h3>
+
+<p id="buddyHobbies">
+Not added yet.
+</p>
+
+</div>
+
+
+
+
+<div>
+<h3>
+Currently Struggling With
+</h3>
+
+<p id="buddyStruggle">
+Not added yet.
+</p>
+
+</div>
+
+
+
+
+
+<div>
+<h3>
+Dreams & Ambitions
+</h3>
+
+<p id="buddyDreams">
+Not added yet.
+</p>
+
+</div>
+
+
+
+</div>
+
+
+</section>
+
+
+
+
+
+
+
+
+<!-- WARDROBE -->
+
+
+
+
+<!--
+<section class="buddy-wardrobe">
+
+
+<h2>
+Wardrobe 👕
+</h2>
+
+
+<div class="clothes-grid">
+
+
+<button>
+Default
+</button>
+
+
+<button>
+Hoodie
+</button>
+
+
+<button>
+Glasses
+</button>
+
+
+<button>
+Hat
+</button>
+
+
+</div>
+
+
+
+</section> 
+-->
+
+
+
+
+
+
+<button
+class="main-button"
+onclick="editBuddy()">
+
+Edit Buddy
+
+</button>
+
+
+
+
+
+</div>
+
+
+
+
+
+
+<script src="../js/storage.js"></script>
+<script src="../js/sidebar.js"></script>
+<script src="../js/study-buddy.js"></script>
+<script src="../js/theme.js"></script>
+
+</body>
+
+</html>

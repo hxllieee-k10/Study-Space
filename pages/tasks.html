@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tasks | Study Space</title>
+    <!-- MAIN STYLES -->
+    <link rel="stylesheet" href="../style.css">
+    <!-- TASKS PAGE STYLES -->
+    <link rel="stylesheet" href="../css/tasks.css">
+</head>
+<body>
+<div class="app-layout">
+    <!-- =========================================
+         SIDEBAR
+    ========================================== -->
+    <!-- =========================
+SIDEBAR
+========================= -->
+<aside class="sidebar">
+<div class="sidebar-logo">
+<div class="logo-icon">☕︎</div>
+<h2>Study Space</h2>
+</div>
+<nav class="sidebar-nav">
+<div class="nav-group">
+<p class="nav-title">HOME</p>
+<button onclick="goHome()">🖳 Desk</button>
+</div>
+<div class="nav-group">
+<p class="nav-title">PRODUCTIVITY</p>
+<button onclick="openPomodoro()">⌛︎ Focus</button>
+<button onclick="openTasks()">☑ Tasks</button>
+<button onclick="openCalendar()">🗓 Calendar</button>
+<button onclick="openPlanner()">◔ Planner</button>
+</div>
+<div class="nav-group">
+<p class="nav-title">WORKSPACE</p>
+<button onclick="openNotes()">🗐 Notes</button>
+</div>
+<div class="nav-group">
+<p class="nav-title">PERSONAL</p>
+<button onclick="openBuddy()">˙𐃷˙ Study buddy</button>
+<button onclick="openGoals()">⚽︎ Goals</button>
+<!--<button onclick="openAchievements()">★ Achievements</button>-->
+</div>
+<div class="nav-group">
+<p class="nav-title">SYSTEM</p>
+<button onclick="openProgress()">◔ Progress</button>
+<button onclick="openSettings()">⏣ Settings</button>
+</div>
+</nav>
+<div class="sidebar-bottom">
+<button onclick="toggleTheme()" id="themeButton">⏾ Theme</button>
+</div>
+</aside>
+
+    <!-- =========================================
+         MAIN CONTENT
+    ========================================== -->
+    <main class="main-content tasks-page">
+        <!-- PAGE HEADER -->
+        <header class="tasks-header">
+            <div>
+                <p class="page-label">PRODUCTIVITY</p>
+                <h1>Tasks</h1>
+                <p class="tasks-subtitle">
+                    Keep track of what needs to be done.
+                </p>
+            </div>
+        </header>
+
+        <!-- =========================================
+             TODO SECTION
+        ========================================== -->
+        <section class="todo-section">
+            <div class="section-heading">
+                <h2>Todo</h2>
+            </div>
+
+            <div class="todo-columns">
+                <!-- ==============================
+                     TODAY
+                =============================== -->
+                <div class="todo-card" data-day="today">
+                    <div class="todo-card-header">
+                        <h3>Today</h3>
+                    </div>
+
+                    <!-- TODAY TODO LIST -->
+                    <div class="todo-list" id="todayTodoList">
+                        <!-- JavaScript adds todos here -->
+                    </div>
+
+                    <!-- INPUT IS UNDER THE LIST -->
+                    <div class="todo-input-wrapper">
+                        <input
+                            type="text"
+                            id="todayTodoInput"
+                            class="todo-input"
+                            placeholder="Type a todo..."
+                            autocomplete="off"
+                        >
+                    </div>
+                </div>
+
+                <!-- ==============================
+                     TOMORROW
+                =============================== -->
+                <div class="todo-card" data-day="tomorrow">
+                    <div class="todo-card-header">
+                        <h3>Tomorrow</h3>
+                    </div>
+
+                    <!-- TOMORROW TODO LIST -->
+                    <div class="todo-list" id="tomorrowTodoList">
+                        <!-- JavaScript adds todos here -->
+                    </div>
+
+                    <!-- INPUT IS UNDER THE LIST -->
+                    <div class="todo-input-wrapper">
+                        <input
+                            type="text"
+                            id="tomorrowTodoInput"
+                            class="todo-input"
+                            placeholder="Type a todo..."
+                            autocomplete="off"
+                        >
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- =========================================
+             TASKS SECTION
+        ========================================== -->
+        <section class="tasks-section">
+            <div class="section-heading tasks-section-heading">
+                <div>
+                    <h2>Tasks</h2>
+                    <p>
+                        Larger tasks with time, duration and due dates.
+                    </p>
+                </div>
+
+                <button
+                    type="button"
+                    class="add-task-button"
+                    id="addTaskButton"
+                >
+                    + Add Task
+                </button>
+            </div>
+
+            <!-- SAVED TASKS APPEAR HERE -->
+            <div class="task-list" id="taskList">
+                <!-- JavaScript adds tasks here -->
+            </div>
+        </section>
+    </main>
+
+    <!-- =========================================
+         TASK SIDE PANEL OVERLAY
+    ========================================== -->
+    <div class="task-panel-overlay" id="taskPanelOverlay"></div>
+
+    <!-- =========================================
+         TASK SIDE PANEL
+    ========================================== -->
+    <aside class="task-panel" id="taskPanel" aria-hidden="true">
+        <!-- PANEL HEADER -->
+        <div class="task-panel-header">
+            <div>
+                <p class="panel-label" id="panelLabel">
+                    NEW TASK
+                </p>
+                <h2 id="panelTitle">
+                    Add Task
+                </h2>
+            </div>
+
+            <button
+                type="button"
+                class="close-panel-button"
+                id="closeTaskPanel"
+                aria-label="Close"
+            >
+                ×
+            </button>
+        </div>
+
+        <!-- =========================================
+             TASK FORM
+        ========================================== -->
+        <form id="taskForm">
+            <!-- TASK NAME -->
+            <div class="form-group">
+                <label for="taskName">Task name</label>
+                <input
+                    type="text"
+                    id="taskName"
+                    name="taskName"
+                    placeholder="What do you need to do?"
+                    required
+                >
+            </div>
+
+            <!-- DATE -->
+            <div class="form-group">
+                <label for="taskDate">Date</label>
+                <input
+                    type="date"
+                    id="taskDate"
+                    name="taskDate"
+                    required
+                >
+            </div>
+
+            <!-- START TIME -->
+            <div class="form-group">
+                <label for="taskTime">Start time</label>
+                <input
+                    type="time"
+                    id="taskTime"
+                    name="taskTime"
+                >
+            </div>
+
+            <!-- DURATION -->
+            <div class="form-group">
+                <label for="taskDuration">Duration</label>
+                <div class="duration-row">
+                    <input
+                        type="number"
+                        id="taskDuration"
+                        name="taskDuration"
+                        min="1"
+                        placeholder="60"
+                    >
+                    <select id="taskDurationUnit" name="taskDurationUnit">
+                        <option value="minutes">minutes</option>
+                        <option value="hours">hours</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- PRIORITY -->
+            <div class="form-group">
+                <label for="taskPriority">Priority</label>
+                <select id="taskPriority" name="taskPriority">
+                    <option value="low">Low</option>
+                    <option value="medium" selected>Medium</option>
+                    <option value="high">High</option>
+                </select>
+            </div>
+
+            <!-- DUE DATE -->
+            <div class="form-group">
+                <label for="taskDueDate">Due date</label>
+                <input
+                    type="date"
+                    id="taskDueDate"
+                    name="taskDueDate"
+                >
+            </div>
+
+            <!-- DETAILS -->
+            <div class="form-group">
+                <label for="taskDescription">Details</label>
+                <textarea
+                    id="taskDescription"
+                    name="taskDescription"
+                    rows="4"
+                    placeholder="Add any details..."
+                ></textarea>
+            </div>
+
+            <!-- =====================================
+                 FORM BUTTONS
+            ====================================== -->
+            <div class="task-panel-actions">
+                <button
+                    type="button"
+                    class="cancel-task-button"
+                    id="cancelTaskButton"
+                >
+                    Cancel
+                </button>
+                <button
+                    type="submit"
+                    class="save-task-button"
+                    id="saveTaskButton"
+                >
+                    Add Task
+                </button>
+            </div>
+        </form>
+    </aside>
+</div>
+
+<!-- =========================================
+     TASK JAVASCRIPT
+========================================= -->
+
+<script src="../js/storage.js"></script>
+<script src="../js/sidebar.js"></script>
+<script src="../js/tasks.js"></script>
+<script src="../js/theme.js"></script>
+</body>
+</html>

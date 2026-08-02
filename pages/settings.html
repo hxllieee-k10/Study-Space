@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Settings | Study Space</title>
+
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="../css/settings.css">
+</head>
+
+<body>
+
+<div class="app-layout">
+
+    <!-- SIDEBAR -->
+    <!-- =========================
+SIDEBAR
+========================= -->
+<aside class="sidebar">
+<div class="sidebar-logo">
+<div class="logo-icon">☕︎</div>
+<h2>Study Space</h2>
+</div>
+<nav class="sidebar-nav">
+<div class="nav-group">
+<p class="nav-title">HOME</p>
+<button onclick="goHome()">🖳 Desk</button>
+</div>
+<div class="nav-group">
+<p class="nav-title">PRODUCTIVITY</p>
+<button onclick="openPomodoro()">⌛︎ Focus</button>
+<button onclick="openTasks()">☑ Tasks</button>
+<button onclick="openCalendar()">🗓 Calendar</button>
+<button onclick="openPlanner()">◔ Planner</button>
+</div>
+<div class="nav-group">
+<p class="nav-title">WORKSPACE</p>
+<button onclick="openNotes()">🗐 Notes</button>
+</div>
+<div class="nav-group">
+<p class="nav-title">PERSONAL</p>
+<button onclick="openBuddy()">˙𐃷˙ Study buddy</button>
+<button onclick="openGoals()">⚽︎ Goals</button>
+<!--<button onclick="openAchievements()">★ Achievements</button>-->
+</div>
+<div class="nav-group">
+<p class="nav-title">SYSTEM</p>
+<button onclick="openProgress()">◔ Progress</button>
+<button onclick="openSettings()">⏣ Settings</button>
+</div>
+</nav>
+<div class="sidebar-bottom">
+<button onclick="toggleTheme()" id="themeButton">⏾ Theme</button>
+</div>
+</aside>
+
+    <!-- MAIN -->
+    <main class="settings-page">
+
+        <header class="settings-header">
+            <div>
+                <p class="settings-eyebrow">STUDY SPACE</p>
+                <h1>Settings</h1>
+                <p>Customize your study experience.</p>
+            </div>
+        </header>
+
+
+        <!-- =========================
+             APPEARANCE
+        ========================== -->
+
+        <section class="settings-section">
+
+            <div class="section-heading">
+                <h2>Appearance</h2>
+                <p>Change how Study Space looks.</p>
+            </div>
+
+            <div class="settings-card">
+
+                <div class="setting-row">
+
+                    <div class="setting-info">
+                        <h3>Dark Mode</h3>
+                        <p>Use a darker appearance for studying at night.</p>
+                    </div>
+
+                    <label class="switch">
+                        <input
+                            type="checkbox"
+                            id="darkModeToggle"
+                        >
+                        <span class="slider"></span>
+                    </label>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             REMINDERS
+        ========================== -->
+
+        <section class="settings-section">
+
+            <div class="section-heading">
+                <h2>Reminders</h2>
+                <p>Stay on track while studying.</p>
+            </div>
+
+            <div class="settings-card">
+
+                <!-- Notifications -->
+
+                <div class="setting-row">
+
+                    <div class="setting-info">
+                        <h3>Notifications</h3>
+                        <p>Allow Study Space to show reminders.</p>
+                    </div>
+
+                    <label class="switch">
+                        <input
+                            type="checkbox"
+                            id="notificationsToggle"
+                        >
+                        <span class="slider"></span>
+                    </label>
+
+                </div>
+
+
+                <!-- Study reminders -->
+
+                <div class="setting-row">
+
+                    <div class="setting-info">
+                        <h3>Study Reminders</h3>
+                        <p>Remind me when it is time to study.</p>
+                    </div>
+
+                    <label class="switch">
+                        <input
+                            type="checkbox"
+                            id="studyReminderToggle"
+                        >
+                        <span class="slider"></span>
+                    </label>
+
+                </div>
+
+
+                <!-- Water -->
+
+                <div class="setting-row">
+
+                    <div class="setting-info">
+                        <h3>Water Reminder</h3>
+                        <p>Remind me to take a water break.</p>
+                    </div>
+
+                    <label class="switch">
+                        <input
+                            type="checkbox"
+                            id="waterReminderToggle"
+                        >
+                        <span class="slider"></span>
+                    </label>
+
+                </div>
+
+
+                <!-- Water interval -->
+
+                <div
+                    class="setting-row sub-setting"
+                    id="waterIntervalRow"
+                >
+
+                    <div class="setting-info">
+                        <h3>Reminder Interval</h3>
+                        <p>How often should you be reminded?</p>
+                    </div>
+
+                    <select id="waterInterval">
+
+                        <option value="30">
+                            Every 30 minutes
+                        </option>
+
+                        <option value="60">
+                            Every 1 hour
+                        </option>
+
+                        <option value="90">
+                            Every 1.5 hours
+                        </option>
+
+                        <option value="120">
+                            Every 2 hours
+                        </option>
+
+                    </select>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             STUDY BUDDY
+        ========================== -->
+
+        <section class="settings-section">
+
+            <div class="section-heading">
+                <h2>Study Buddy</h2>
+                <p>Control how your buddy interacts with you.</p>
+            </div>
+
+            <div class="settings-card">
+
+                <div class="setting-row">
+
+                    <div class="setting-info">
+                        <h3>Buddy Reminders</h3>
+                        <p>Let your study buddy remind you about breaks and water.</p>
+                    </div>
+
+                    <label class="switch">
+
+                        <input
+                            type="checkbox"
+                            id="buddyReminderToggle"
+                        >
+
+                        <span class="slider"></span>
+
+                    </label>
+
+                </div>
+
+
+                <div class="setting-row">
+
+                    <div class="setting-info">
+                        <h3>Buddy Messages</h3>
+                        <p>Show motivational messages from your buddy.</p>
+                    </div>
+
+                    <label class="switch">
+
+                        <input
+                            type="checkbox"
+                            id="buddyMessageToggle"
+                        >
+
+                        <span class="slider"></span>
+
+                    </label>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             SOUND
+        ========================== -->
+
+        <section class="settings-section">
+
+            <div class="section-heading">
+                <h2>Sound</h2>
+                <p>Control Study Space sounds.</p>
+            </div>
+
+            <div class="settings-card">
+
+                <div class="setting-row">
+
+                    <div class="setting-info">
+                        <h3>Sound Effects</h3>
+                        <p>Play sounds for timers and interactions.</p>
+                    </div>
+
+                    <label class="switch">
+
+                        <input
+                            type="checkbox"
+                            id="soundToggle"
+                        >
+
+                        <span class="slider"></span>
+
+                    </label>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             DATA
+        ========================== -->
+
+        <section class="settings-section">
+
+            <div class="section-heading">
+                <h2>Data</h2>
+                <p>Manage your Study Space settings.</p>
+            </div>
+
+            <div class="settings-card">
+
+                <div class="setting-row">
+
+                    <div class="setting-info">
+                        <h3>Auto Save</h3>
+                        <p>Automatically save your changes.</p>
+                    </div>
+
+                    <label class="switch">
+
+                        <input
+                            type="checkbox"
+                            id="autoSaveToggle"
+                        >
+
+                        <span class="slider"></span>
+
+                    </label>
+
+                </div>
+
+
+                <div class="danger-row">
+
+                    <div>
+                        <h3>Reset Settings</h3>
+                        <p>Restore all settings to their defaults.</p>
+                    </div>
+
+                    <button
+                        type="button"
+                        id="resetSettingsButton"
+                        class="reset-button"
+                    >
+                        Reset
+                    </button>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <div
+            id="settingsSaveStatus"
+            class="settings-save-status"
+        >
+            Settings saved
+        </div>
+
+    </main>
+
+</div>
+
+
+
+<script src="../js/storage.js"></script>
+<script src="../js/sidebar.js"></script>
+<script src="../js/settings.js"></script>
+
+<script src="../js/theme.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Calendar | Study Space</title>
+<link rel="stylesheet" href="../style.css">
+<link rel="stylesheet" href="../css/calendar.css">
+</head>
+
+<body>
+
+<div class="app-layout">
+
+<!-- =========================
+SIDEBAR
+========================= -->
+
+<aside class="sidebar">
+<div class="sidebar-logo">
+<div class="logo-icon">☕︎</div>
+<h2>Study Space</h2>
+</div>
+
+<nav class="sidebar-nav">
+<div class="nav-group">
+<p class="nav-title">HOME</p>
+<button onclick="goHome()">🖳 Desk</button>
+</div>
+
+<div class="nav-group">
+<p class="nav-title">PRODUCTIVITY</p>
+<button onclick="openPomodoro()">⌛︎ Focus</button>
+<button onclick="openTasks()">☑ Tasks</button>
+<button onclick="openCalendar()">🗓 Calendar</button>
+<button onclick="openPlanner()">◔ Planner</button>
+</div>
+
+<div class="nav-group">
+<p class="nav-title">WORKSPACE</p>
+<button onclick="openNotes()">🗐 Notes</button>
+</div>
+
+<div class="nav-group">
+<p class="nav-title">PERSONAL</p>
+<button onclick="openBuddy()">˙𐃷˙ Study buddy</button>
+<button onclick="openGoals()">⚽︎ Goals</button>
+<!--<button onclick="openAchievements()">★ Achievements</button>-->
+</div>
+
+<div class="nav-group">
+<p class="nav-title">SYSTEM</p>
+<button onclick="openProgress()">◔ Progress</button>
+<button onclick="openSettings()">⏣ Settings</button>
+</div>
+</nav>
+
+<div class="sidebar-bottom">
+<button onclick="toggleTheme()" id="themeButton">⏾ Theme</button>
+</div>
+</aside>
+
+<!-- =========================
+MAIN CONTENT
+========================= -->
+
+<main class="calendar-page">
+
+<!-- =========================
+HEADER
+========================= -->
+
+<section class="calendar-header">
+<div>
+<h1>📅 Calendar</h1>
+<p>Plan your schedule, events and important dates.</p>
+</div>
+
+<div class="calendar-actions">
+<button id="todayButton">Today</button>
+<button id="addEventButton"> + Add Event</button>
+
+<div class="view-selector">
+<button id="viewButton">Month ▾</button>
+
+<div class="view-dropdown" id="viewDropdown">
+<button data-view="month">Month</button>
+<button data-view="week">Week</button>
+<button data-view="day">Day</button>
+<button data-view="year">Year</button>
+</div>
+</div>
+</div>
+</section>
+
+<!-- =========================
+CALENDAR NAVIGATION
+========================= -->
+
+<section class="calendar-navigation">
+<button id="previousButton">◀</button>
+<h2 id="calendarTitle">July 2026</h2>
+<button id="nextButton">▶</button>
+</section>
+
+<!-- =========================
+MONTH VIEW
+========================= -->
+
+<section class="calendar-view active" id="monthView">
+<div class="calendar-weekdays">
+<div>Mon</div>
+<div>Tue</div>
+<div>Wed</div>
+<div>Thu</div>
+<div>Fri</div>
+<div>Sat</div>
+<div>Sun</div>
+</div>
+
+<div class="calendar-grid" id="monthGrid"></div>
+</section>
+
+<!-- =========================
+WEEK VIEW
+========================= -->
+
+<section class="calendar-view" id="weekView">
+<div class="week-container" id="weekContainer"></div>
+</section>
+
+<!-- =========================
+DAY VIEW
+========================= -->
+
+<section class="calendar-view" id="dayView">
+<div class="day-container" id="dayContainer"></div>
+</section>
+
+<!-- =========================
+YEAR VIEW
+========================= -->
+
+<section class="calendar-view" id="yearView">
+<div class="year-grid" id="yearGrid"></div>
+</section>
+
+<!-- =========================
+BOTTOM INFORMATION AREA
+========================= -->
+
+<section class="calendar-bottom">
+
+<!-- UPCOMING -->
+<div class="calendar-card">
+<h2>📌 Upcoming</h2>
+<div id="upcomingEvents">
+<p class="empty">No upcoming events</p>
+</div>
+</div>
+
+<!-- BIRTHDAYS -->
+<div class="calendar-card">
+<h2>🎂 Birthdays</h2>
+<div id="birthdayList">
+<p class="empty">No birthdays</p>
+</div>
+</div>
+
+<!-- COUNTDOWN -->
+<div class="calendar-card">
+<h2>⏳ Countdowns</h2>
+<div id="countdownList">
+<p class="empty">No countdowns</p>
+</div>
+</div>
+
+</section>
+
+</main>
+
+<!-- =========================
+EVENT SIDE PANEL
+========================= -->
+
+<aside class="event-panel" id="eventPanel">
+<div class="panel-header">
+<h2 id="eventPanelTitle">New Event</h2>
+<button id="closeEventPanel">✕</button>
+</div>
+
+<label>Event Title</label>
+<input type="text" id="eventTitle" placeholder="Event name">
+
+<label>Category</label>
+<select id="eventCategory">
+<option value="study">📚 Study</option>
+<option value="assignment">📝 Assignment</option>
+<option value="birthday">🎂 Birthday</option>
+<option value="countdown">⏳ Countdown</option>
+<option value="personal">⭐ Personal</option>
+<option value="holiday">🌴 Holiday</option>
+</select>
+
+<label>Date</label>
+<input type="date" id="eventDate">
+
+<label>Start Time</label>
+<input type="time" id="eventStart">
+
+<label>End Time</label>
+<input type="time" id="eventEnd">
+
+<label>Description</label>
+<textarea id="eventDescription" placeholder="Add details, notes or reminders..."></textarea>
+
+<label>Location</label>
+<input type="text" id="eventLocation" placeholder="Optional">
+
+<label>Reminder</label>
+<select id="eventReminder">
+<option value="none">No reminder</option>
+<option value="10">10 minutes before</option>
+<option value="30">30 minutes before</option>
+<option value="60">1 hour before</option>
+</select>
+
+<label>Repeat</label>
+<select id="eventRepeat">
+<option value="none">Never</option>
+<option value="daily">Daily</option>
+<option value="weekly">Weekly</option>
+<option value="monthly">Monthly</option>
+</select>
+
+<div class="panel-buttons">
+<button id="saveEventButton" class="main-button">Save Event</button>
+<button id="deleteEventButton" class="delete-button">Delete Event</button>
+<button id="cancelEventButton" class="secondary-button">Cancel</button>
+</div>
+</aside>
+
+</div>
+
+<!-- ================================
+     FLOATING STUDY BUDDY
+================================ -->
+
+<div id="calendarStudyBuddy" class="calendar-study-buddy">
+    <div class="buddy-drag-handle"></div>
+    <img id="calendarBuddyImage" src="../assets/buddy.png" alt="Study Buddy" draggable="false">
+</div>
+
+<script src="../js/storage.js"></script>
+<script src="../js/sidebar.js"></script>
+<script src="../js/calendar.js"></script>
+<script src="../js/theme.js"></script>
+</body>
+
+</html>

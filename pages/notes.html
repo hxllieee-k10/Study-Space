@@ -1,0 +1,510 @@
+/t<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notes | Study Space</title>
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="../css/notes.css">
+</head>
+<body>
+
+<div class="app-layout">
+
+    <!-- =========================
+    SIDEBAR
+    ========================= -->
+    <aside class="sidebar">
+
+        <div class="sidebar-logo">
+            <div class="logo-icon">☕︎</div>
+            <h2>Study Space</h2>
+        </div>
+
+        <nav class="sidebar-nav">
+
+            <div class="nav-group">
+                <p class="nav-title">HOME</p>
+                <button onclick="goHome()">🖳 Desk</button>
+            </div>
+
+            <div class="nav-group">
+                <p class="nav-title">PRODUCTIVITY</p>
+                <button onclick="openPomodoro()">⌛︎ Focus</button>
+                <button onclick="openTasks()">☑ Tasks</button>
+                <button onclick="openCalendar()">🗓 Calendar</button>
+                <button onclick="openPlanner()">◔ Planner</button>
+            </div>
+
+            <div class="nav-group">
+                <p class="nav-title">WORKSPACE</p>
+                <button class="active" onclick="openNotes()">🗐 Notes</button>
+            </div>
+
+            <div class="nav-group">
+                <p class="nav-title">PERSONAL</p>
+                <button onclick="openBuddy()">˙𐃷˙ Study buddy</button>
+                <button onclick="openGoals()">⚽︎ Goals</button>
+               <!-- <button onclick="openAchievements()">★ Achievements</button>-->
+            </div>
+
+            <div class="nav-group">
+                <p class="nav-title">SYSTEM</p>
+                <button onclick="openProgress()">◔ Progress</button>
+                <button onclick="openSettings()">⏣ Settings</button>
+            </div>
+
+        </nav>
+
+        <div class="sidebar-bottom">
+            <button onclick="toggleTheme()" id="themeButton">⏾ Theme</button>
+        </div>
+
+    </aside>
+
+    <!-- =========================
+    NOTES APP
+    ========================= -->
+    <main class="notes-page">
+
+        <!-- TOP BAR -->
+        <header class="notes-topbar">
+            <div>
+                <h1>Notes</h1>
+                <p>Your study library, organised your way.</p>
+            </div>
+            <div class="notes-top-actions">
+                <button class="secondary-button" id="openWhiteboardBtn">
+                    ✦ Whiteboard
+                </button>
+                <button class="primary-button" id="newNoteTopBtn">
+                    + New Note
+                </button>
+            </div>
+        </header>
+
+        <!-- SEARCH -->
+        <section class="notes-search-area">
+            <div class="notes-search">
+                <span>⌕</span>
+                <input
+                    type="text"
+                    id="notesSearch"
+                    placeholder="Search notes, folders, subjects..."
+                    autocomplete="off"
+                >
+                <button id="clearSearch" class="clear-search">×</button>
+            </div>
+        </section>
+
+        <!-- =========================
+        FOLDER AREA
+        ========================= -->
+        <section class="notes-section">
+            <div class="section-heading">
+                <div>
+                    <span class="section-eyebrow">ORGANISE</span>
+                    <h2>Folders</h2>
+                </div>
+                <button class="text-button" id="newFolderBtn">
+                    + New Folder
+                </button>
+            </div>
+
+            <div id="folderBreadcrumbs" class="folder-breadcrumbs">
+                <button data-folder-id="root">All Notes</button>
+            </div>
+
+            <div id="folderGrid" class="folder-grid"></div>
+        </section>
+
+        <!-- =========================
+        FOR YOU
+        ========================= -->
+        <section class="notes-section template-section">
+            <div class="section-heading">
+                <div>
+                    <span class="section-eyebrow">START CREATING</span>
+                    <h2>For You</h2>
+                </div>
+                <button class="text-button" id="viewTemplatesBtn">
+                    View all templates →
+                </button>
+            </div>
+
+            <div id="featuredTemplates" class="template-grid"></div>
+        </section>
+
+        <!-- =========================
+        RECENT NOTES
+        ========================= -->
+        <section class="notes-section">
+            <div class="section-heading">
+                <div>
+                    <span class="section-eyebrow">KEEP WORKING</span>
+                    <h2>Recent Notes</h2>
+                </div>
+                <button class="text-button" id="viewAllNotesBtn">
+                    View all →
+                </button>
+            </div>
+
+            <div id="recentNotesGrid" class="notes-grid"></div>
+
+            <div id="emptyNotesState" class="empty-state hidden">
+                <div class="empty-icon">✎</div>
+                <h3>No notes yet</h3>
+                <p>
+                    Create your first note or choose a template to get started.
+                </p>
+                <button class="primary-button" id="emptyCreateBtn">
+                    + Create Note
+                </button>
+            </div>
+        </section>
+
+        <!-- =========================
+        ALL TEMPLATES MODAL
+        ========================= -->
+        <div class="modal-overlay hidden" id="templateModal">
+            <div class="modal large-modal">
+                <div class="modal-header">
+                    <div>
+                        <span class="section-eyebrow">CREATE</span>
+                        <h2>Note Templates</h2>
+                    </div>
+                    <button class="modal-close" data-close-modal>
+                        x
+                    </button>
+                </div>
+
+                <div class="template-search">
+                    <span>⌕</span>
+                    <input
+                        type="text"
+                        id="templateSearch"
+                        placeholder="Search templates..."
+                    >
+                </div>
+
+                <div class="template-categories" id="templateCategories">
+                    <button class="template-category active" data-category="all">
+                        All
+                    </button>
+                    <button class="template-category" data-category="study">
+                        Study
+                    </button>
+                    <button class="template-category" data-category="science">
+                        Science
+                    </button>
+                    <button class="template-category" data-category="maths">
+                        Maths
+                    </button>
+                    <button class="template-category" data-category="exam">
+                        Exam Prep
+                    </button>
+                    <button class="template-category" data-category="memory">
+                        Memory
+                    </button>
+                    <button class="template-category" data-category="planning">
+                        Planning
+                    </button>
+                    <button class="template-category" data-category="creative">
+                        Creative
+                    </button>
+                </div>
+
+                <div id="allTemplatesGrid" class="all-templates-grid"></div>
+            </div>
+        </div>
+
+        <!-- =========================
+        NEW FOLDER MODAL
+        ========================= -->
+        <div class="modal-overlay hidden" id="folderModal">
+            <div class="modal small-modal">
+                <div class="modal-header">
+                    <div>
+                        <span class="section-eyebrow">ORGANISE</span>
+                        <h2>Create Folder</h2>
+                    </div>
+                    <button class="modal-close" data-close-modal>
+                        x
+                    </button>
+                </div>
+
+                <form id="folderForm">
+                    <label>
+                        Folder name
+                        <input
+                            type="text"
+                            id="folderName"
+                            placeholder="e.g. Biology"
+                            required
+                        >
+                    </label>
+
+                    <label>
+                        Inside
+                        <select id="folderParent"></select>
+                    </label>
+
+                    <div class="modal-actions">
+                        <button
+                            type="button"
+                            class="secondary-button"
+                            data-close-modal
+                        >
+                            Cancel
+                        </button>
+                        <button
+                            type="submit"
+                            class="primary-button"
+                        >
+                            Create Folder
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <!-- =========================
+        NEW NOTE MODAL
+        ========================= -->
+        <div class="modal-overlay hidden" id="newNoteModal">
+            <div class="modal large-modal">
+                <div class="modal-header">
+                    <div>
+                        <span class="section-eyebrow">NEW NOTE</span>
+                        <h2>Create something</h2>
+                    </div>
+                    <button class="modal-close" data-close-modal>
+                        x
+                    </button>
+                </div>
+
+                <form id="newNoteForm">
+                    <label>
+                        Note title
+                        <input
+                            type="text"
+                            id="newNoteTitle"
+                            placeholder="e.g. Cell Division"
+                            required
+                        >
+                    </label>
+
+                    <label>
+                        Folder
+                        <select id="newNoteFolder"></select>
+                    </label>
+
+                    <div>
+                        <span class="form-label">
+                            Choose a template
+                        </span>
+                        <div
+                            id="newNoteTemplates"
+                            class="mini-template-grid"
+                        ></div>
+                    </div>
+
+                    <div class="modal-actions">
+                        <button
+                            type="button"
+                            class="secondary-button"
+                            data-close-modal
+                        >
+                            Cancel
+                        </button>
+                        <button
+                            type="submit"
+                            class="primary-button"
+                        >
+                            Create Note
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <!-- =========================
+        NOTE EDITOR
+        ========================= -->
+        <div class="editor-screen hidden" id="editorScreen">
+            <div class="editor-topbar">
+                <button class="editor-back" id="closeEditor">
+                    ← Back to Notes
+                </button>
+
+                <div class="editor-title-area">
+                    <input
+                        type="text"
+                        id="editorTitle"
+                        placeholder="Untitled note"
+                    >
+                    <span id="saveStatus">
+                        Saved
+                    </span>
+                </div>
+
+                <div class="editor-actions">
+                    <button id="undoBtn" title="Undo">
+                        ↶
+                    </button>
+                    <button id="redoBtn" title="Redo">
+                        ↷
+                    </button>
+                    <button id="fullscreenEditorBtn" title="Fullscreen">
+                        ⛶
+                    </button>
+                    <button class="primary-button" id="doneEditingBtn">
+                        Done
+                    </button>
+                </div>
+            </div>
+
+            <div class="editor-layout">
+                <aside class="editor-toolbar">
+                    <button data-editor-tool="heading">
+                        T
+                        <span>Heading</span>
+                    </button>
+                    <button data-editor-tool="text">
+                        Aa
+                        <span>Text</span>
+                    </button>
+                    <button data-editor-tool="bullet">
+                        •
+                        <span>Bullet</span>
+                    </button>
+                    <button data-editor-tool="checklist">
+                        ☑
+                        <span>Checklist</span>
+                    </button>
+                    <button data-editor-tool="divider">
+                        ─
+                        <span>Divider</span>
+                    </button>
+                    <button data-editor-tool="quote">
+                        “
+                        <span>Quote</span>
+                    </button>
+                </aside>
+
+                <div class="editor-workspace">
+                    <article
+                        id="noteCanvas"
+                        class="note-canvas"
+                    ></article>
+                </div>
+            </div>
+        </div>
+
+        <!-- =========================
+        WHITEBOARD
+        ========================= -->
+        <div class="whiteboard-screen hidden" id="whiteboardScreen">
+            <header class="whiteboard-topbar">
+                <button id="closeWhiteboard">
+                    ← Back to Notes
+                </button>
+
+                <div class="whiteboard-title">
+                    <input
+                        type="text"
+                        id="whiteboardTitle"
+                        value="Untitled Whiteboard"
+                    >
+                    <span id="whiteboardSaveStatus">
+                        Saved
+                    </span>
+                </div>
+
+                <div class="whiteboard-actions">
+                    <button id="whiteboardUndo">
+                        ↶
+                    </button>
+                    <button id="whiteboardRedo">
+                        ↷
+                    </button>
+                    <button id="whiteboardFullscreen">
+                        ⛶
+                    </button>
+                    <button id="whiteboardDone" class="primary-button">
+                        Done
+                    </button>
+                </div>
+            </header>
+
+            <div class="whiteboard-body">
+                <aside class="whiteboard-toolbar">
+                    <button class="whiteboard-tool active" data-tool="select">
+                        ↖
+                        <span>Select</span>
+                    </button>
+                    <button class="whiteboard-tool" data-tool="text">
+                        T
+                        <span>Text</span>
+                    </button>
+                    <button class="whiteboard-tool" data-tool="sticky">
+                        □
+                        <span>Sticky</span>
+                    </button>
+                    <button class="whiteboard-tool" data-tool="shape">
+                        ○
+                        <span>Shape</span>
+                    </button>
+                    <button class="whiteboard-tool" data-tool="arrow">
+                        →
+                        <span>Arrow</span>
+                    </button>
+                    <button class="whiteboard-tool" data-tool="pen">
+                        ╱
+                        <span>Draw</span>
+                    </button>
+                    <button class="whiteboard-tool" data-tool="eraser">
+                        ◇
+                        <span>Eraser</span>
+                    </button>
+                    <button class="whiteboard-tool" data-tool="delete">
+                        ×
+                        <span>Delete</span>
+                    </button>
+                </aside>
+
+                <div class="whiteboard-canvas-wrapper">
+                    <canvas id="whiteboardCanvas"></canvas>
+                    <div
+                        id="whiteboardObjects"
+                        class="whiteboard-objects"
+                    ></div>
+                </div>
+            </div>
+
+            <footer class="whiteboard-footer">
+                <div class="zoom-controls">
+                    <button id="zoomOut">−</button>
+                    <span id="zoomValue">100%</span>
+                    <button id="zoomIn">+</button>
+                </div>
+                <button id="fitWhiteboard">
+                    Fit
+                </button>
+                <button id="toggleGrid">
+                    Grid
+                </button>
+            </footer>
+        </div>
+
+    </main>
+
+</div>
+
+<script src="../js/storage.js"></script>
+<script src="../js/sidebar.js"></script>
+<script src="../js/notes.js"></script>
+<script src="../js/theme.js"></script>
+
+</body>
+</html>
