@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Choose Your Study Buddy</title>
+
+<link rel="stylesheet" href="../style.css">
+
+<script>
+
+(function(){
+
+const theme =
+localStorage.getItem("theme");
+
+
+if(theme === "dark"){
+
+document.documentElement.classList.add("dark");
+
+}
+
+})();
+
+</script>
+
+</head>
+
+
+<body>
+
+
+<div class="avatar-page">
+
+
+    <div class="avatar-header">
+
+        <h1>
+            Choose Your Study Buddy
+        </h1>
+
+
+        <p class="quote">
+            Pick a companion to study with.
+        </p>
+
+    </div>
+
+
+
+    <div 
+    class="buddy-grid" 
+    id="buddyGrid">
+
+    </div>
+
+
+
+    <p 
+    id="avatarMessage"
+    class="avatar-hint">
+    </p>
+
+
+
+    <button
+    class="main-button"
+    id="customizeButton"
+    onclick="continueCustomize()">
+
+        Customize Your Buddy
+
+    </button>
+
+
+</div>
+
+
+
+
+<script src="../js/storage.js"></script>
+<script src="../js/buddies.js"></script>
+<script src="../js/avatar.js"></script>
+<script src="../js/theme.js"></script>
+
+
+</body>
+
+</html>

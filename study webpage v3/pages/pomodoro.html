@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+<title>Focus Room</title>
+
+
+<link rel="stylesheet" href="../style.css">
+
+
+</head>
+
+
+
+<body class="focus-page">
+
+
+
+<!-- COLLAPSIBLE SIDEBAR -->
+
+<aside class="focus-sidebar collapsed" id="focusSidebar">
+
+
+<button class="sidebar-toggle" onclick="toggleFocusSidebar()">
+
+☰
+
+</button>
+
+
+
+<div class="focus-nav">
+
+
+<button onclick="goHome()">
+🖳
+<span>
+Desk
+</span>
+</button>
+
+
+<button onclick="openPomodoro()">
+⌛︎
+<span>
+Focus
+</span>
+</button>
+
+
+<button onclick="openTasks()">
+☑
+<span>
+Tasks
+</span>
+</button>
+
+
+<button onclick="openCalendar()">
+🗓
+<span>
+Calendar
+</span>
+</button>
+
+
+<!-- <button onclick="openMusic()">
+♬
+<span>
+Music
+</span>
+</button>-->
+
+
+<button onclick="openBuddy()">
+˙𐃷˙
+<span>
+Buddy
+</span>
+</button>
+
+
+<button onclick="openSettings()">
+⚙
+<span>
+Settings
+</span>
+</button>
+
+
+</div>
+
+
+</aside>
+
+
+
+
+
+
+
+
+<!-- MAIN FOCUS AREA -->
+
+
+<main class="focus-container">
+
+
+
+<h1>
+Focus Room ⌛︎
+</h1>
+
+
+
+<p id="dateText">
+Loading...
+</p>
+<p>
+Mys 8 GMT
+</p>
+
+
+
+
+<!-- GIANT CLOCK -->
+
+
+<section class="giant-clock-card">
+
+
+<div id="realClock">
+
+00:00:00
+
+</div>
+
+
+
+<div id="clockMode">
+
+Toime cHiu sTodOEi
+
+</div>
+
+
+
+</section>
+
+
+
+
+
+
+
+
+
+<!-- TIMER -->
+
+
+<section class="pomodoro-box">
+
+
+<div id="timer">
+
+25:00
+
+</div>
+
+
+
+<div class="timer-controls">
+
+
+<button onclick="startTimer()">
+Start
+</button>
+
+
+<button onclick="pauseTimer()">
+Pause
+</button>
+
+
+<button onclick="resetTimer()">
+Reset
+</button>
+
+
+</div>
+
+
+
+<div class="duration-buttons">
+
+
+<button onclick="setDuration(25)">
+25
+</button>
+
+
+<button onclick="setDuration(45)">
+45
+</button>
+
+
+<button onclick="setDuration(60)">
+60
+</button>
+
+
+</div>
+
+
+</section>
+
+
+
+
+
+
+
+
+
+<!-- FLOATING BUDDY -->
+
+
+<div class="focus-side-tools">
+
+
+<!-- LOFI PLAYER -->
+
+<!-- LOFI SPOTIFY PLAYER -->
+
+<div class="focus-music">
+
+    <!-- Buddy sitting -->
+    <div class="lofi-buddy">
+        <img 
+        src="../assets/buddies/duck.png"
+        id="focusBuddyImage">
+    </div>
+
+
+    <div class="spotify-title">
+        🎧 Lofi Focus
+    </div>
+
+
+    <iframe
+        style="border-radius:12px"
+        src="https://open.spotify.com/embed/playlist/6zCID88oNjNv9zx6puDHKj?utm_source=generator"
+        width="100%"
+        height="90"
+        frameBorder="0"
+        allowfullscreen=""
+        allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+        loading="lazy">
+    </iframe>
+
+
+</div>
+
+
+<div class="focus-buddy">
+
+
+<img
+id="focusBuddyImage"
+src="">
+
+
+</div>
+
+
+</div>
+
+
+
+
+</main>
+
+
+
+
+
+
+<script src="../js/storage.js"></script>
+
+<script src="../js/focus-sidebar.js"></script>
+
+<script src="../js/pomodoro.js"></script>
+
+<script src="../js/theme.js"></script>
+
+
+</body>
+
+</html>

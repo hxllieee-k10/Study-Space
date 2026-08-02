@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Study Space</title>
+
+<link rel="stylesheet" href="style.css">
+
+<script>
+
+(function(){
+
+const theme =
+localStorage.getItem("theme");
+
+
+if(theme === "dark"){
+
+document.documentElement.classList.add("dark");
+
+}
+
+})();
+
+</script>
+
+</head>
+
+
+<body>
+
+
+<!-- Theme Toggle -->
+
+<button class="theme-toggle"
+id="themeButton"
+onclick="toggleTheme()">
+
+☾
+
+</button>
+
+
+
+<div class="login-card">
+
+
+<div class="logo">
+
+</div>
+
+
+<h1>
+Study Space
+</h1>
+
+
+<p class="subtitle">
+Your digital study companion.
+</p>
+
+
+<p class="quote">
+"A cozy place to learn, focus and grow."
+</p>
+
+
+<hr>
+
+
+<h2 id="formTitle">
+Create your study profile
+</h2>
+
+
+
+
+<div class="row">
+
+
+<input
+type="text"
+id="nickname"
+placeholder="Nickname"
+autocomplete="nickname">
+
+
+<input
+type="text"
+id="username"
+placeholder="Username"
+autocomplete="username">
+
+
+</div>
+
+
+
+
+
+<input
+type="email"
+id="email"
+placeholder="Email Address"
+autocomplete="email">
+
+
+
+
+
+<input
+type="password"
+id="password"
+placeholder="Password"
+autocomplete="new-password">
+
+
+
+
+
+<input
+type="password"
+id="confirmPassword"
+placeholder="Confirm Password">
+
+
+
+
+
+<div id="birthdaySection">
+
+<label>
+Birthday
+</label>
+
+
+<input
+type="date"
+id="birthday">
+
+</div>
+
+
+
+
+
+<p class="small-note">
+
+You must be at least <strong>13 years old</strong> to create an account.
+
+</p>
+
+
+
+
+
+
+<button
+class="main-button"
+onclick="createAccount()"
+id="mainButton">
+
+Create Study Space
+
+</button>
+
+
+
+
+<button
+class="secondary-button"
+onclick="showLogin()"
+id="switchButton">
+
+Already have an account? Login
+
+</button>
+
+
+
+
+
+
+<p id="message"></p>
+
+
+
+
+
+<p class="version">
+
+Study Space v3.0
+
+</p>
+
+
+
+</div>
+
+
+
+
+
+
+
+<script src="js/storage.js"></script>
+
+<script src="js/account.js"></script>
+
+<script src="js/theme.js"></script>
+
+
+
+</body>
+
+</html>

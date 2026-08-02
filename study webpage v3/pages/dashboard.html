@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Study Space</title>
+<link rel="stylesheet" href="../style.css">
+<script>
+(function(){
+const theme = localStorage.getItem("theme");
+if(theme === "dark"){
+document.documentElement.classList.add("dark");
+}
+})();
+</script>
+</head>
+<body class="loading">
+<div class="app-layout">
+<!-- =========================
+SIDEBAR
+========================= -->
+<aside class="sidebar">
+<div class="sidebar-logo">
+<div class="logo-icon">☕︎</div>
+<h2>Study Space</h2>
+</div>
+<nav class="sidebar-nav">
+<div class="nav-group">
+<p class="nav-title">HOME</p>
+<button onclick="goHome()">🖳 Desk</button>
+</div>
+<div class="nav-group">
+<p class="nav-title">PRODUCTIVITY</p>
+<button onclick="openPomodoro()">⌛︎ Focus</button>
+<button onclick="openTasks()">☑ Tasks</button>
+<button onclick="openCalendar()">🗓 Calendar</button>
+<button onclick="openPlanner()">◔ Planner</button>
+</div>
+<div class="nav-group">
+<p class="nav-title">WORKSPACE</p>
+<button onclick="openNotes()">🗐 Notes</button>
+</div>
+<div class="nav-group">
+<p class="nav-title">PERSONAL</p>
+<button onclick="openBuddy()">˙𐃷˙ Study buddy</button>
+<button onclick="openGoals()">⚽︎ Goals</button>
+<!--<button onclick="openAchievements()">★ Achievements</button>-->
+</div>
+<div class="nav-group">
+<p class="nav-title">SYSTEM</p>
+<button onclick="openProgress()">◔ Progress</button>
+<button onclick="openSettings()">⏣ Settings</button>
+</div>
+</nav>
+<div class="sidebar-bottom">
+<button onclick="toggleTheme()" id="themeButton">⏾ Theme</button>
+</div>
+</aside>
+<!-- =========================
+MAIN CONTENT
+========================= -->
+<main class="dashboard-content">
+<!-- HEADER -->
+<section class="welcome-card">
+<h1>Good day,<span id="userName"></span>☘︎</h1>
+<p>Welcome back to your study space.</p>
+</section>
+<!-- BUDDY CARD -->
+<section class="buddy-card-dashboard">
+<img id="buddyImage" src="../assets/buddies/cat.png">
+<div>
+<h2 id="buddyName"></h2>
+<p id="buddyPersonality"></p>
+<p id="buddyMessage">Ready to study together (˶˃ ᵕ ˂˶)</p>
+</div>
+</section>
+<!-- TODAY FOCUS -->
+<section class="focus-card">
+<h2>Today's Focus ✧</h2>
+<p>Current goal:</p>
+<h3 id="currentGoal">No goal yet</h3>
+<button onclick="openPomodoro()">Start Focus Session</button>
+</section>
+<!-- TASKS -->
+<section class="tasks-card">
+<h2>Today's Tasks ☑</h2>
+<div id="taskList"><p>No tasks added.</p></div>
+<button
+    type="button"
+    id="dashboardAddTaskButton"
+    onclick="window.location.href='pages/tasks.html'"
+>
+    Add Task
+</button>
+</section>
+<!-- TOOLS -->
+<section class="tools-card">
+<h2>Study Tools</h2>
+<div class="tools-grid">
+<button onclick="openPomodoro()">⩇⩇:⩇⩇<br>Pomodoro</button>
+<button onclick="openPlanner()">◔<br>Planner</button>
+<button onclick="openCalendar()">🗓<br>Calendar</button>
+<button onclick="openNotes()">🗐<br>Notes</button>
+</div>
+</section>
+<!-- PROGRESS -->
+<section class="progress-card">
+<h2>Your Progress</h2>
+<div class="stats">
+<div>
+<h3 id="streak">0</h3>
+<p>🗲 Streak</p>
+</div>
+<div>
+<h3 id="focusTime">0</h3>
+<p>⌛︎ Focus Time</p>
+</div>
+<div>
+<h3 id="level">1</h3>
+<p>★ Buddy Level</p>
+</div>
+</div>
+</section>
+</main>
+</div>
+<script src="../js/storage.js"></script>
+<script src="../js/sidebar.js"></script>
+<script src="../js/dashboard.js"></script>
+<script src="../js/theme.js"></script>
+</body>
+</html>

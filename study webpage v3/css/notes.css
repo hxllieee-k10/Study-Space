@@ -1,0 +1,2987 @@
+/* =========================================================
+   STUDY SPACE — NOTES
+   ========================================================= */
+:root {
+    --notes-bg: #f7f2e9;
+    --notes-surface: #fffdf9;
+    --notes-surface-2: #f1eadf;
+    --notes-border: #ded3c3;
+    --notes-brown: #6f4e37;
+    --notes-brown-dark: #4f3625;
+    --notes-brown-light: #a8896d;
+    --notes-text: #35291f;
+    --notes-muted: #8c7d6d;
+    --notes-shadow: 0 10px 30px rgba(70, 49, 32, 0.08);
+    --notes-radius: 18px;
+}
+/* =========================================================
+   PAGE
+   ========================================================= */
+.notes-page {
+    min-height: 100vh;
+    background: var(--notes-bg);
+    color: var(--notes-text);
+    padding: 38px 46px 70px;
+    overflow-x: hidden;
+}
+/* =========================================================
+   TOP BAR
+   ========================================================= */
+.notes-topbar {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 30px;
+    margin-bottom: 30px;
+}
+.notes-topbar h1 {
+    margin: 0 0 7px;
+    font-size: 36px;
+    font-weight: 700;
+    letter-spacing: -0.8px;
+}
+.notes-topbar p {
+    margin: 0;
+    color: var(--notes-muted);
+    font-size: 15px;
+}
+.notes-top-actions {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+/* =========================================================
+   BUTTONS
+   ========================================================= */
+.primary-button,
+.secondary-button,
+.text-button,
+.notes-top-actions button,
+.modal-actions button {
+    font: inherit;
+    cursor: pointer;
+    transition: 0.2s ease;
+}
+.primary-button {
+    border: none;
+    background: var(--notes-brown);
+    color: white;
+    padding: 11px 17px;
+    border-radius: 11px;
+    font-weight: 600;
+}
+.primary-button:hover {
+    background: var(--notes-brown-dark);
+    transform: translateY(-1px);
+}
+.secondary-button {
+    border: 1px solid var(--notes-border);
+    background: var(--notes-surface);
+    color: var(--notes-brown-dark);
+    padding: 10px 16px;
+    border-radius: 11px;
+    font-weight: 600;
+}
+.secondary-button:hover {
+    background: var(--notes-surface-2);
+}
+.text-button {
+    border: none;
+    background: transparent;
+    color: var(--notes-brown);
+    font-weight: 600;
+    padding: 6px;
+}
+.text-button:hover {
+    color: var(--notes-brown-dark);
+}
+/* =========================================================
+   SEARCH
+   ========================================================= */
+.notes-search-area {
+    margin-bottom: 42px;
+}
+.notes-search {
+    max-width: 850px;
+    height: 53px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background: var(--notes-surface);
+    border: 1px solid var(--notes-border);
+    border-radius: 15px;
+    padding: 0 16px;
+    box-shadow: var(--notes-shadow);
+}
+.notes-search > span {
+    font-size: 24px;
+    color: var(--notes-muted);
+}
+.notes-search input {
+    flex: 1;
+    border: none;
+    outline: none;
+    background: transparent;
+    color: var(--notes-text);
+    font-size: 15px;
+}
+.notes-search input::placeholder {
+    color: #a89988;
+}
+.clear-search {
+    border: none;
+    background: transparent;
+    color: var(--notes-muted);
+    font-size: 22px;
+    cursor: pointer;
+    opacity: 0;
+    pointer-events: none;
+}
+.clear-search.visible {
+    opacity: 1;
+    pointer-events: auto;
+}
+/* =========================================================
+   SECTIONS
+   ========================================================= */
+.notes-section {
+    margin-bottom: 54px;
+}
+.section-heading {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 20px;
+}
+.section-heading h2 {
+    margin: 4px 0 0;
+    font-size: 24px;
+    letter-spacing: -0.3px;
+}
+.section-eyebrow {
+    display: block;
+    font-size: 10px;
+    letter-spacing: 1.5px;
+    color: var(--notes-brown-light);
+    font-weight: 700;
+}
+/* =========================================================
+   BREADCRUMBS
+   ========================================================= */
+.folder-breadcrumbs {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    margin-bottom: 17px;
+    flex-wrap: wrap;
+}
+.folder-breadcrumbs button {
+    border: none;
+    background: transparent;
+    color: var(--notes-brown);
+    cursor: pointer;
+    padding: 3px 5px;
+    font: inherit;
+    font-weight: 600;
+}
+.folder-breadcrumbs button:hover {
+    text-decoration: underline;
+}
+.folder-breadcrumbs .crumb-separator {
+    color: var(--notes-muted);
+}
+/* =========================================================
+   FOLDERS
+   ========================================================= */
+.folder-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
+    gap: 14px;
+}
+.folder-card {
+    position: relative;
+    background: var(--notes-surface);
+    border: 1px solid var(--notes-border);
+    border-radius: var(--notes-radius);
+    padding: 18px;
+    min-height: 115px;
+    cursor: pointer;
+    transition: 0.2s ease;
+    box-shadow: 0 4px 16px rgba(70, 49, 32, 0.04);
+}
+.folder-card:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--notes-shadow);
+    border-color: #cdbba5;
+}
+.folder-icon {
+    font-size: 28px;
+    margin-bottom: 13px;
+}
+.folder-card h3 {
+    margin: 0 0 4px;
+    font-size: 15px;
+}
+.folder-card p {
+    margin: 0;
+    font-size: 12px;
+    color: var(--notes-muted);
+}
+.folder-menu {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    border: none;
+    background: transparent;
+    color: var(--notes-muted);
+    cursor: pointer;
+    font-size: 19px;
+}
+/* =========================================================
+   TEMPLATE CARDS
+   ========================================================= */
+.template-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 16px;
+}
+.template-card {
+    background: var(--notes-surface);
+    border: 1px solid var(--notes-border);
+    border-radius: var(--notes-radius);
+    overflow: hidden;
+    cursor: pointer;
+    transition: 0.2s ease;
+}
+.template-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--notes-shadow);
+}
+.template-preview {
+    height: 145px;
+    background: #fbf8f2;
+    border-bottom: 1px solid var(--notes-border);
+    padding: 15px;
+    overflow: hidden;
+}
+.template-preview-paper {
+    background: white;
+    border: 1px solid #e3dbce;
+    height: 100%;
+    border-radius: 5px;
+    padding: 10px;
+    box-shadow: 0 3px 9px rgba(50, 35, 20, 0.05);
+}
+.template-preview-title {
+    font-size: 9px;
+    font-weight: 800;
+    letter-spacing: 0.7px;
+    margin-bottom: 9px;
+}
+.preview-line {
+    height: 4px;
+    background: #e9e1d5;
+    border-radius: 3px;
+    margin-bottom: 6px;
+}
+.preview-line.short {
+    width: 58%;
+}
+.preview-line.medium {
+    width: 78%;
+}
+.preview-box {
+    height: 30px;
+    border: 1px solid #e1d7c8;
+    border-radius: 4px;
+    margin-top: 8px;
+}
+.preview-columns {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5px;
+}
+.template-info {
+    padding: 13px 15px 15px;
+}
+.template-info h3 {
+    margin: 0 0 4px;
+    font-size: 14px;
+}
+.template-info p {
+    margin: 0;
+    color: var(--notes-muted);
+    font-size: 11px;
+}
+/* =========================================================
+   NOTES GRID
+   ========================================================= */
+.notes-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 16px;
+}
+.note-card {
+    position: relative;
+    background: var(--notes-surface);
+    border: 1px solid var(--notes-border);
+    border-radius: var(--notes-radius);
+    overflow: hidden;
+    cursor: pointer;
+    transition: 0.2s ease;
+}
+.note-card:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--notes-shadow);
+}
+.note-preview {
+    height: 155px;
+    padding: 17px;
+    background: #fbf9f5;
+    border-bottom: 1px solid var(--notes-border);
+}
+.note-preview-paper {
+    height: 100%;
+    background: white;
+    border: 1px solid #e5ddd1;
+    border-radius: 5px;
+    padding: 13px;
+    overflow: hidden;
+}
+.note-preview-paper h4 {
+    margin: 0 0 12px;
+    font-size: 11px;
+}
+.note-preview-paper p {
+    font-size: 8px;
+    line-height: 1.7;
+    color: #887b6c;
+    margin: 0;
+}
+.note-info {
+    padding: 14px;
+}
+.note-info h3 {
+    margin: 0 0 5px;
+    font-size: 14px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.note-meta {
+    display: flex;
+    justify-content: space-between;
+    gap: 8px;
+    color: var(--notes-muted);
+    font-size: 10px;
+}
+.note-menu {
+    position: absolute;
+    top: 9px;
+    right: 9px;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    border: none;
+    background: rgba(255,255,255,0.9);
+    cursor: pointer;
+    color: var(--notes-muted);
+    z-index: 2;
+}
+/* =========================================================
+   EMPTY
+   ========================================================= */
+.empty-state {
+    border: 1px dashed #cdbda9;
+    background: rgba(255,255,255,0.35);
+    border-radius: 18px;
+    padding: 55px 25px;
+    text-align: center;
+}
+.empty-icon {
+    width: 50px;
+    height: 50px;
+    display: grid;
+    place-items: center;
+    margin: 0 auto 14px;
+    border-radius: 14px;
+    background: var(--notes-surface-2);
+    color: var(--notes-brown);
+    font-size: 24px;
+}
+.empty-state h3 {
+    margin: 0 0 7px;
+}
+.empty-state p {
+    color: var(--notes-muted);
+    margin: 0 auto 18px;
+    max-width: 380px;
+}
+/* =========================================================
+   MODALS
+   ========================================================= */
+.modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(48, 35, 24, 0.4);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 30px;
+    z-index: 1000;
+    backdrop-filter: blur(5px);
+}
+.modal {
+    width: min(560px, 100%);
+    max-height: 90vh;
+    overflow-y: auto;
+    background: var(--notes-surface);
+    border-radius: 22px;
+    box-shadow: 0 25px 80px rgba(42, 29, 18, 0.2);
+    padding: 26px;
+}
+.large-modal {
+    width: min(1000px, 100%);
+}
+.small-modal {
+    width: min(480px, 100%);
+}
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 25px;
+}
+.modal-header h2 {
+    margin: 4px 0 0;
+    font-size: 25px;
+}
+.modal-close {
+    border: none;
+    background: transparent;
+    font-size: 28px;
+    cursor: pointer;
+    color: var(--notes-muted);
+}
+.modal form {
+    display: flex;
+    flex-direction: column;
+    gap: 19px;
+}
+.modal label,
+.form-label {
+    display: block;
+    color: var(--notes-text);
+    font-size: 13px;
+    font-weight: 700;
+}
+.modal input,
+.modal select {
+    width: 100%;
+    margin-top: 8px;
+    box-sizing: border-box;
+    border: 1px solid var(--notes-border);
+    border-radius: 10px;
+    background: #fffdf9;
+    padding: 12px 13px;
+    outline: none;
+    color: var(--notes-text);
+    font: inherit;
+}
+.modal input:focus,
+.modal select:focus {
+    border-color: var(--notes-brown-light);
+}
+.modal-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    margin-top: 5px;
+}
+/* =========================================================
+   TEMPLATE MODAL
+   ========================================================= */
+.template-search {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    height: 45px;
+    padding: 0 13px;
+    border: 1px solid var(--notes-border);
+    border-radius: 11px;
+    margin-bottom: 18px;
+}
+.template-search input {
+    border: none;
+    outline: none;
+    background: transparent;
+    flex: 1;
+    color: var(--notes-text);
+    font: inherit;
+}
+.template-categories {
+    display: flex;
+    gap: 7px;
+    overflow-x: auto;
+    padding-bottom: 12px;
+    margin-bottom: 16px;
+}
+.template-category {
+    flex-shrink: 0;
+    border: 1px solid var(--notes-border);
+    background: var(--notes-surface);
+    color: var(--notes-muted);
+    border-radius: 30px;
+    padding: 8px 13px;
+    cursor: pointer;
+}
+.template-category.active {
+    background: var(--notes-brown);
+    color: white;
+    border-color: var(--notes-brown);
+}
+.all-templates-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 14px;
+}
+/* =========================================================
+   MINI TEMPLATES
+   ========================================================= */
+.mini-template-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 9px;
+    margin-top: 9px;
+}
+.mini-template {
+    border: 1px solid var(--notes-border);
+    background: #fbf8f2;
+    border-radius: 10px;
+    padding: 9px;
+    cursor: pointer;
+    min-height: 75px;
+    text-align: left;
+}
+.mini-template:hover {
+    border-color: var(--notes-brown-light);
+}
+.mini-template.selected {
+    border: 2px solid var(--notes-brown);
+    background: #f3eadf;
+}
+.mini-template strong {
+    display: block;
+    font-size: 11px;
+    margin-bottom: 4px;
+}
+.mini-template span {
+    color: var(--notes-muted);
+    font-size: 9px;
+}
+/* =========================================================
+   NOTE EDITOR
+   ========================================================= */
+.editor-screen {
+    position: fixed;
+    inset: 0;
+    background: #eee8de;
+    z-index: 2000;
+    display: flex;
+    flex-direction: column;
+}
+.editor-topbar {
+    height: 65px;
+    flex-shrink: 0;
+    background: var(--notes-surface);
+    border-bottom: 1px solid var(--notes-border);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 18px;
+    gap: 15px;
+}
+.editor-back {
+    border: none;
+    background: transparent;
+    color: var(--notes-brown);
+    cursor: pointer;
+    font: inherit;
+    font-weight: 600;
+}
+.editor-title-area {
+    flex: 1;
+    max-width: 500px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.editor-title-area input {
+    width: 100%;
+    border: none;
+    outline: none;
+    background: transparent;
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--notes-text);
+}
+#saveStatus,
+#whiteboardSaveStatus {
+    color: #8c9a80;
+    font-size: 11px;
+    white-space: nowrap;
+}
+.editor-actions {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+.editor-actions > button:not(.primary-button),
+.whiteboard-actions > button:not(.primary-button) {
+    width: 37px;
+    height: 37px;
+    border: none;
+    background: transparent;
+    border-radius: 9px;
+    cursor: pointer;
+    color: var(--notes-brown-dark);
+    font-size: 17px;
+}
+.editor-actions > button:not(.primary-button):hover,
+.whiteboard-actions > button:not(.primary-button):hover {
+    background: var(--notes-surface-2);
+}
+.editor-layout {
+    flex: 1;
+    min-height: 0;
+    display: flex;
+}
+.editor-toolbar {
+    width: 74px;
+    flex-shrink: 0;
+    background: var(--notes-surface);
+    border-right: 1px solid var(--notes-border);
+    padding: 12px 8px;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+.editor-toolbar button {
+    border: none;
+    background: transparent;
+    color: var(--notes-brown);
+    border-radius: 10px;
+    padding: 9px 4px;
+    cursor: pointer;
+    font-size: 16px;
+}
+.editor-toolbar button:hover {
+    background: var(--notes-surface-2);
+}
+.editor-toolbar span {
+    display: block;
+    font-size: 8px;
+    margin-top: 3px;
+}
+.editor-workspace {
+    flex: 1;
+    overflow: auto;
+    padding: 50px;
+    display: flex;
+    justify-content: center;
+}
+.note-canvas {
+    width: min(820px, 100%);
+    min-height: 1050px;
+    background: white;
+    box-shadow: 0 15px 45px rgba(50, 38, 27, 0.12);
+    padding: 60px;
+    box-sizing: border-box;
+    color: #30271f;
+    outline: none;
+}
+/* =========================================================
+   EDITABLE NOTE CONTENT
+   ========================================================= */
+.note-canvas [contenteditable="true"] {
+    outline: none;
+}
+.note-block {
+    margin: 0 0 18px;
+}
+.note-block.heading {
+    font-size: 30px;
+    font-weight: 800;
+    margin-bottom: 25px;
+}
+.note-block.subheading {
+    font-size: 20px;
+    font-weight: 700;
+    margin-top: 30px;
+}
+.note-block.text {
+    font-size: 15px;
+    line-height: 1.8;
+    min-height: 24px;
+}
+.note-block.bullet {
+    font-size: 15px;
+    line-height: 1.8;
+    padding-left: 22px;
+}
+.note-block.checklist {
+    font-size: 15px;
+    line-height: 2;
+}
+.note-divider {
+    border: none;
+    border-top: 1px solid #ddd2c5;
+    margin: 25px 0;
+}
+.note-quote {
+    border-left: 4px solid var(--notes-brown-light);
+    padding: 10px 18px;
+    background: #f7f2e9;
+    color: #68594a;
+    font-style: italic;
+    margin: 20px 0;
+}
+/* =========================================================
+   PRACTICAL / EXPERIMENT TEMPLATE
+   ========================================================= */
+.practical-page {
+    font-family: inherit;
+}
+.practical-title {
+    font-size: 31px;
+    font-weight: 800;
+    margin-bottom: 8px;
+}
+.practical-subtitle {
+    color: #8c7d6d;
+    margin-bottom: 35px;
+}
+.practical-section {
+    margin-bottom: 30px;
+}
+.practical-section h3 {
+    font-size: 14px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--notes-brown);
+    margin: 0 0 10px;
+}
+.practical-box {
+    min-height: 65px;
+    border: 1px solid #ddd2c5;
+    border-radius: 8px;
+    padding: 14px;
+    background: #fffdfa;
+}
+.procedure-box {
+    min-height: 250px;
+}
+.diagram-box {
+    min-height: 330px;
+    position: relative;
+    background-image:
+        linear-gradient(#eee8df 1px, transparent 1px),
+        linear-gradient(90deg, #eee8df 1px, transparent 1px);
+    background-size: 25px 25px;
+}
+.diagram-label {
+    position: absolute;
+    top: 12px;
+    left: 14px;
+    color: #b1a294;
+    font-size: 11px;
+    pointer-events: none;
+}
+.practical-two-column {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+}
+/* =========================================================
+   WHITEBOARD
+   ========================================================= */
+.whiteboard-screen {
+    position: fixed;
+    inset: 0;
+    z-index: 2500;
+    background: #eee9df;
+    display: flex;
+    flex-direction: column;
+}
+.whiteboard-topbar {
+    height: 62px;
+    flex-shrink: 0;
+    background: var(--notes-surface);
+    border-bottom: 1px solid var(--notes-border);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 17px;
+    gap: 20px;
+}
+.whiteboard-topbar > button:first-child {
+    border: none;
+    background: transparent;
+    color: var(--notes-brown);
+    cursor: pointer;
+    font: inherit;
+    font-weight: 600;
+}
+.whiteboard-title {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex: 1;
+    justify-content: center;
+}
+.whiteboard-title input {
+    border: none;
+    outline: none;
+    background: transparent;
+    font-size: 16px;
+    font-weight: 700;
+    text-align: center;
+    color: var(--notes-text);
+}
+.whiteboard-actions {
+    display: flex;
+    gap: 5px;
+}
+.whiteboard-body {
+    flex: 1;
+    min-height: 0;
+    display: flex;
+}
+.whiteboard-toolbar {
+    width: 72px;
+    flex-shrink: 0;
+    background: var(--notes-surface);
+    border-right: 1px solid var(--notes-border);
+    padding: 10px 7px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+.whiteboard-tool {
+    border: none;
+    background: transparent;
+    border-radius: 9px;
+    color: var(--notes-brown);
+    padding: 9px 4px;
+    cursor: pointer;
+    font-size: 17px;
+}
+.whiteboard-tool:hover,
+.whiteboard-tool.active {
+    background: var(--notes-surface-2);
+}
+.whiteboard-tool span {
+    display: block;
+    font-size: 8px;
+    margin-top: 3px;
+}
+.whiteboard-canvas-wrapper {
+    position: relative;
+    flex: 1;
+    overflow: hidden;
+    background: #faf8f3;
+}
+.whiteboard-canvas-wrapper.grid-enabled {
+    background-image:
+        linear-gradient(#e8e0d4 1px, transparent 1px),
+        linear-gradient(90deg, #e8e8d4 1px, transparent 1px);
+    background-size: 24px 24px;
+}
+#whiteboardCanvas {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+}
+.whiteboard-objects {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+}
+.whiteboard-object {
+    position: absolute;
+    pointer-events: auto;
+    cursor: move;
+    user-select: none;
+}
+.whiteboard-text-object {
+    padding: 8px 12px;
+    min-width: 100px;
+    border: 1px solid transparent;
+    color: var(--notes-text);
+    font-size: 17px;
+}
+.whiteboard-text-object.selected {
+    border-color: var(--notes-brown-light);
+}
+.whiteboard-sticky {
+    width: 160px;
+    min-height: 120px;
+    padding: 16px;
+    box-sizing: border-box;
+    background: #eee1bd;
+    box-shadow: 0 5px 15px rgba(50,35,20,0.1);
+    color: #554631;
+}
+.whiteboard-shape {
+    width: 110px;
+    height: 80px;
+    border: 2px solid var(--notes-brown);
+    border-radius: 10px;
+    background: rgba(255,255,255,0.55);
+}
+.whiteboard-footer {
+    height: 45px;
+    flex-shrink: 0;
+    background: var(--notes-surface);
+    border-top: 1px solid var(--notes-border);
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    padding: 0 12px;
+}
+.whiteboard-footer button,
+.zoom-controls button {
+    border: none;
+    background: transparent;
+    color: var(--notes-brown);
+    cursor: pointer;
+    padding: 6px 10px;
+    border-radius: 7px;
+}
+.whiteboard-footer button:hover,
+.zoom-controls button:hover {
+    background: var(--notes-surface-2);
+}
+.zoom-controls {
+    display: flex;
+    align-items: center;
+    gap: 2px;
+    margin-right: 12px;
+}
+#zoomValue {
+    width: 55px;
+    text-align: center;
+    font-size: 11px;
+    color: var(--notes-muted);
+}
+/* =========================================================
+   UTILITIES
+   ========================================================= */
+.hidden {
+    display: none !important;
+}
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+@media (max-width: 1100px) {
+    .template-grid,
+    .notes-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+    .all-templates-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+@media (max-width: 850px) {
+    .notes-page {
+        padding: 25px 22px 50px;
+    }
+    .notes-topbar {
+        flex-direction: column;
+    }
+    .template-grid,
+    .notes-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .all-templates-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .mini-template-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .note-canvas {
+        padding: 35px;
+    }
+}
+@media (max-width: 600px) {
+    .notes-topbar h1 {
+        font-size: 29px;
+    }
+    .notes-top-actions {
+        width: 100%;
+    }
+    .notes-top-actions button {
+        flex: 1;
+    }
+    .folder-grid,
+    .template-grid,
+    .notes-grid,
+    .all-templates-grid {
+        grid-template-columns: 1fr;
+    }
+    .editor-toolbar,
+    .whiteboard-toolbar {
+        width: 58px;
+    }
+    .editor-workspace {
+        padding: 20px;
+    }
+    .note-canvas {
+        padding: 25px;
+    }
+    .editor-back {
+        font-size: 12px;
+    }
+    .editor-title-area {
+        display: none;
+    }
+    .whiteboard-title input {
+        width: 130px;
+    }
+    .practical-two-column {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* =====================================
+   NOTES PAGE — SIDEBAR COMPATIBILITY
+===================================== */
+.notes-page {
+    margin-left: 230px;
+    width: calc(100% - 230px);
+    min-height: 100vh;
+    padding: 35px;
+    box-sizing: border-box;
+}
+
+/* =====================================
+   RESPONSIVE SIDEBAR
+===================================== */
+@media (max-width: 900px) {
+    .notes-page {
+        margin-left: 80px;
+        width: calc(100% - 80px);
+    }
+}
+@media (max-width: 600px) {
+     .notes-page {
+        margin-left: 80px;
+        width: calc(100% - 80px);
+        padding: 20px;
+    }
+}
+/* =========================================================
+   NOTES PAGE — DARK MODE + READABILITY UPGRADE
+========================================================= */
+
+
+/* =========================================================
+   1. BASE NOTES TYPOGRAPHY
+========================================================= */
+
+.notes-page {
+    font-size: 16px;
+}
+
+.notes-page h1 {
+    font-size: 36px;
+    line-height: 1.2;
+}
+
+.notes-page h2 {
+    font-size: 25px;
+    line-height: 1.3;
+}
+
+.notes-page h3 {
+    font-size: 18px;
+}
+
+.notes-page p {
+    font-size: 16px;
+    line-height: 1.65;
+}
+
+.notes-page button {
+    font-size: 15px;
+}
+
+.notes-page input,
+.notes-page select {
+    font-size: 16px;
+}
+
+
+/* Small labels / section labels */
+
+.notes-page .section-eyebrow {
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 2px;
+}
+
+
+/* =========================================================
+   2. DARK MODE — MAIN NOTES PAGE
+========================================================= */
+
+body.dark .notes-page {
+    background: #1c1713;
+    color: #f5eadf;
+}
+
+
+/* Main headings */
+
+body.dark .notes-page h1,
+body.dark .notes-page h2,
+body.dark .notes-page h3 {
+    color: #fff4e8;
+}
+
+
+/* Normal text */
+
+body.dark .notes-page p {
+    color: #d8c9bb;
+}
+
+
+/* Subtitles */
+
+body.dark .notes-page .notes-topbar p {
+    color: #cdbbad;
+}
+
+
+/* Section labels */
+
+body.dark .notes-page .section-eyebrow {
+    color: #d9a46c;
+}
+
+
+/* =========================================================
+   3. SEARCH BAR
+========================================================= */
+
+body.dark .notes-page .notes-search {
+    background: #29211c;
+    border: 1px solid #554338;
+    box-shadow: 0 8px 20px rgba(0,0,0,.22);
+}
+
+
+body.dark .notes-page .notes-search span {
+    color: #d9a46c;
+    font-size: 22px;
+}
+
+
+body.dark .notes-page .notes-search input {
+    background: transparent;
+    color: #fff4e8;
+    border: none;
+}
+
+
+body.dark .notes-page .notes-search input::placeholder {
+    color: #a9988a;
+    opacity: 1;
+}
+
+
+body.dark .notes-page .clear-search {
+    color: #d8c9bb;
+}
+
+
+/* =========================================================
+   4. BUTTONS
+========================================================= */
+
+body.dark .notes-page .primary-button {
+    background: #b9895b;
+    color: #fffaf5;
+}
+
+
+body.dark .notes-page .primary-button:hover {
+    background: #c99b6d;
+}
+
+
+body.dark .notes-page .secondary-button {
+    background: #342a23;
+    color: #f4e6d8;
+    border: 1px solid #665143;
+}
+
+
+body.dark .notes-page .secondary-button:hover {
+    background: #42342a;
+}
+
+
+body.dark .notes-page .text-button {
+    color: #e0ad78;
+}
+
+
+body.dark .notes-page .text-button:hover {
+    color: #f2c18d;
+}
+
+
+/* =========================================================
+   5. FOLDERS
+========================================================= */
+
+body.dark .notes-page .folder-card {
+    background: #29211c;
+    border: 1px solid #514035;
+    color: #f5eadf;
+    box-shadow: 0 8px 20px rgba(0,0,0,.18);
+}
+
+
+body.dark .notes-page .folder-card:hover {
+    background: #342920;
+    border-color: #b9895b;
+}
+
+
+body.dark .notes-page .folder-card h3 {
+    color: #fff4e8;
+}
+
+
+body.dark .notes-page .folder-card p {
+    color: #cdbbad;
+}
+
+
+/* Folder icon */
+
+body.dark .notes-page .folder-icon {
+    background: #493528;
+    color: #e5b47f;
+}
+
+
+/* =========================================================
+   6. TEMPLATE CARDS
+========================================================= */
+
+body.dark .notes-page .template-card {
+    background: #29211c;
+    border: 1px solid #514035;
+    color: #bbad9e;
+    box-shadow: 0 8px 20px rgba(0,0,0,.2);
+}
+
+
+body.dark .notes-page .template-card:hover {
+    background: #352a22;
+    border-color: #b9895b;
+}
+
+
+body.dark .notes-page .template-card h3 {
+    color: #c3b1a0;
+}
+
+
+body.dark .notes-page .template-card p {
+    color: #c5ac97;
+}
+
+
+/* =========================================================
+   7. RECENT NOTE CARDS
+========================================================= */
+
+body.dark .notes-page .note-card {
+    background: #29211c;
+    border: 1px solid #514035;
+    color: #f5eadf;
+    box-shadow: 0 8px 20px rgba(0,0,0,.2);
+}
+
+
+body.dark .notes-page .note-card:hover {
+    background: #352a22;
+    border-color: #b9895b;
+}
+
+
+body.dark .notes-page .note-card h3 {
+    color: #fff4e8;
+}
+
+
+body.dark .notes-page .note-card p {
+    color: #cdbbad;
+}
+
+
+/* =========================================================
+   8. BREADCRUMBS
+========================================================= */
+
+body.dark .notes-page .folder-breadcrumbs button {
+    color: #d9a46c;
+}
+
+
+body.dark .notes-page .folder-breadcrumbs button:hover {
+    color: #f1c28f;
+}
+
+
+/* =========================================================
+   9. EMPTY STATE
+========================================================= */
+
+body.dark .notes-page .empty-state {
+    background: #29211c;
+    border: 1px dashed #5d4a3c;
+}
+
+
+body.dark .notes-page .empty-state h3 {
+    color: #fff4e8;
+}
+
+
+body.dark .notes-page .empty-state p {
+    color: #cdbbad;
+}
+
+
+body.dark .notes-page .empty-icon {
+    color: #d9a46c;
+}
+
+
+/* =========================================================
+   10. MODALS
+========================================================= */
+
+body.dark .notes-page .modal {
+    background: #241c18;
+    color: #52473c;
+    border: 1px solid #554338;
+    box-shadow: 0 20px 60px rgba(0,0,0,.5);
+}
+
+
+body.dark .notes-page .modal h2 {
+    color: #624e38;
+}
+
+
+body.dark .notes-page .modal label,
+body.dark .notes-page .form-label {
+    color: #3a2e24;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+
+body.dark .notes-page .modal input,
+body.dark .notes-page .modal select {
+    background: #30251f;
+    color: #fff4e8;
+    border: 1px solid #5d4a3c;
+}
+
+
+body.dark .notes-page .modal input::placeholder {
+    color: #a9988a;
+}
+
+
+body.dark .notes-page .modal-close {
+    color: #100d0b;
+    background: #342a23;
+}
+
+
+/* =========================================================
+   11. TEMPLATE CATEGORY BUTTONS
+========================================================= */
+
+body.dark .notes-page .template-category {
+    background: #30251f;
+    color: #cdbbad;
+    border: 1px solid #776b64;
+}
+
+
+body.dark .notes-page .template-category:hover {
+    background: #3c2f26;
+    color: #fff4e8;
+}
+
+
+body.dark .notes-page .template-category.active {
+    background: #b9895b;
+    color: #fffaf5;
+    border-color: #b9895b;
+}
+
+
+/* =========================================================
+   12. NOTE EDITOR
+========================================================= */
+
+body.dark .notes-page .editor-screen {
+    background: #1c1713;
+    color: #f5eadf;
+}
+
+
+body.dark .notes-page .editor-topbar {
+    background: #241c18;
+    border-bottom: 1px solid #a98f7d;
+}
+
+
+body.dark .notes-page .editor-title-area input {
+    background: transparent;
+    color: #fff4e8;
+    border: none;
+    font-size: 20px;
+    font-weight: 700;
+}
+
+
+body.dark .notes-page #saveStatus {
+    color: #cdbbad;
+}
+
+
+body.dark .notes-page .editor-toolbar {
+    background: #241c18;
+    border-right: 1px solid #5f4b3e;
+}
+
+
+body.dark .notes-page .editor-toolbar button {
+    color: #d8c9bb;
+    background: transparent;
+}
+
+
+body.dark .notes-page .editor-toolbar button:hover {
+    background: #382c24;
+    color: #fff4e8;
+}
+
+
+body.dark .notes-page .editor-toolbar button span {
+    color: #cdbbad;
+}
+
+
+/* =========================================================
+   13. NOTE CANVAS
+========================================================= */
+
+body.dark .notes-page .note-canvas {
+    background: #30251f;
+    color: #fff4e8;
+    box-shadow: 0 12px 30px rgba(0,0,0,.25);
+}
+
+
+body.dark .notes-page .note-canvas p {
+    color: #eee0d4;
+}
+
+
+body.dark .notes-page .note-canvas h1,
+body.dark .notes-page .note-canvas h2,
+body.dark .notes-page .note-canvas h3 {
+    color: #fff8f0;
+}
+
+
+/* =========================================================
+   14. WHITEBOARD
+========================================================= */
+
+body.dark .notes-page .whiteboard-screen {
+    background: #1c1713;
+}
+
+
+body.dark .notes-page .whiteboard-topbar {
+    background: #241c18;
+    border-bottom: 1px solid #514035;
+}
+
+
+body.dark .notes-page .whiteboard-toolbar {
+    background: #241c18;
+    border-right: 1px solid #514035;
+}
+
+
+body.dark .notes-page .whiteboard-toolbar button {
+    color: #826244;
+    background: transparent;
+}
+
+
+body.dark .notes-page .whiteboard-toolbar button:hover,
+body.dark .notes-page .whiteboard-toolbar button.active {
+    background: #3b2e25;
+    color: #fff4e8;
+}
+
+
+body.dark .notes-page .whiteboard-footer {
+    background: #241c18;
+    border-top: 1px solid #514035;
+}
+
+
+/* =========================================================
+   15. FOLDER / NOTE MODAL TEXT
+========================================================= */
+
+body.dark .notes-page .modal-header {
+    border-bottom-color: #514035;
+}
+
+
+body.dark .notes-page .modal-actions {
+    border-top-color: #514035;
+}
+
+
+/* =========================================================
+   16. HIGH-CONTRAST FOCUS
+========================================================= */
+
+body.dark .notes-page button:focus-visible,
+body.dark .notes-page input:focus-visible,
+body.dark .notes-page select:focus-visible {
+    outline: 2px solid #e0ad78;
+    outline-offset: 2px;
+}
+
+
+/* =========================================================
+   17. LIGHT MODE READABILITY TOO
+========================================================= */
+
+.notes-page .section-heading h2 {
+    color: #4a3526;
+}
+
+.notes-page .section-eyebrow {
+    color: #9b704c;
+}
+.notes-page .notes-topbar p {
+    color: #705b4b;
+}
+
+/* =========================================================
+   18. MOBILE TYPOGRAPHY
+========================================================= */
+@media (max-width: 600px) {
+    .notes-page h1 {
+        font-size: 30px;
+    }
+    .notes-page h2 {
+        font-size: 22px;
+    }
+    .notes-page p {
+        font-size: 15px;
+    }
+      .notes-page button {
+        font-size: 14px;
+    }
+}
+
+/* =========================================================
+   NOTES EDITOR — DARK THEME
+   ========================================================= */
+
+/* Main editor area */
+[data-theme="dark"] .note-editor,
+[data-theme="dark"] .note-editor-container,
+[data-theme="dark"] .note-writing-area {
+    background: #25201c;
+    color: #eee5dc;
+    border-color: #51443a;
+}
+
+/* Contenteditable writing area */
+[data-theme="dark"] [contenteditable="true"] {
+    background: #25201c;
+    color: #eee5dc;
+    caret-color: #eee5dc;
+}
+
+/* Placeholder text */
+[data-theme="dark"] [contenteditable="true"]:empty::before {
+    color: #8f8175;
+}
+
+/* Note title */
+[data-theme="dark"] .note-title,
+[data-theme="dark"] .note-editor-title,
+[data-theme="dark"] input.note-title,
+[data-theme="dark"] textarea.note-title {
+    background: transparent;
+    color: #f2e8dd;
+    border-color: #51443a;
+}
+
+/* Description / text areas */
+[data-theme="dark"] .note-editor textarea,
+[data-theme="dark"] .note-editor input,
+[data-theme="dark"] .note-editor select {
+    background: #2b2520;
+    color: #eee5dc;
+    border-color: #51443a;
+}
+
+/* Text inside the editor */
+[data-theme="dark"] .note-editor p,
+[data-theme="dark"] .note-editor h1,
+[data-theme="dark"] .note-editor h2,
+[data-theme="dark"] .note-editor h3,
+[data-theme="dark"] .note-editor h4,
+[data-theme="dark"] .note-editor li,
+[data-theme="dark"] .note-editor span {
+    color: #eee5dc;
+}
+
+/* Links */
+[data-theme="dark"] .note-editor a {
+    color: #c9aa8b;
+}
+
+/* Toolbar */
+[data-theme="dark"] .note-editor-toolbar {
+    background: #211c18;
+    border-color: #51443a;
+}
+
+[data-theme="dark"] .note-editor-toolbar button {
+    color: #eee5dc;
+    background: transparent;
+}
+
+[data-theme="dark"] .note-editor-toolbar button:hover {
+    background: #382f28;
+}
+
+/* Editor paper */
+[data-theme="dark"] .note-paper,
+[data-theme="dark"] .editor-paper {
+    background: #2b2520;
+    color: #eee5dc;
+    border-color: #51443a;
+}
+/* =========================================================
+   STUDY SPACE — NOTE EDITOR DARK MODE
+   Covers opened notes + template pages
+   ========================================================= */
+
+/* ---------------------------------------------------------
+   MAIN NOTE EDITOR / PAGE
+   --------------------------------------------------------- */
+
+[data-theme="dark"] .note-editor-page,
+[data-theme="dark"] .note-editor,
+[data-theme="dark"] .note-editor-container,
+[data-theme="dark"] .note-edit-page,
+[data-theme="dark"] .note-workspace,
+[data-theme="dark"] .note-content-area,
+[data-theme="dark"] .editor-container {
+    background: #211c18 !important;
+    color: #eee5dc !important;
+}
+
+
+/* ---------------------------------------------------------
+   WHITE "PAPER" / NOTE SHEET
+   --------------------------------------------------------- */
+
+[data-theme="dark"] .note-paper,
+[data-theme="dark"] .editor-paper,
+[data-theme="dark"] .note-document,
+[data-theme="dark"] .note-page,
+[data-theme="dark"] .editor-page,
+[data-theme="dark"] .note-canvas,
+[data-theme="dark"] .editor-canvas {
+    background: #2b2520 !important;
+    color: #eee5dc !important;
+    border-color: #51443a !important;
+}
+
+
+/* ---------------------------------------------------------
+   CONTENTEDITABLE AREA
+   --------------------------------------------------------- */
+
+[data-theme="dark"] [contenteditable="true"] {
+    background: #2b2520 !important;
+    color: #eee5dc !important;
+    caret-color: #eee5dc !important;
+}
+
+
+/* Text INSIDE contenteditable */
+[data-theme="dark"] [contenteditable="true"] * {
+    color: #eee5dc !important;
+}
+
+
+/* Placeholder */
+[data-theme="dark"] [contenteditable="true"]:empty::before {
+    color: #918276 !important;
+}
+
+
+/* ---------------------------------------------------------
+   NOTE TITLE
+   --------------------------------------------------------- */
+
+[data-theme="dark"] .note-editor input,
+[data-theme="dark"] .note-editor textarea,
+[data-theme="dark"] .note-editor input[type="text"],
+[data-theme="dark"] .note-title-input,
+[data-theme="dark"] .note-title,
+[data-theme="dark"] .editor-title {
+    background: transparent !important;
+    color: #f3e9de !important;
+    border-color: #51443a !important;
+}
+
+
+/* ---------------------------------------------------------
+   EXPERIMENT TEMPLATE
+   --------------------------------------------------------- */
+
+/* Whole experiment sheet */
+[data-theme="dark"] .experiment-template,
+[data-theme="dark"] .experiment-note,
+[data-theme="dark"] .experiment-page,
+[data-theme="dark"] .experiment-paper {
+    background: #2b2520 !important;
+    color: #eee5dc !important;
+}
+
+
+/* Experiment headings */
+[data-theme="dark"] .experiment-template h1,
+[data-theme="dark"] .experiment-template h2,
+[data-theme="dark"] .experiment-template h3,
+[data-theme="dark"] .experiment-template h4,
+[data-theme="dark"] .experiment-template h5,
+[data-theme="dark"] .experiment-page h1,
+[data-theme="dark"] .experiment-page h2,
+[data-theme="dark"] .experiment-page h3,
+[data-theme="dark"] .experiment-page h4,
+[data-theme="dark"] .experiment-page h5 {
+    color: #f3e9de !important;
+}
+
+
+/* Experiment labels */
+[data-theme="dark"] .experiment-template label,
+[data-theme="dark"] .experiment-page label,
+[data-theme="dark"] .experiment-template p,
+[data-theme="dark"] .experiment-page p,
+[data-theme="dark"] .experiment-template span,
+[data-theme="dark"] .experiment-page span {
+    color: #eee5dc !important;
+}
+
+
+/* ---------------------------------------------------------
+   VARIABLE SECTIONS
+   --------------------------------------------------------- */
+
+[data-theme="dark"] .manipulated-variable,
+[data-theme="dark"] .responding-variable,
+[data-theme="dark"] .controlled-variable,
+[data-theme="dark"] .controlled-variables,
+[data-theme="dark"] .variable-section,
+[data-theme="dark"] .variables-section {
+    background: #302923 !important;
+    color: #eee5dc !important;
+    border-color: #5b4c40 !important;
+}
+
+
+/* Variable headings */
+[data-theme="dark"] .manipulated-variable h3,
+[data-theme="dark"] .responding-variable h3,
+[data-theme="dark"] .controlled-variable h3,
+[data-theme="dark"] .controlled-variables h3,
+[data-theme="dark"] .variable-section h3,
+[data-theme="dark"] .variables-section h3 {
+    color: #f3e9de !important;
+}
+
+
+/* Variable editable boxes */
+[data-theme="dark"] .manipulated-variable input,
+[data-theme="dark"] .responding-variable input,
+[data-theme="dark"] .controlled-variable input,
+[data-theme="dark"] .controlled-variables input,
+[data-theme="dark"] .variable-section input,
+[data-theme="dark"] .variables-section input,
+[data-theme="dark"] .manipulated-variable textarea,
+[data-theme="dark"] .responding-variable textarea,
+[data-theme="dark"] .controlled-variable textarea,
+[data-theme="dark"] .controlled-variables textarea {
+    background: #211c18 !important;
+    color: #eee5dc !important;
+    border-color: #665548 !important;
+}
+
+
+/* ---------------------------------------------------------
+   ALL TEMPLATE TEXT
+   --------------------------------------------------------- */
+
+[data-theme="dark"] .template-content,
+[data-theme="dark"] .template-body,
+[data-theme="dark"] .template-section,
+[data-theme="dark"] .template-fields {
+    background: #2b2520 !important;
+    color: #eee5dc !important;
+}
+
+
+/* Catch headings and paragraphs inside templates */
+[data-theme="dark"] .template-content h1,
+[data-theme="dark"] .template-content h2,
+[data-theme="dark"] .template-content h3,
+[data-theme="dark"] .template-content h4,
+[data-theme="dark"] .template-content p,
+[data-theme="dark"] .template-content span,
+[data-theme="dark"] .template-body h1,
+[data-theme="dark"] .template-body h2,
+[data-theme="dark"] .template-body h3,
+[data-theme="dark"] .template-body h4,
+[data-theme="template-dark"] .template-body p {
+    color: #eee5dc !important;
+}
+
+
+/* ---------------------------------------------------------
+   INPUTS / TEXTAREAS THROUGHOUT NOTE
+   --------------------------------------------------------- */
+
+[data-theme="dark"] .note-editor input,
+[data-theme="dark"] .note-editor textarea,
+[data-theme="dark"] .note-editor select,
+[data-theme="dark"] .note-edit-page input,
+[data-theme="dark"] .note-edit-page textarea,
+[data-theme="dark"] .note-edit-page select {
+    background: #302923 !important;
+    color: #eee5dc !important;
+    border-color: #5b4c40 !important;
+}
+
+
+/* ---------------------------------------------------------
+   TOOLBAR
+   --------------------------------------------------------- */
+
+[data-theme="dark"] .editor-toolbar,
+[data-theme="dark"] .note-toolbar,
+[data-theme="dark"] .note-editor-toolbar {
+    background: #211c18 !important;
+    border-color: #51443a !important;
+}
+
+
+[data-theme="dark"] .editor-toolbar button,
+[data-theme="dark"] .note-toolbar button,
+[data-theme="dark"] .note-editor-toolbar button {
+    background: transparent !important;
+    color: #eee5dc !important;
+}
+
+
+[data-theme="dark"] .editor-toolbar button:hover,
+[data-theme="dark"] .note-toolbar button:hover,
+[data-theme="dark"] .note-editor-toolbar button:hover {
+    background: #382f28 !important;
+}
+
+
+/* ---------------------------------------------------------
+   DIVIDERS / BORDERS
+   --------------------------------------------------------- */
+
+[data-theme="dark"] .note-editor hr,
+[data-theme="dark"] .note-paper hr,
+[data-theme="dark"] .experiment-page hr {
+    border-color: #51443a !important;
+}
+
+
+/* ---------------------------------------------------------
+   PLACEHOLDER TEXT
+   --------------------------------------------------------- */
+
+[data-theme="dark"] input::placeholder,
+[data-theme="dark"] textarea::placeholder {
+    color: #918276 !important;
+}
+
+
+/* ---------------------------------------------------------
+   FORCE THE COMMON WHITE BACKGROUNDS DARK
+   --------------------------------------------------------- */
+
+[data-theme="dark"] .note-editor *,
+[data-theme="dark"] .note-edit-page *,
+[data-theme="dark"] .note-paper *,
+[data-theme="dark"] .editor-paper * {
+    border-color: #51443a;
+}
+
+
+/* ---------------------------------------------------------
+   SELECTION
+   --------------------------------------------------------- */
+
+[data-theme="dark"] .note-editor ::selection,
+[data-theme="dark"] .note-edit-page ::selection {
+    background: #705b49;
+    color: #ffffff;
+}
+
+/* =========================================================
+   NOTES EDITOR — DARK THEME FIX
+   Applies to the actual note/template editing page
+   ========================================================= */
+
+/* Main editor page */
+body.dark-theme .note-editor,
+body.dark-theme .notes-editor,
+body.dark-theme .note-workspace,
+body.dark-theme .note-page {
+    background: var(--notes-bg, #211c17);
+    color: #eee5d8;
+}
+
+/* Main writing/template area */
+body.dark-theme .note-editor-content,
+body.dark-theme .note-content,
+body.dark-theme .editor-content,
+body.dark-theme .template-editor,
+body.dark-theme .note-paper {
+    background: #2a241f;
+    color: #eee5d8;
+}
+
+/* =========================================================
+   INPUTS / TEXTAREAS / CONTENTEDITABLE
+   ========================================================= */
+
+body.dark-theme .note-editor input,
+body.dark-theme .note-editor textarea,
+body.dark-theme .note-editor select,
+body.dark-theme .note-editor [contenteditable="true"],
+
+body.dark-theme .notes-editor input,
+body.dark-theme .notes-editor textarea,
+body.dark-theme .notes-editor select,
+body.dark-theme .notes-editor [contenteditable="true"],
+
+body.dark-theme .note-page input,
+body.dark-theme .note-page textarea,
+body.dark-theme .note-page select,
+body.dark-theme .note-page [contenteditable="true"] {
+    background: #302923 !important;
+    color: #f1e8dc !important;
+    border-color: #55483c !important;
+}
+
+/* Placeholder text */
+body.dark-theme .note-editor input::placeholder,
+body.dark-theme .note-editor textarea::placeholder,
+body.dark-theme .notes-editor input::placeholder,
+body.dark-theme .notes-editor textarea::placeholder {
+    color: #a99b8b !important;
+}
+
+/* =========================================================
+   TEMPLATE PAPER
+   ========================================================= */
+
+body.dark-theme .template-paper,
+body.dark-theme .template-page,
+body.dark-theme .template-content,
+body.dark-theme .experiment-template,
+body.dark-theme .experiment-page,
+body.dark-theme .experiment-paper {
+    background: #2a241f !important;
+    color: #eee5d8 !important;
+}
+
+/* =========================================================
+   TEMPLATE HEADINGS
+   ========================================================= */
+
+body.dark-theme .template-paper h1,
+body.dark-theme .template-paper h2,
+body.dark-theme .template-paper h3,
+body.dark-theme .template-paper h4,
+
+body.dark-theme .template-page h1,
+body.dark-theme .template-page h2,
+body.dark-theme .template-page h3,
+body.dark-theme .template-page h4,
+
+body.dark-theme .experiment-template h1,
+body.dark-theme .experiment-template h2,
+body.dark-theme .experiment-template h3,
+body.dark-theme .experiment-template h4,
+
+body.dark-theme .experiment-page h1,
+body.dark-theme .experiment-page h2,
+body.dark-theme .experiment-page h3,
+body.dark-theme .experiment-page h4 {
+    color: #f3e8da !important;
+}
+
+/* =========================================================
+   EXPERIMENT TEMPLATE
+   ========================================================= */
+
+body.dark-theme .experiment-template *,
+body.dark-theme .experiment-page *,
+body.dark-theme .experiment-paper * {
+    border-color: #5b4c3e;
+}
+
+/* Labels such as:
+   Manipulated Variable
+   Responding Variable
+   Controlled Variables
+   Hypothesis
+   Aim
+   Apparatus
+   Procedure
+*/
+body.dark-theme .experiment-template label,
+body.dark-theme .experiment-page label,
+body.dark-theme .experiment-template .label,
+body.dark-theme .experiment-page .label,
+body.dark-theme .experiment-template .field-label,
+body.dark-theme .experiment-page .field-label {
+    color: #e9dccb !important;
+}
+
+/* =========================================================
+   VARIABLE / FIELD BOXES
+   ========================================================= */
+
+body.dark-theme .variable-box,
+body.dark-theme .variables-box,
+body.dark-theme .experiment-field,
+body.dark-theme .field-box,
+body.dark-theme .template-field,
+body.dark-theme .input-box {
+    background: #302923 !important;
+    color: #eee5d8 !important;
+    border-color: #5b4c3e !important;
+}
+
+/* Text inside those boxes */
+body.dark-theme .variable-box *,
+body.dark-theme .variables-box *,
+body.dark-theme .experiment-field *,
+body.dark-theme .field-box *,
+body.dark-theme .template-field * {
+    color: #eee5d8 !important;
+}
+
+/* =========================================================
+   CONTENTEDITABLE TEMPLATE AREAS
+   ========================================================= */
+
+body.dark-theme [contenteditable="true"] {
+    background-color: #302923 !important;
+    color: #f1e8dc !important;
+    caret-color: #f1e8dc !important;
+}
+
+/* Selected text */
+body.dark-theme [contenteditable="true"]::selection,
+body.dark-theme textarea::selection,
+body.dark-theme input::selection {
+    background: #76634f;
+    color: #ffffff;
+}
+
+/* =========================================================
+   TABLES
+   ========================================================= */
+
+body.dark-theme .note-editor table,
+body.dark-theme .notes-editor table,
+body.dark-theme .template-editor table,
+body.dark-theme .experiment-template table {
+    background: #2a241f !important;
+    color: #eee5d8 !important;
+    border-color: #5b4c3e !important;
+}
+
+body.dark-theme .note-editor th,
+body.dark-theme .note-editor td,
+body.dark-theme .notes-editor th,
+body.dark-theme .notes-editor td,
+body.dark-theme .template-editor th,
+body.dark-theme .template-editor td,
+body.dark-theme .experiment-template th,
+body.dark-theme .experiment-template td {
+    background: #302923 !important;
+    color: #eee5d8 !important;
+    border-color: #5b4c3e !important;
+}
+
+/* =========================================================
+   TOOLBAR
+   ========================================================= */
+
+body.dark-theme .note-toolbar,
+body.dark-theme .editor-toolbar,
+body.dark-theme .template-toolbar {
+    background: #241f1a !important;
+    border-color: #514337 !important;
+}
+
+body.dark-theme .note-toolbar button,
+body.dark-theme .editor-toolbar button,
+body.dark-theme .template-toolbar button {
+    background: #302923 !important;
+    color: #302820 !important;
+    border-color: #5b4c3e !important;
+}
+
+body.dark-theme .note-toolbar button:hover,
+body.dark-theme .editor-toolbar button:hover,
+body.dark-theme .template-toolbar button:hover {
+    background: #3b322a !important;
+}
+
+/* =========================================================
+   CHECKBOXES
+   ========================================================= */
+
+body.dark-theme .note-editor input[type="checkbox"],
+body.dark-theme .template-editor input[type="checkbox"],
+body.dark-theme .experiment-template input[type="checkbox"] {
+    accent-color: #3d3326;
+}
+
+/* =========================================================
+   DROPDOWNS
+   ========================================================= */
+
+body.dark-theme .note-editor option,
+body.dark-theme .notes-editor option,
+body.dark-theme .template-editor option {
+    background: #302923;
+    color: #493f2f;
+}
+
+/* =========================================================
+   LINKS
+   ========================================================= */
+
+body.dark-theme .note-editor a,
+body.dark-theme .notes-editor a,
+body.dark-theme .template-editor a {
+    color: #1c1814 !important;
+}
+
+/* =========================================================
+   GENERAL TEXT OVERRIDE
+   ========================================================= */
+
+body.dark-theme .note-editor p,
+body.dark-theme .note-editor span,
+body.dark-theme .note-editor div,
+
+body.dark-theme .notes-editor p,
+body.dark-theme .notes-editor span,
+body.dark-theme .notes-editor div,
+
+body.dark-theme .template-editor p,
+body.dark-theme .template-editor span,
+body.dark-theme .template-editor div,
+
+body.dark-theme .experiment-template p,
+body.dark-theme .experiment-template span,
+body.dark-theme .experiment-template div {
+    color: inherit;
+}
+/* =========================================================
+   STUDY SPACE — ACTUAL NOTE EDITOR DARK MODE
+   ========================================================= */
+
+/* The whole editor */
+body.dark-theme #editorScreen,
+body.dark-theme #editorScreen .editor-screen,
+body.dark-theme #editorScreen .editor-container {
+    background: #211c17 !important;
+    color: #eee5d8 !important;
+}
+
+/* The actual note canvas */
+body.dark-theme #noteCanvas {
+    background: #2a241f !important;
+    color: #eee5d8 !important;
+    border-color: #55483c !important;
+}
+
+/* EVERYTHING inside the note canvas */
+body.dark-theme #noteCanvas,
+body.dark-theme #noteCanvas * {
+    color: #eee5d8 !important;
+    border-color: #5b4c3e !important;
+}
+
+/* Inputs */
+body.dark-theme #noteCanvas input,
+body.dark-theme #noteCanvas textarea,
+body.dark-theme #noteCanvas select {
+    background: #302923 !important;
+    color: #f3e8dc !important;
+    border: 1px solid #625244 !important;
+}
+
+/* Contenteditable fields */
+body.dark-theme #noteCanvas [contenteditable="true"] {
+    background: #302923 !important;
+    color: #f3e8dc !important;
+    caret-color: #f3e8dc !important;
+}
+
+/* Placeholder text */
+body.dark-theme #noteCanvas input::placeholder,
+body.dark-theme #noteCanvas textarea::placeholder {
+    color: #a99a89 !important;
+}
+
+/* Headings */
+body.dark-theme #noteCanvas h1,
+body.dark-theme #noteCanvas h2,
+body.dark-theme #noteCanvas h3,
+body.dark-theme #noteCanvas h4,
+body.dark-theme #noteCanvas h5,
+body.dark-theme #noteCanvas h6 {
+    color: #f4e9dc !important;
+}
+
+/* Paragraphs and normal text */
+body.dark-theme #noteCanvas p,
+body.dark-theme #noteCanvas span,
+body.dark-theme #noteCanvas label,
+body.dark-theme #noteCanvas strong,
+body.dark-theme #noteCanvas b {
+    color: #eee5d8 !important;
+}
+
+/* Tables */
+body.dark-theme #noteCanvas table {
+    background: #2a241f !important;
+    color: #eee5d8 !important;
+    border-color: #5b4c3e !important;
+}
+
+body.dark-theme #noteCanvas th,
+body.dark-theme #noteCanvas td {
+    background: #302923 !important;
+    color: #eee5d8 !important;
+    border: 1px solid #5b4c3e !important;
+}
+
+/* Select dropdown */
+body.dark-theme #noteCanvas option {
+    background: #302923 !important;
+    color: #eee5d8 !important;
+}
+
+/* Horizontal lines */
+body.dark-theme #noteCanvas hr {
+    border-color: #665748 !important;
+}
+
+/* Links */
+body.dark-theme #noteCanvas a {
+    color: #d0b897 !important;
+}
+
+/* Selected text */
+body.dark-theme #noteCanvas ::selection {
+    background: #75624f !important;
+    color: #ffffff !important;
+}
+
+
+/* =========================================================
+   EXPERIMENT TEMPLATE — SPECIFIC FIX
+   ========================================================= */
+
+/* Any white/light background inside the experiment */
+body.dark-theme #noteCanvas [style*="background"],
+body.dark-theme #noteCanvas [style*="background-color"] {
+    background-color: #302923 !important;
+}
+
+/* Any inline beige/white text */
+body.dark-theme #noteCanvas [style*="color"] {
+    color: #eee5d8 !important;
+}
+
+
+/* =========================================================
+   EDITOR TITLE
+   ========================================================= */
+
+body.dark-theme #editorTitle {
+    background: #302923 !important;
+    color: #f3e8dc !important;
+    border-color: #5b4c3e !important;
+}
+
+body.dark-theme #editorTitle::placeholder {
+    color: #a99a89 !important;
+}
+
+
+/* =========================================================
+   EDITOR TOOLBAR
+   ========================================================= */
+
+body.dark-theme #editorScreen .editor-toolbar,
+body.dark-theme #editorScreen .note-toolbar,
+body.dark-theme #editorScreen .editor-header {
+    background: #241f1a !important;
+    color: #eee5d8 !important;
+    border-color: #514337 !important;
+}
+
+body.dark-theme #editorScreen button {
+    color: #eee5d8 !important;
+}
+
+
+/* =========================================================
+   SAVE STATUS
+   ========================================================= */
+
+body.dark-theme #saveStatus {
+    color: #bca990 !important;
+}
+
+/* =========================================================
+   STUDY SPACE — FINAL NOTES DARK MODE FIX
+   Put this at the VERY END of notes.css
+   Fixes opened notes + experiment templates + white text
+========================================================= */
+
+
+/* =========================================================
+   1. EDITOR BACKGROUND
+========================================================= */
+
+body.dark-theme #editorScreen,
+body.dark-theme #editorScreen .editor-screen,
+body.dark #editorScreen,
+[data-theme="dark"] #editorScreen {
+    background: #211c18 !important;
+    color: #eee5dc !important;
+}
+
+
+/* =========================================================
+   2. NOTE PAPER / CANVAS
+========================================================= */
+
+body.dark-theme #noteCanvas,
+body.dark #noteCanvas,
+[data-theme="dark"] #noteCanvas {
+    background: #2b2520 !important;
+    color: #eee5dc !important;
+    border-color: #51443a !important;
+}
+
+
+/* =========================================================
+   3. FORCE ALL NOTE CONTENT TO BE READABLE
+========================================================= */
+
+body.dark-theme #noteCanvas *,
+body.dark #noteCanvas *,
+[data-theme="dark"] #noteCanvas * {
+    color: #eee5dc !important;
+}
+
+
+/* Headings */
+
+body.dark-theme #noteCanvas h1,
+body.dark-theme #noteCanvas h2,
+body.dark-theme #noteCanvas h3,
+body.dark-theme #noteCanvas h4,
+body.dark-theme #noteCanvas h5,
+body.dark-theme #noteCanvas h6,
+
+body.dark #noteCanvas h1,
+body.dark #noteCanvas h2,
+body.dark #noteCanvas h3,
+body.dark #noteCanvas h4,
+body.dark #noteCanvas h5,
+body.dark #noteCanvas h6,
+
+[data-theme="dark"] #noteCanvas h1,
+[data-theme="dark"] #noteCanvas h2,
+[data-theme="dark"] #noteCanvas h3,
+[data-theme="dark"] #noteCanvas h4,
+[data-theme="dark"] #noteCanvas h5,
+[data-theme="dark"] #noteCanvas h6 {
+    color: #fff5eb !important;
+}
+
+
+/* Paragraphs */
+
+body.dark-theme #noteCanvas p,
+body.dark-theme #noteCanvas span,
+body.dark-theme #noteCanvas label,
+body.dark-theme #noteCanvas strong,
+body.dark-theme #noteCanvas b,
+body.dark-theme #noteCanvas li,
+
+body.dark #noteCanvas p,
+body.dark #noteCanvas span,
+body.dark #noteCanvas label,
+body.dark #noteCanvas strong,
+body.dark #noteCanvas b,
+body.dark #noteCanvas li,
+
+[data-theme="dark"] #noteCanvas p,
+[data-theme="dark"] #noteCanvas span,
+[data-theme="dark"] #noteCanvas label,
+[data-theme="dark"] #noteCanvas strong,
+[data-theme="dark"] #noteCanvas b,
+[data-theme="dark"] #noteCanvas li {
+    color: #eee5dc !important;
+}
+
+
+/* =========================================================
+   4. CONTENTEDITABLE
+========================================================= */
+
+body.dark-theme #noteCanvas [contenteditable="true"],
+body.dark #noteCanvas [contenteditable="true"],
+[data-theme="dark"] #noteCanvas [contenteditable="true"] {
+    background: #302923 !important;
+    color: #f3e8dc !important;
+    caret-color: #f3e8dc !important;
+}
+
+
+/* Everything typed inside contenteditable */
+
+body.dark-theme #noteCanvas [contenteditable="true"] *,
+body.dark #noteCanvas [contenteditable="true"] *,
+[data-theme="dark"] #noteCanvas [contenteditable="true"] * {
+    color: #f3e8dc !important;
+}
+
+
+/* Placeholder */
+
+body.dark-theme #noteCanvas [contenteditable="true"]:empty::before,
+body.dark #noteCanvas [contenteditable="true"]:empty::before,
+[data-theme="dark"] #noteCanvas [contenteditable="true"]:empty::before {
+    color: #9f9185 !important;
+}
+
+
+/* =========================================================
+   5. EXPERIMENT TEMPLATE
+========================================================= */
+
+/* Experiment page itself */
+
+body.dark-theme #noteCanvas .experiment-template,
+body.dark-theme #noteCanvas .experiment-page,
+body.dark-theme #noteCanvas .experiment-paper,
+body.dark #noteCanvas .experiment-template,
+body.dark #noteCanvas .experiment-page,
+body.dark #noteCanvas .experiment-paper,
+[data-theme="dark"] #noteCanvas .experiment-template,
+[data-theme="dark"] #noteCanvas .experiment-page,
+[data-theme="dark"] #noteCanvas .experiment-paper {
+    background: #2b2520 !important;
+    color: #eee5dc !important;
+}
+
+
+/* Experiment headings */
+
+body.dark-theme #noteCanvas .experiment-template h1,
+body.dark-theme #noteCanvas .experiment-template h2,
+body.dark-theme #noteCanvas .experiment-template h3,
+body.dark-theme #noteCanvas .experiment-template h4,
+
+body.dark-theme #noteCanvas .experiment-page h1,
+body.dark-theme #noteCanvas .experiment-page h2,
+body.dark-theme #noteCanvas .experiment-page h3,
+body.dark-theme #noteCanvas .experiment-page h4,
+
+body.dark #noteCanvas .experiment-template h1,
+body.dark #noteCanvas .experiment-template h2,
+body.dark #noteCanvas .experiment-template h3,
+body.dark #noteCanvas .experiment-template h4,
+
+body.dark #noteCanvas .experiment-page h1,
+body.dark #noteCanvas .experiment-page h2,
+body.dark #noteCanvas .experiment-page h3,
+body.dark #noteCanvas .experiment-page h4 {
+    color: #fff5eb !important;
+}
+
+
+/* Experiment labels */
+
+body.dark-theme #noteCanvas .experiment-template label,
+body.dark-theme #noteCanvas .experiment-template p,
+body.dark-theme #noteCanvas .experiment-template span,
+body.dark-theme #noteCanvas .experiment-page label,
+body.dark-theme #noteCanvas .experiment-page p,
+body.dark-theme #noteCanvas .experiment-page span,
+
+body.dark #noteCanvas .experiment-template label,
+body.dark #noteCanvas .experiment-template p,
+body.dark #noteCanvas .experiment-template span,
+body.dark #noteCanvas .experiment-page label,
+body.dark #noteCanvas .experiment-page p,
+body.dark #noteCanvas .experiment-page span {
+    color: #eee5dc !important;
+}
+
+
+/* =========================================================
+   6. VARIABLES
+   Manipulated / Responding / Controlled
+========================================================= */
+
+body.dark-theme #noteCanvas .manipulated-variable,
+body.dark-theme #noteCanvas .responding-variable,
+body.dark-theme #noteCanvas .controlled-variable,
+body.dark-theme #noteCanvas .controlled-variables,
+body.dark-theme #noteCanvas .variable-section,
+body.dark-theme #noteCanvas .variables-section,
+
+body.dark #noteCanvas .manipulated-variable,
+body.dark #noteCanvas .responding-variable,
+body.dark #noteCanvas .controlled-variable,
+body.dark #noteCanvas .controlled-variables,
+body.dark #noteCanvas .variable-section,
+body.dark #noteCanvas .variables-section {
+    background: #302923 !important;
+    color: #eee5dc !important;
+    border-color: #5b4c40 !important;
+}
+
+
+/* Variable headings */
+
+body.dark-theme #noteCanvas .manipulated-variable h3,
+body.dark-theme #noteCanvas .responding-variable h3,
+body.dark-theme #noteCanvas .controlled-variable h3,
+body.dark-theme #noteCanvas .controlled-variables h3,
+body.dark-theme #noteCanvas .variable-section h3,
+body.dark-theme #noteCanvas .variables-section h3,
+
+body.dark #noteCanvas .manipulated-variable h3,
+body.dark #noteCanvas .responding-variable h3,
+body.dark #noteCanvas .controlled-variable h3,
+body.dark #noteCanvas .controlled-variables h3,
+body.dark #noteCanvas .variable-section h3,
+body.dark #noteCanvas .variables-section h3 {
+    color: #fff5eb !important;
+}
+
+
+/* Variable text */
+
+body.dark-theme #noteCanvas .manipulated-variable *,
+body.dark-theme #noteCanvas .responding-variable *,
+body.dark-theme #noteCanvas .controlled-variable *,
+body.dark-theme #noteCanvas .controlled-variables *,
+body.dark-theme #noteCanvas .variable-section *,
+body.dark-theme #noteCanvas .variables-section *,
+
+body.dark #noteCanvas .manipulated-variable *,
+body.dark #noteCanvas .responding-variable *,
+body.dark #noteCanvas .controlled-variable *,
+body.dark #noteCanvas .controlled-variables *,
+body.dark #noteCanvas .variable-section *,
+body.dark #noteCanvas .variables-section * {
+    color: #eee5dc !important;
+}
+
+
+/* Variable inputs */
+
+body.dark-theme #noteCanvas .manipulated-variable input,
+body.dark-theme #noteCanvas .responding-variable input,
+body.dark-theme #noteCanvas .controlled-variable input,
+body.dark-theme #noteCanvas .controlled-variables input,
+body.dark-theme #noteCanvas .variable-section input,
+body.dark-theme #noteCanvas .variables-section input,
+
+body.dark-theme #noteCanvas .manipulated-variable textarea,
+body.dark-theme #noteCanvas .responding-variable textarea,
+body.dark-theme #noteCanvas .controlled-variable textarea,
+body.dark-theme #noteCanvas .controlled-variables textarea,
+
+body.dark #noteCanvas .manipulated-variable input,
+body.dark #noteCanvas .responding-variable input,
+body.dark #noteCanvas .controlled-variable input,
+body.dark #noteCanvas .controlled-variables input,
+body.dark #noteCanvas .variable-section input,
+body.dark #noteCanvas .variables-section input,
+
+body.dark #noteCanvas .manipulated-variable textarea,
+body.dark #noteCanvas .responding-variable textarea,
+body.dark #noteCanvas .controlled-variable textarea,
+body.dark #noteCanvas .controlled-variables textarea {
+    background: #211c18 !important;
+    color: #f3e8dc !important;
+    border: 1px solid #665548 !important;
+}
+
+
+/* =========================================================
+   7. AIM / HYPOTHESIS / APPARATUS / PROCEDURE
+========================================================= */
+
+body.dark-theme #noteCanvas .practical-section,
+body.dark #noteCanvas .practical-section,
+[data-theme="dark"] #noteCanvas .practical-section {
+    color: #eee5dc !important;
+}
+
+
+body.dark-theme #noteCanvas .practical-section h3,
+body.dark #noteCanvas .practical-section h3,
+[data-theme="dark"] #noteCanvas .practical-section h3 {
+    color: #d9a46c !important;
+}
+
+
+/* Boxes */
+
+body.dark-theme #noteCanvas .practical-box,
+body.dark #noteCanvas .practical-box,
+[data-theme="dark"] #noteCanvas .practical-box {
+    background: #302923 !important;
+    color: #eee5dc !important;
+    border-color: #5b4c40 !important;
+}
+
+
+/* Procedure */
+
+body.dark-theme #noteCanvas .procedure-box,
+body.dark #noteCanvas .procedure-box,
+[data-theme="dark"] #noteCanvas .procedure-box {
+    background: #302923 !important;
+    color: #eee5dc !important;
+}
+
+
+/* =========================================================
+   8. DIAGRAM AREA
+========================================================= */
+
+body.dark-theme #noteCanvas .diagram-box,
+body.dark #noteCanvas .diagram-box,
+[data-theme="dark"] #noteCanvas .diagram-box {
+    background-color: #302923 !important;
+
+    background-image:
+        linear-gradient(#4a4037 1px, transparent 1px),
+        linear-gradient(90deg, #4a4037 1px, transparent 1px) !important;
+
+    background-size: 25px 25px !important;
+
+    border-color: #5b4c40 !important;
+}
+
+
+body.dark-theme #noteCanvas .diagram-label,
+body.dark #noteCanvas .diagram-label,
+[data-theme="dark"] #noteCanvas .diagram-label {
+    color: #9f9185 !important;
+}
+
+
+/* =========================================================
+   9. INPUTS / TEXTAREAS
+========================================================= */
+
+body.dark-theme #noteCanvas input,
+body.dark-theme #noteCanvas textarea,
+body.dark-theme #noteCanvas select,
+
+body.dark #noteCanvas input,
+body.dark #noteCanvas textarea,
+body.dark #noteCanvas select,
+
+[data-theme="dark"] #noteCanvas input,
+[data-theme="dark"] #noteCanvas textarea,
+[data-theme="dark"] #noteCanvas select {
+    background: #302923 !important;
+    color: #f3e8dc !important;
+    border: 1px solid #625244 !important;
+}
+
+
+/* =========================================================
+   10. TABLES
+========================================================= */
+
+body.dark-theme #noteCanvas table,
+body.dark #noteCanvas table,
+[data-theme="dark"] #noteCanvas table {
+    background: #2b2520 !important;
+    color: #eee5dc !important;
+    border-color: #5b4c40 !important;
+}
+
+
+body.dark-theme #noteCanvas th,
+body.dark-theme #noteCanvas td,
+body.dark #noteCanvas th,
+body.dark #noteCanvas td,
+[data-theme="dark"] #noteCanvas th,
+[data-theme="dark"] #noteCanvas td {
+    background: #302923 !important;
+    color: #eee5dc !important;
+    border: 1px solid #5b4c40 !important;
+}
+
+
+/* =========================================================
+   11. EDITOR TITLE
+========================================================= */
+
+body.dark-theme #editorTitle,
+body.dark #editorTitle,
+[data-theme="dark"] #editorTitle {
+    background: #302923 !important;
+    color: #f3e8dc !important;
+    border-color: #5b4c3e !important;
+}
+
+
+/* =========================================================
+   12. TOOLBAR
+========================================================= */
+
+body.dark-theme #editorScreen .editor-toolbar,
+body.dark #editorScreen .editor-toolbar,
+[data-theme="dark"] #editorScreen .editor-toolbar {
+    background: #241f1a !important;
+    border-color: #514337 !important;
+}
+
+
+body.dark-theme #editorScreen .editor-toolbar button,
+body.dark #editorScreen .editor-toolbar button,
+[data-theme="dark"] #editorScreen .editor-toolbar button {
+    color: #eee5dc !important;
+    background: transparent !important;
+}
+
+
+body.dark-theme #editorScreen .editor-toolbar button:hover,
+body.dark #editorScreen .editor-toolbar button:hover,
+[data-theme="dark"] #editorScreen .editor-toolbar button:hover {
+    background: #382f28 !important;
+}
+
+
+/* =========================================================
+   13. SAVE STATUS
+========================================================= */
+
+body.dark-theme #saveStatus,
+body.dark #saveStatus,
+[data-theme="dark"] #saveStatus {
+    color: #bca990 !important;
+}
+
+
+/* =========================================================
+   14. INLINE WHITE BACKGROUNDS
+   Fixes template elements that have inline styles
+========================================================= */
+
+body.dark-theme #noteCanvas [style*="background: white"],
+body.dark-theme #noteCanvas [style*="background:white"],
+body.dark-theme #noteCanvas [style*="background-color: white"],
+body.dark-theme #noteCanvas [style*="background-color:white"],
+
+body.dark #noteCanvas [style*="background: white"],
+body.dark #noteCanvas [style*="background:white"],
+body.dark #noteCanvas [style*="background-color: white"],
+body.dark #noteCanvas [style*="background-color:white"] {
+    background: #302923 !important;
+}
+
+
+/* =========================================================
+   15. INLINE DARK TEXT
+   Fixes inline black / brown text
+========================================================= */
+
+body.dark-theme #noteCanvas [style*="color: black"],
+body.dark-theme #noteCanvas [style*="color:black"],
+body.dark-theme #noteCanvas [style*="color: #000"],
+body.dark-theme #noteCanvas [style*="color:#000"],
+
+body.dark #noteCanvas [style*="color: black"],
+body.dark #noteCanvas [style*="color:black"],
+body.dark #noteCanvas [style*="color: #000"],
+body.dark #noteCanvas [style*="color:#000"] {
+    color: #eee5dc !important;
+}
+
+
+/* =========================================================
+   16. SELECTION
+========================================================= */
+
+body.dark-theme #noteCanvas ::selection,
+body.dark #noteCanvas ::selection,
+[data-theme="dark"] #noteCanvas ::selection {
+    background: #75624f !important;
+    color: #ffffff !important;
+}
+
+
+/* =========================================================
+   17. PLACEHOLDERS
+========================================================= */
+
+body.dark-theme #noteCanvas input::placeholder,
+body.dark-theme #noteCanvas textarea::placeholder,
+body.dark #noteCanvas input::placeholder,
+body.dark #noteCanvas textarea::placeholder,
+[data-theme="dark"] #noteCanvas input::placeholder,
+[data-theme="dark"] #noteCanvas textarea::placeholder {
+    color: #9f9185 !important;
+}
+
+
+/* =========================================================
+   18. LINKS
+========================================================= */
+
+body.dark-theme #noteCanvas a,
+body.dark #noteCanvas a,
+[data-theme="dark"] #noteCanvas a {
+    color: #d9b58d !important;
+}
+
+.whiteboard-canvas-wrapper {
+    position: relative;
+    overflow: auto;
+}
+
+#whiteboardCanvas {
+    position: absolute;
+    inset: 0;
+    display: block;
+    touch-action: none;
+}
+
+.whiteboard-objects {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+}
+
+.whiteboard-object {
+    position: absolute;
+    pointer-events: auto;
+    z-index: 5;
+}
+
+.whiteboard-text-object {
+    min-width: 140px;
+    min-height: 35px;
+    padding: 8px;
+    font-size: 18px;
+    outline: none;
+    cursor: text;
+}
+
+.whiteboard-sticky {
+    width: 160px;
+    min-height: 120px;
+    padding: 15px;
+    background: #f4d98b;
+    border-radius: 4px;
+    box-shadow: 0 4px 12px rgba(0,0,0,.12);
+    outline: none;
+    cursor: move;
+}
+
+.whiteboard-shape {
+    width: 90px;
+    height: 90px;
+    border: 3px solid #6f4e37;
+    border-radius: 50%;
+    cursor: move;
+}
+
+.whiteboard-tool.active {
+    font-weight: 700;
+    transform: translateY(-1px);
+}
+
+.whiteboard-canvas-wrapper.grid-enabled {
+    background-image:
+        linear-gradient(rgba(111,78,55,.12) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(111,78,55,.12) 1px, transparent 1px);
+    background-size: 24px 24px;
+}

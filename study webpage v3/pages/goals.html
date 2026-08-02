@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Goals | Study Space</title>
+    <!-- MAIN WEBSITE CSS -->
+    <link rel="stylesheet" href="../style.css">
+    <!-- GOALS CSS -->
+    <link rel="stylesheet" href="../css/goals.css">
+</head>
+<body>
+
+<div class="app-layout">
+
+    <!-- =========================
+SIDEBAR
+========================= -->
+
+<aside class="sidebar">
+<div class="sidebar-logo">
+<div class="logo-icon">
+☕︎
+</div>
+
+<h2>
+Study Space
+</h2>
+
+</div>
+<nav class="sidebar-nav">
+<div class="nav-group">
+<p class="nav-title">
+HOME
+</p>
+
+<button onclick="goHome()">
+🖳 Desk
+</button>
+
+</div>
+
+<div class="nav-group">
+
+<p class="nav-title">
+PRODUCTIVITY
+</p>
+
+<button onclick="openPomodoro()">
+⌛︎ Focus
+</button>
+
+<button onclick="openTasks()">
+☑ Tasks
+</button>
+
+<button onclick="openCalendar()">
+🗓 Calendar
+</button>
+
+<button onclick="openPlanner()">
+◔ Planner
+</button>
+
+</div>
+
+<div class="nav-group">
+
+<p class="nav-title">
+WORKSPACE
+</p>
+
+<button onclick="openNotes()">
+🗐 Notes
+</button>
+
+</div>
+
+<div class="nav-group">
+
+<p class="nav-title">
+PERSONAL
+</p>
+
+<button onclick="openBuddy()">
+˙𐃷˙ Study buddy
+</button>
+
+<button onclick="openGoals()">
+⚽︎ Goals
+</button>
+
+<!--<button onclick="openAchievements()">
+★ Achievements
+</button>-->
+
+</div>
+<div class="nav-group">
+
+<p class="nav-title">
+SYSTEM
+</p>
+
+<button onclick="openProgress()">
+◔ Progress
+</button>
+
+<button onclick="openSettings()">
+⏣ Settings
+</button>
+
+</div>
+
+</nav>
+<div class="sidebar-bottom">
+<button onclick="toggleTheme()"
+        id="themeButton">⏾ Theme</div>
+
+</aside>
+
+    <!-- ===================================
+         MAIN CONTENT
+    =================================== -->
+    <main class="goals-page">
+
+        <!-- HEADER -->
+        <section class="goals-header">
+            <div>
+                <h1>🎯 Goals</h1>
+                <p>Set goals, track your progress and keep moving forward.</p>
+            </div>
+            <button id="addGoalButton" class="goal-main-button">+ New Goal</button>
+        </section>
+
+        <!-- SUMMARY -->
+        <section class="goal-summary">
+            <div class="summary-card">
+                <div class="summary-icon">🎯</div>
+                <div>
+                    <span>Total Goals</span>
+                    <strong id="totalGoals">0</strong>
+                </div>
+            </div>
+
+            <div class="summary-card">
+                <div class="summary-icon">🔥</div>
+                <div>
+                    <span>Active</span>
+                    <strong id="activeGoals">0</strong>
+                </div>
+            </div>
+
+            <div class="summary-card">
+                <div class="summary-icon">✓</div>
+                <div>
+                    <span>Completed</span>
+                    <strong id="completedGoals">0</strong>
+                </div>
+            </div>
+        </section>
+
+        <!-- GOALS GRID -->
+        <section class="goals-section">
+            <div class="section-heading">
+                <h2>My Goals</h2>
+                <select id="goalFilter">
+                    <option value="all">All Goals</option>
+                    <option value="active">Active</option>
+                    <option value="completed">Completed</option>
+                </select>
+            </div>
+
+            <div id="goalsGrid" class="goals-grid"></div>
+
+            <!-- EMPTY STATE -->
+            <div id="emptyGoals" class="empty-goals">
+                <div class="empty-icon">🎯</div>
+                <h3>No goals yet</h3>
+                <p>Create your first goal and start working towards it.</p>
+                <button id="emptyAddGoalButton">+ Create Your First Goal</button>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- ===================================
+         GOAL SIDE PANEL
+    =================================== -->
+    <div id="goalPanel" class="goal-panel">
+        <div class="goal-panel-header">
+            <h2 id="goalPanelTitle">New Goal</h2>
+            <button id="closeGoalPanel" class="close-goal-panel">✕</button>
+        </div>
+
+        <div class="goal-panel-body">
+            <label for="goalTitle">Goal Name</label>
+            <input type="text" id="goalTitle" placeholder="e.g. Finish Chemistry Chapter 5">
+
+            <label for="goalDescription">Description</label>
+            <textarea id="goalDescription" placeholder="What do you want to achieve?"></textarea>
+
+            <label for="goalCategory">Category</label>
+            <select id="goalCategory">
+                <option value="study">📚 Study</option>
+                <option value="personal">⭐ Personal</option>
+                <option value="health">🌱 Health</option>
+                <option value="hobby">🎨 Hobby</option>
+                <option value="other">📌 Other</option>
+            </select>
+
+            <label for="goalDate">Target Date</label>
+            <input type="date" id="goalDate">
+
+            <label for="goalProgress">Progress</label>
+            <div class="progress-input">
+                <input type="range" id="goalProgress" min="0" max="100" value="0">
+                <span id="goalProgressValue">0%</span>
+            </div>
+
+            <div class="goal-panel-buttons">
+                <button id="saveGoalButton" class="main-button">Save Goal</button>
+                <button id="deleteGoalButton" class="delete-button">Delete Goal</button>
+                <button id="cancelGoalButton" class="secondary-button">Cancel</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===================================
+         FLOATING STUDY BUDDY
+    =================================== -->
+    <div id="goalsStudyBuddy" class="goals-study-buddy">
+        <div class="buddy-drag-handle"></div>
+        <img id="goalsBuddyImage"src=""alt="Study Buddy"draggable="false">
+    </div>
+
+</div>
+
+<!-- ===================================
+     JAVASCRIPT
+=================================== -->
+<script src="../js/storage.js"></script>
+<script src="../js/sidebar.js"></script>
+<script src="../js/goals.js"></script>
+<script src="../js/theme.js"></script>
+
+</body>
+</html>

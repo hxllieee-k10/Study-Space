@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Planner | Study Space</title>
+<link rel="stylesheet" href="../style.css">
+<link rel="stylesheet" href="../css/planner.css">
+</head>
+<body class="planner-page">
+<div class="app-layout">
+<!-- =========================
+SIDEBAR
+========================= -->
+<aside class="sidebar">
+<div class="sidebar-logo">
+<div class="logo-icon">☕︎</div>
+<h2>Study Space</h2>
+</div>
+<nav class="sidebar-nav">
+<div class="nav-group">
+<p class="nav-title">HOME</p>
+<button onclick="goHome()">🖳 Desk</button>
+</div>
+<div class="nav-group">
+<p class="nav-title">PRODUCTIVITY</p>
+<button onclick="openPomodoro()">⌛︎ Focus</button>
+<button onclick="openTasks()">☑ Tasks</button>
+<button onclick="openCalendar()">🗓 Calendar</button>
+<button onclick="openPlanner()">◔ Planner</button>
+</div>
+<div class="nav-group">
+<p class="nav-title">WORKSPACE</p>
+<button onclick="openNotes()">🗐 Notes</button>
+</div>
+<div class="nav-group">
+<p class="nav-title">PERSONAL</p>
+<button onclick="openBuddy()">˙𐃷˙ Study buddy</button>
+<button onclick="openGoals()">⚽︎ Goals</button>
+<!--<button onclick="openAchievements()">★ Achievements</button>-->
+</div>
+<div class="nav-group">
+<p class="nav-title">SYSTEM</p>
+<button onclick="openProgress()">◔ Progress</button>
+<button onclick="openSettings()">⏣ Settings</button>
+</div>
+</nav>
+<div class="sidebar-bottom">
+<button onclick="toggleTheme()" id="themeButton">⏾ Theme</button>
+</div>
+</aside>
+<main class="planner-content">
+<header class="planner-header">
+<div>
+<p class="page-label">STUDY PLANNER</p>
+<h1>Planner</h1>
+<p class="page-subtitle">Plan your study time and keep your week organised.</p>
+</div>
+<button class="add-plan-button" id="addPlanButton">Add Plan</button>
+</header>
+<section class="week-navigation">
+<button class="week-nav-button" id="previousWeekButton">Previous</button>
+<div class="week-title">
+<h2 id="weekTitle">This Week</h2>
+<p id="weekDateRange">Loading...</p>
+</div>
+<button class="week-nav-button" id="nextWeekButton">Next</button>
+</section>
+<button class="today-button" id="todayButton">Today</button>
+<section class="planner-week-section">
+<div class="planner-week" id="plannerWeek"></div>
+</section>
+<section class="planner-overview">
+<div class="section-header">
+<div>
+<p class="section-label">THIS WEEK</p>
+<h2>Weekly Plans</h2>
+<p>A simple overview of everything planned this week.</p>
+</div>
+</div>
+<div class="weekly-plan-list" id="weeklyPlanList"></div>
+<div class="empty-plans" id="emptyPlans">
+<h3>Nothing planned yet</h3>
+<p>Add a plan to start organising your week.</p>
+<button class="empty-add-plan-button" id="emptyAddPlanButton">Add Your First Plan</button>
+</div>
+</section>
+</main>
+<div class="plan-panel-overlay" id="planPanelOverlay">
+<aside class="plan-panel">
+<div class="plan-panel-header">
+<div>
+<p class="section-label">STUDY PLAN</p>
+<h2 id="planPanelTitle">Add Plan</h2>
+</div>
+<button class="close-plan-panel" id="closePlanPanel">Close</button>
+</div>
+<div class="plan-form">
+<div class="form-group">
+<label for="planTitle">Plan Title</label>
+<input type="text" id="planTitle" placeholder="Example: Biology revision">
+</div>
+<div class="form-row">
+<div class="form-group">
+<label for="planDate">Date</label>
+<input type="date" id="planDate">
+</div>
+<div class="form-group">
+<label for="planSubject">Subject</label>
+<input type="text" id="planSubject" placeholder="Example: Biology">
+</div>
+</div>
+<div class="form-row">
+<div class="form-group">
+<label for="planStartTime">Start Time</label>
+<input type="time" id="planStartTime">
+</div>
+<div class="form-group">
+<label for="planEndTime">End Time</label>
+<input type="time" id="planEndTime">
+</div>
+</div>
+<div class="form-group">
+<label for="planNotes">Notes</label>
+<textarea id="planNotes" rows="4" placeholder="Anything you want to remember..."></textarea>
+</div>
+</div>
+<div class="plan-panel-footer">
+<button class="delete-plan-button" id="deletePlanButton">Delete Plan</button>
+<div class="plan-panel-actions">
+<button class="cancel-plan-button" id="cancelPlanButton">Cancel</button>
+<button class="save-plan-button" id="savePlanButton">Save Plan</button>
+</div>
+</div>
+</aside>
+</div>
+</div>
+<script src="../js/storage.js"></script>
+<script src="../js/sidebar.js"></script>
+<script src="../js/planner.js"></script>
+<script src="../js/theme.js"></script>
+</body>
+</html>

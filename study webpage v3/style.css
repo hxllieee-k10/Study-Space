@@ -1,0 +1,4777 @@
+/* =====================================
+   STUDY SPACE V3
+   MAIN STYLE SYSTEM
+   PART 1: RESET + BODY
+===================================== */
+
+
+/* RESET */
+
+* {
+
+    margin:0;
+
+    padding:0;
+
+    box-sizing:border-box;
+
+    font-family:"Segoe UI", sans-serif;
+
+}
+
+
+body{
+
+    background:#f3e7d7;
+
+    color:#4a3526;
+
+    min-height:100vh;
+
+}
+
+
+body,
+section,
+.sidebar,
+button,
+input,
+select,
+.buddy-card,
+.custom-preview,
+.tools-grid button,
+.stats div{
+
+    transition:
+    background-color .6s ease,
+    color .6s ease,
+    border-color .6s ease,
+    box-shadow .6s ease;
+
+}
+
+
+/* =====================================
+   DARK MODE
+===================================== */
+
+
+body.dark,
+html.dark body{
+
+    background:#1c1713;
+
+    color:#eee3d8;
+
+}
+
+
+
+body.dark section,
+body.dark .login-card,
+body.dark .buddy-card,
+body.dark .custom-preview,
+body.dark .buddy-preview {
+
+
+    background:#2a211b;
+
+    color:#eee3d8;
+
+
+}
+
+
+
+
+body.dark h1,
+body.dark h2,
+body.dark h3 {
+
+    color:#f6e8d8;
+
+}
+
+
+
+
+body.dark p {
+
+    color:#cdbfb1;
+
+}
+
+
+
+
+body.dark input,
+body.dark select {
+
+
+    background:#30251e;
+
+    color:white;
+
+    border-color:#59483a;
+
+
+}
+
+
+body.dark button {
+
+    border:none;
+
+}
+
+
+
+/* =====================================
+   PART 2
+   GENERAL COMPONENTS
+===================================== */
+
+
+/* SECTIONS */
+
+section {
+
+    background:#fff7ed;
+
+    border-radius:22px;
+
+    padding:28px;
+
+    margin-bottom:18px;
+
+
+    box-shadow:
+
+    0 10px 25px rgba(90,60,30,.08);
+
+}
+
+
+
+body.dark section {
+
+    background:#2a211b;
+
+}
+
+
+
+
+
+/* TEXT */
+
+
+h1,
+h2,
+h3 {
+
+    margin-bottom:12px;
+
+}
+
+
+
+p {
+
+    line-height:1.6;
+
+}
+
+
+
+
+
+/* =====================================
+   GLOBAL BUTTON RESET
+===================================== */
+
+
+button {
+
+    cursor:pointer;
+
+    border:none;
+
+    transition:
+
+    transform .2s ease,
+
+    background .2s ease,
+
+    color .2s ease;
+
+}
+
+
+
+button:hover {
+
+    transform:translateY(-2px);
+
+}
+
+
+
+button {
+
+    appearance:none;
+
+    -webkit-appearance:none;
+
+    outline:none;
+
+}
+
+
+button:focus {
+
+    outline:none;
+
+}
+
+
+
+.main-button,
+button {
+
+    border:0;
+
+}
+
+
+/* =====================================
+   INPUTS
+===================================== */
+
+
+input,
+select {
+
+
+    width:100%;
+
+
+    padding:14px;
+
+
+    border-radius:15px;
+
+
+    border:
+
+    1px solid #ddd;
+
+
+    margin:8px 0;
+
+
+    background:#fff7ed;
+
+
+    color:#4a3526;
+
+
+}
+
+
+
+body.dark input,
+body.dark select {
+
+
+    background:#30251e;
+
+
+    color:white;
+
+
+    border-color:#59483a;
+
+
+}
+
+
+
+
+/* =====================================
+   FLEX HELPERS
+===================================== */
+
+
+.row {
+
+    display:flex;
+
+    gap:15px;
+
+}
+
+
+
+
+/* =====================================
+   PART 3
+   APP LAYOUT + SIDEBAR
+===================================== */
+
+
+/* =====================================
+   MAIN LAYOUT
+===================================== */
+
+
+.app-layout {
+
+    display:flex;
+
+    min-height:100vh;
+
+}
+
+
+
+
+
+/* =====================================
+   SIDEBAR
+===================================== */
+
+
+.sidebar {
+
+
+    position:fixed;
+
+
+    left:0;
+
+
+    top:0;
+
+
+    width:230px;
+
+
+    height:100vh;
+
+
+    background:#f8ecdc;
+
+
+    padding:20px 15px;
+
+
+    display:flex;
+
+
+    flex-direction:column;
+
+
+    border-right:
+    1px solid #dfcbb3;
+
+
+    z-index:10;
+
+
+}
+
+
+
+
+
+.sidebar-logo {
+
+
+    text-align:center;
+
+
+    margin-bottom:20px;
+
+
+}
+
+
+
+
+
+.logo-icon {
+
+
+    font-size:32px;
+
+
+}
+
+
+
+
+
+.sidebar-logo h2 {
+
+
+    font-size:20px;
+
+
+}
+
+
+
+
+
+/* Navigation */
+
+
+.sidebar-nav {
+
+
+    flex:1;
+
+
+    overflow-y:auto;
+
+
+}
+
+
+
+
+
+.nav-group {
+
+
+    margin-bottom:15px;
+
+
+}
+
+
+
+
+
+.nav-title {
+
+
+    font-size:10px;
+
+
+    letter-spacing:2px;
+
+
+    font-weight:bold;
+
+
+    color:#a38c78;
+
+
+    margin:
+
+    10px 0 6px 8px;
+
+
+}
+
+
+
+
+
+.sidebar button {
+
+
+    width:100%;
+
+
+    height:38px;
+
+
+    padding-left:14px;
+
+
+    display:flex;
+
+
+    align-items:center;
+
+
+    background:transparent;
+
+
+    border-radius:12px;
+
+
+    color:#4b4038;
+
+
+}
+
+
+
+
+
+.sidebar button:hover {
+
+
+    background:#ead5bf;
+
+
+    transform:translateX(3px);
+
+
+}
+
+
+
+
+
+.sidebar-bottom {
+
+
+    border-top:
+
+    1px solid #eadfd4;
+
+
+    padding-top:12px;
+
+
+}
+
+
+
+
+
+.profile-box {
+
+
+    background:#ead7bf;
+
+
+    border-radius:15px;
+
+
+    padding:10px;
+
+
+    margin-bottom:10px;
+
+
+}
+
+
+
+
+
+/* =====================================
+   DARK SIDEBAR
+===================================== */
+
+
+body.dark .sidebar {
+
+
+    background:#211b17;
+
+
+    border-color:#3d332b;
+
+
+}
+
+
+
+
+body.dark .sidebar button {
+
+
+    color:#eee3d8;
+
+
+}
+
+
+
+
+body.dark .sidebar button:hover {
+
+
+    background:#382e26;
+
+
+}
+
+
+
+
+body.dark .profile-box {
+
+
+    background:#302820;
+
+
+}
+
+
+
+/* =====================================
+   PART 4
+   DASHBOARD
+===================================== */
+
+
+/* =====================================
+   DASHBOARD LAYOUT
+===================================== */
+
+
+.dashboard-content {
+
+
+    margin-left:230px;
+
+
+    padding:30px 35px;
+
+
+    width:
+
+    calc(100% - 230px);
+
+
+}
+
+
+
+
+
+/* =====================================
+   WELCOME CARD
+===================================== */
+
+
+.welcome-card h1 {
+
+
+    font-size:28px;
+
+
+}
+
+
+
+
+.welcome-card span {
+
+
+    color:#b9895b;
+
+
+}
+
+
+
+
+
+/* =====================================
+   BUDDY DASHBOARD CARD
+===================================== */
+
+
+.buddy-card-dashboard {
+
+
+    display:flex;
+
+
+    align-items:center;
+
+
+    gap:25px;
+
+
+}
+
+
+
+
+.buddy-card-dashboard img {
+
+
+    width:110px;
+
+
+    height:110px;
+
+
+    object-fit:contain;
+
+
+}
+
+
+
+
+
+/* =====================================
+   DASHBOARD BUTTONS
+===================================== */
+
+
+.dashboard-content button {
+
+
+    border-radius:16px;
+
+
+    font-size:14px;
+
+
+    font-weight:600;
+
+
+}
+
+
+
+
+
+.focus-card button,
+.tasks-card button {
+
+
+    margin-top:15px;
+
+
+    height:44px;
+
+
+    padding:
+
+    0 25px;
+
+
+    background:#b9895b;
+
+
+    color:white;
+
+
+}
+
+
+
+
+.focus-card button {
+
+
+    min-width:170px;
+
+
+}
+
+
+
+
+
+.tasks-card button {
+
+
+    min-width:140px;
+
+
+}
+
+
+
+
+
+.focus-card button:hover,
+.tasks-card button:hover {
+
+
+    background:#c99b6d;
+
+
+}
+
+
+
+
+
+/* =====================================
+   TOOLS GRID
+===================================== */
+
+
+.tools-grid {
+
+
+    display:grid;
+
+
+    grid-template-columns:repeat(4,1fr);
+
+
+    gap:15px;
+
+
+}
+
+
+
+
+
+.tools-grid button {
+
+
+    height:95px;
+
+
+    border-radius:18px;
+
+
+    background:#ead8c4;
+
+
+    padding:15px;
+
+
+}
+
+
+
+
+
+body.dark .tools-grid button {
+
+
+    background:#342820;
+
+
+    color:#eee3d8;
+
+
+}
+
+
+
+
+body.dark .tools-grid button:hover {
+
+
+    background:#413128;
+
+
+}
+
+
+
+
+
+/* =====================================
+   PROGRESS STATS
+===================================== */
+
+
+.stats {
+
+
+    display:grid;
+
+
+    grid-template-columns:repeat(3,1fr);
+
+
+    gap:15px;
+
+
+}
+
+
+
+
+
+.stats div {
+
+
+    background:#ead8c4;
+
+
+    padding:18px;
+
+
+    border-radius:18px;
+
+
+    text-align:center;
+
+
+}
+
+
+
+
+
+.stats h3 {
+
+
+    font-size:28px;
+
+
+    color:#b9895b;
+
+
+}
+
+
+
+
+
+body.dark .stats div {
+
+
+    background:#342820;
+
+
+}
+
+
+
+
+
+body.dark .stats h3 {
+
+
+    color:#d9a46c;
+
+
+}
+
+
+
+
+/* =====================================
+   PART 5
+   LOGIN PAGE
+===================================== */
+
+
+/* =====================================
+   LOGIN CARD
+===================================== */
+
+
+.login-card {
+
+
+    width:430px;
+
+
+    margin:60px auto;
+
+
+    background:#fff7ed;
+
+
+    padding:45px;
+
+
+    border-radius:30px;
+
+
+    text-align:center;
+
+
+    box-shadow:
+
+
+    0 10px 25px rgba(0,0,0,.05);
+
+
+}
+
+
+
+
+
+.login-card h1 {
+
+
+    margin-bottom:20px;
+
+
+}
+
+
+
+
+
+.login-card button {
+
+
+    width:100%;
+
+
+    height:48px;
+
+
+    margin-top:15px;
+
+
+    border-radius:18px;
+
+
+    background:#b9895b;
+
+
+    color:white;
+
+
+    font-weight:600;
+
+
+}
+
+
+
+
+
+.login-card button:hover {
+
+
+    background:#c99b6d;
+
+
+}
+
+
+
+
+
+
+/* =====================================
+   LOGIN ROW
+===================================== */
+
+
+.row {
+
+
+    display:flex;
+
+
+    gap:15px;
+
+
+}
+
+
+
+
+
+
+
+/* =====================================
+   DARK MODE LOGIN
+===================================== */
+
+
+body.dark .login-card {
+
+
+    background:#2a211b;
+
+
+    color:#eee3d8;
+
+
+}
+
+
+
+
+
+
+/* =====================================
+   AUTH TEXT
+===================================== */
+
+
+.login-card p {
+
+
+    margin-top:15px;
+
+
+    font-size:14px;
+
+
+}
+
+
+
+
+
+.login-card a {
+
+
+    color:#b9895b;
+
+
+    text-decoration:none;
+
+
+}
+
+
+
+
+
+.login-card a:hover {
+
+
+    text-decoration:underline;
+
+
+}
+
+
+
+
+/* =====================================
+   PART 6
+   AVATAR PAGE
+   STUDY BUDDY SELECTION
+===================================== */
+
+
+
+/* =====================================
+   PAGE
+===================================== */
+
+
+.avatar-page {
+
+
+    max-width:1200px;
+
+
+    margin:auto;
+
+
+    padding:45px 50px;
+
+
+    text-align:center;
+
+
+}
+
+
+
+
+
+.avatar-page h1 {
+
+
+    font-size:32px;
+
+
+    margin-bottom:10px;
+
+
+}
+
+
+
+
+
+.avatar-page .quote {
+
+
+    color:#8d7968;
+
+
+    margin-bottom:35px;
+
+
+}
+
+
+
+
+
+body.dark .avatar-page .quote {
+
+
+    color:#cdbfb1;
+
+
+}
+
+
+
+
+
+
+
+/* =====================================
+   BUDDY PREVIEW
+===================================== */
+
+
+.buddy-preview {
+
+
+    width:280px;
+
+
+    margin:
+
+    0 auto 40px;
+
+
+    padding:25px;
+
+
+    border-radius:28px;
+
+
+    background:white;
+
+
+    box-shadow:
+
+
+    0 10px 25px rgba(0,0,0,.06);
+
+
+}
+
+
+
+
+
+.buddy-preview img {
+
+
+    width:140px;
+
+
+    height:140px;
+
+
+    object-fit:contain;
+
+
+}
+
+
+
+
+
+.buddy-preview p {
+
+
+    font-size:14px;
+
+
+    color:#8d7968;
+
+
+}
+
+
+
+
+
+body.dark .buddy-preview {
+
+
+    background:#2a211b;
+
+
+}
+
+
+
+
+
+/* =====================================
+   BUDDY GRID
+===================================== */
+
+
+.buddy-grid {
+
+
+    display:grid;
+
+
+    grid-template-columns:repeat(5,1fr);
+
+
+    gap:22px;
+
+
+    margin-top:20px;
+
+}
+
+
+
+
+
+
+
+/* =====================================
+   BUDDY CARD
+===================================== */
+
+
+.buddy-card {
+
+
+    background:#fff6e9;
+
+
+    border:
+    2px solid #ead8c3;
+
+
+    border-radius:22px;
+
+
+    padding:20px;
+
+
+    cursor:pointer;
+
+
+    color:#4a3b30;
+
+
+    transition:
+
+
+    transform .25s ease,
+
+
+    background .25s ease,
+
+
+    border-color .25s ease,
+
+
+    filter .25s ease;
+
+
+}
+
+
+
+
+
+.buddy-card img {
+
+
+    width:100px;
+
+
+    height:100px;
+
+
+    object-fit:contain;
+
+
+    margin-bottom:12px;
+
+
+}
+
+
+
+
+
+.buddy-card h3 {
+
+
+    margin-bottom:6px;
+
+
+}
+
+
+
+
+
+.buddy-card p {
+
+
+    color:#8d7968;
+
+
+    font-size:.9rem;
+
+
+}
+
+
+
+
+
+
+
+/* =====================================
+   HOVER EFFECT
+   Cursor touches card = invert
+===================================== */
+
+
+.buddy-card:hover {
+
+    background:#ead5bf;
+
+    border-color:#b9895b;
+
+    transform:
+    translateY(-5px);
+
+}
+
+
+
+
+
+
+/* =====================================
+   SELECTED CARD
+===================================== */
+
+
+.buddy-card.selected {
+
+
+    background:#ead5bf;
+
+
+    border:
+
+    2px solid #b9895b;
+
+
+    transform:
+
+    translateY(-5px);
+
+
+    box-shadow:
+
+
+    0 10px 22px rgba(185,137,91,.25);
+
+
+}
+
+
+
+
+
+.buddy-card.selected h3 {
+
+
+    color:#4a3b30;
+
+
+}
+
+
+
+
+
+.buddy-card.selected {
+
+    background:#ead5bf;
+
+    border:2px solid #b9895b;
+
+    transform:translateY(-5px);
+
+    box-shadow:
+    0 10px 22px rgba(185,137,91,.25);
+
+}
+
+
+
+
+
+
+/* =====================================
+   DARK MODE CARDS
+===================================== */
+
+
+body.dark .buddy-card {
+
+
+    background:#2a211b;
+
+
+    border-color:#47392f;
+
+
+    color:#eee3d8;
+
+
+}
+
+
+
+
+
+body.dark .buddy-card p {
+
+
+    color:#cdbfb1;
+
+
+}
+
+
+
+
+
+body.dark .buddy-card.selected {
+
+
+    background:#594333;
+
+
+    border-color:#d9a46c;
+
+
+}
+
+
+
+
+
+body.dark .buddy-card.selected h3,
+body.dark .buddy-card.selected p {
+
+
+    color:#eee3d8;
+
+
+}
+
+
+
+
+
+
+
+/* =====================================
+   WARNING MESSAGE
+===================================== */
+
+
+.avatar-hint {
+
+
+    min-height:20px;
+
+
+    margin-top:25px;
+
+
+    margin-bottom:12px;
+
+
+    text-align:center;
+
+
+    font-size:.85rem;
+
+
+    font-style:italic;
+
+
+    opacity:.75;
+
+
+}
+
+
+
+
+
+
+
+/* =====================================
+   CUSTOMIZE BUTTON
+===================================== */
+
+
+.avatar-page .main-button {
+
+
+    width:240px;
+
+
+    height:52px;
+
+
+    margin-top:10px;
+
+
+    padding:0 30px;
+
+
+    border-radius:25px;
+
+
+    background:#b9895b;
+
+
+    color:white;
+
+
+    font-size:15px;
+
+
+    font-weight:600;
+
+
+    letter-spacing:.3px;
+
+
+    box-shadow:
+
+
+    0 8px 18px rgba(185,137,91,.25);
+
+
+}
+
+
+
+
+
+.avatar-page .main-button:hover {
+
+
+    background:#c99b6d;
+
+
+    transform:
+
+    translateY(-3px);
+
+
+}
+
+
+
+
+
+/* =====================================
+   PART 7
+   BUDDY CUSTOMIZE PAGE
+===================================== */
+
+
+
+/* =====================================
+   PAGE
+===================================== */
+
+
+.customize-page {
+
+
+    max-width:1000px;
+
+
+    margin:auto;
+
+
+    padding:45px;
+
+
+    text-align:center;
+
+
+}
+
+
+
+
+
+.customize-page h1 {
+
+
+    font-size:32px;
+
+
+    margin-bottom:10px;
+
+
+}
+
+
+
+
+
+.customize-page .quote {
+
+
+    color:#8d7968;
+
+
+    margin-bottom:35px;
+
+
+}
+
+
+
+
+
+body.dark .customize-page .quote {
+
+
+    color:#cdbfb1;
+
+
+}
+
+
+
+
+
+
+
+/* =====================================
+   CUSTOM PREVIEW
+===================================== */
+
+
+.custom-preview {
+
+
+    background:#fff7ed;
+
+
+    padding:30px;
+
+
+    border-radius:30px;
+
+
+    margin-bottom:30px;
+
+
+    box-shadow:
+
+
+    0 10px 25px rgba(0,0,0,.06);
+
+
+}
+
+
+
+
+
+.custom-preview img {
+
+
+    width:180px;
+
+
+    height:180px;
+
+
+    object-fit:contain;
+
+
+    margin-bottom:15px;
+
+
+}
+
+
+
+
+
+.custom-preview h2 {
+
+
+    margin-bottom:8px;
+
+
+}
+
+
+
+
+
+.custom-preview p {
+
+
+    color:#8d7968;
+
+
+}
+
+
+
+
+
+body.dark .custom-preview {
+
+
+    background:#2a211b;
+
+
+}
+
+
+
+
+
+body.dark .custom-preview p {
+
+
+    color:#cdbfb1;
+
+
+}
+
+
+
+
+
+
+
+/* =====================================
+   CUSTOM OPTIONS GRID
+===================================== */
+
+
+.custom-options {
+
+
+    display:grid;
+
+
+    grid-template-columns:repeat(3,1fr);
+
+
+    gap:20px;
+
+
+}
+
+
+
+
+
+
+
+/* =====================================
+   OPTION CARD
+===================================== */
+
+
+.custom-option {
+
+
+    background:#fff0df;
+
+
+    padding:25px;
+
+
+    border-radius:22px;
+
+
+    cursor:pointer;
+
+
+    transition:.25s ease;
+
+
+}
+
+
+
+
+
+.custom-option:hover {
+
+
+    transform:
+
+    translateY(-5px);
+
+
+    background:#f6e5d3;
+
+
+}
+
+
+
+
+
+
+
+body.dark .custom-option {
+
+
+    background:#947a69;
+
+
+    color:#dac5b1;
+
+
+}
+
+
+
+
+
+body.dark .custom-option:hover {
+
+
+    background:#c2a38f;
+
+
+}
+
+
+
+
+
+
+
+/* =====================================
+   OPTION BUTTONS
+===================================== */
+
+
+.custom-option button {
+
+
+    margin-top:15px;
+
+
+    padding:
+
+    10px 20px;
+
+
+    border-radius:15px;
+
+
+    background:#b9895b;
+
+
+    color:white;
+
+
+    font-weight:600;
+
+
+}
+
+
+
+
+
+.custom-option button:hover {
+
+
+    background:#c99b6d;
+
+
+}
+
+
+
+
+
+
+
+/* =====================================
+   SAVE BUTTON
+===================================== */
+
+
+.customize-page .main-button {
+
+
+    margin-top:35px;
+
+
+    width:240px;
+
+
+    height:52px;
+
+
+    border-radius:25px;
+
+
+    background:#b9895b;
+
+
+    color:white;
+
+
+    font-weight:600;
+
+
+}
+
+
+
+
+
+.customize-page .main-button:hover {
+
+
+    background:#c99b6d;
+
+
+}
+
+
+
+
+/* =====================================
+   PART 8
+   THEME BUTTON + FLOATING ELEMENTS
+===================================== */
+
+
+
+/* =====================================
+   THEME TOGGLE BUTTON
+===================================== */
+
+
+.theme-toggle {
+
+
+    position:fixed;
+
+
+    top:20px;
+
+
+    right:20px;
+
+
+    width:45px;
+
+
+    height:45px;
+
+
+    border-radius:50%;
+
+
+    background:white;
+
+
+    color:#6d5746;
+
+
+    font-size:20px;
+
+
+    display:flex;
+
+
+    align-items:center;
+
+
+    justify-content:center;
+
+
+    box-shadow:
+
+
+    0 5px 15px rgba(0,0,0,.08);
+
+
+    z-index:100;
+
+
+}
+
+
+
+
+
+.theme-toggle:hover {
+
+
+    transform:
+
+    translateY(-3px);
+
+
+}
+
+
+
+
+
+
+
+body.dark .theme-toggle {
+
+
+    background:#342820;
+
+
+    color:#eee3d8;
+
+
+}
+
+
+
+
+
+
+
+/* =====================================
+   FLOATING CARDS / POPUPS
+===================================== */
+
+
+.floating-card {
+
+
+    position:fixed;
+
+
+    border-radius:20px;
+
+
+    padding:20px;
+
+
+    background:white;
+
+
+    box-shadow:
+
+
+    0 10px 25px rgba(180, 177, 177, 0.08);
+
+
+}
+
+
+
+
+
+body.dark .floating-card {
+
+
+    background:#2a211b;
+
+
+    color:#eee3d8;
+
+
+}
+
+
+
+
+
+
+
+/* =====================================
+   SCROLLBAR
+===================================== */
+
+
+::-webkit-scrollbar {
+
+
+    width:8px;
+
+
+}
+
+
+
+
+
+::-webkit-scrollbar-track {
+
+
+    background:#f3e7d7;
+
+
+}
+
+
+
+
+
+::-webkit-scrollbar-thumb {
+
+
+    background:#e7e6e6;
+
+
+    border-radius:20px;
+
+
+}
+
+
+
+
+
+body.dark ::-webkit-scrollbar-track {
+
+
+    background:#1c1713;
+
+
+}
+
+
+
+
+
+body.dark ::-webkit-scrollbar-thumb {
+
+
+    background:#594333;
+
+
+}
+
+
+
+
+/* =====================================
+   PART 9
+   RESPONSIVE DESIGN
+===================================== */
+
+
+
+/* =====================================
+   TABLET
+===================================== */
+
+
+@media(max-width:1100px){
+
+
+
+    /* Avatar grid */
+
+
+    .buddy-grid {
+
+
+        grid-template-columns:
+
+        repeat(4,1fr);
+
+
+    }
+
+
+
+
+
+    /* Customize options */
+
+
+    .custom-options {
+
+
+        grid-template-columns:
+
+        repeat(2,1fr);
+
+
+    }
+
+
+
+
+
+    /* Tools */
+
+
+    .tools-grid {
+
+
+        grid-template-columns:
+
+        repeat(2,1fr);
+
+
+    }
+
+
+
+
+}
+
+
+
+
+
+
+
+/* =====================================
+   SMALL TABLET
+===================================== */
+
+
+@media(max-width:900px){
+
+
+
+    /* Sidebar */
+
+
+    .sidebar {
+
+
+        width:80px;
+
+
+    }
+
+
+
+    .sidebar-logo h2,
+    .nav-title,
+    .profile-box {
+
+
+        display:none;
+
+
+    }
+
+
+
+
+
+    .dashboard-content {
+
+
+        margin-left:80px;
+
+
+        width:
+
+        calc(100% - 80px);
+
+
+    }
+
+
+
+
+
+    /* Stats */
+
+
+    .stats {
+
+
+        grid-template-columns:
+
+        1fr;
+
+
+    }
+
+
+
+
+
+    /* Buddy dashboard */
+
+
+    .buddy-card-dashboard {
+
+
+        flex-direction:column;
+
+
+        text-align:center;
+
+
+    }
+
+
+
+}
+
+
+
+
+
+
+
+/* =====================================
+   MOBILE PHONE
+===================================== */
+
+
+@media(max-width:600px){
+
+
+
+    /* General */
+
+
+    h1 {
+
+
+        font-size:24px;
+
+
+    }
+
+
+
+
+
+    /* Avatar */
+
+
+    .avatar-page {
+
+
+        padding:
+
+        25px 15px;
+
+
+    }
+
+
+
+
+
+    .buddy-grid {
+
+
+        grid-template-columns:
+
+        repeat(2,1fr);
+
+
+        gap:15px;
+
+
+    }
+
+
+
+
+
+    .buddy-card {
+
+
+        padding:15px;
+
+
+    }
+
+
+
+
+
+    .buddy-card img {
+
+
+        width:80px;
+
+
+        height:80px;
+
+
+    }
+
+
+
+
+
+    /* Button */
+
+
+    .avatar-page .main-button,
+    .customize-page .main-button {
+
+
+        width:90%;
+
+
+    }
+
+
+
+
+
+    /* Customize */
+
+
+    .customize-page {
+
+
+        padding:
+
+        25px 15px;
+
+
+    }
+
+
+
+
+
+    .custom-options {
+
+
+        grid-template-columns:
+
+        1fr;
+
+
+    }
+
+
+
+
+
+    .custom-preview img {
+
+
+        width:140px;
+
+
+        height:140px;
+
+
+    }
+
+
+
+
+
+    /* Login */
+
+
+    .login-card {
+
+
+        width:90%;
+
+
+        padding:30px;
+
+
+    }
+
+
+
+
+
+    /* Dashboard */
+
+
+    .dashboard-content {
+
+
+        padding:
+
+        20px;
+
+
+    }
+
+
+
+
+
+    .tools-grid {
+
+
+        grid-template-columns:
+
+        1fr;
+
+
+    }
+
+
+
+}
+
+/* ===============================
+   PAGE LOADING FIX
+================================ */
+
+
+body.loading .app-layout{
+
+    opacity:0;
+
+}
+
+
+.app-layout{
+
+    opacity:1;
+
+    transition:opacity .25s ease;
+
+}
+
+/* =====================================
+   FOCUS ROOM V4 CLEAN VERSION
+===================================== */
+
+
+/* PAGE */
+
+.focus-page{
+
+    min-height:100vh;
+
+    background:#f3e7d7;
+
+    color:#4a3526;
+
+    overflow-y:auto;
+
+    overflow-x:hidden;
+
+}
+
+
+
+/* =====================================
+   COLLAPSIBLE SIDEBAR
+===================================== */
+
+
+.focus-sidebar{
+
+    position:fixed;
+
+    left:0;
+
+    top:0;
+
+    height:100vh;
+
+    width:230px;
+
+    background:#f8ecdc;
+
+    padding:20px 15px;
+
+    border-right:1px solid #dfcbb3;
+
+    z-index:1000;
+
+    transition:.35s ease;
+
+}
+
+
+
+.focus-sidebar.collapsed{
+
+    width:75px;
+
+}
+
+
+
+.sidebar-toggle{
+
+    width:42px;
+
+    height:42px;
+
+    border-radius:14px;
+
+    background:#b9895b;
+
+    color:white;
+
+    font-size:20px;
+
+    margin-bottom:25px;
+
+}
+
+
+
+.focus-nav{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:12px;
+
+}
+
+
+
+.focus-nav button{
+
+    height:45px;
+
+    width:100%;
+
+    border-radius:14px;
+
+    background:transparent;
+
+    display:flex;
+
+    align-items:center;
+
+    gap:15px;
+
+    padding-left:12px;
+
+    color:#4a3526;
+
+    font-size:15px;
+
+}
+
+
+
+.focus-nav button:hover{
+
+    background:#ead5bf;
+
+}
+
+
+
+.focus-sidebar.collapsed span{
+
+    display:none;
+
+}
+
+
+
+.focus-sidebar.collapsed button{
+
+    justify-content:center;
+
+    padding:0;
+
+}
+
+
+
+
+/* =====================================
+   MAIN CONTENT
+===================================== */
+
+
+.focus-container{
+
+
+    margin-left:230px;
+
+    width:calc(100% - 230px);
+
+
+    min-height:100vh;
+
+
+    padding:40px;
+
+
+    display:flex;
+
+    flex-direction:column;
+
+    align-items:center;
+
+
+    transition:.35s ease;
+
+}
+
+
+
+.focus-sidebar.collapsed ~ .focus-container{
+
+
+    margin-left:75px;
+
+    width:calc(100% - 75px);
+
+}
+
+
+
+
+
+
+/* =====================================
+   HEADER
+===================================== */
+
+
+.focus-container h1{
+
+
+    font-size:38px;
+
+    margin-bottom:5px;
+
+}
+
+
+
+#dateText{
+
+    color:#8d7968;
+
+    margin-bottom:30px;
+
+}
+
+
+
+
+
+
+/* =====================================
+   GIANT CLOCK CARD
+===================================== */
+
+
+.giant-clock-card{
+
+
+    width:700px;
+
+
+    min-width:700px;
+
+
+    height:250px;
+
+
+    background:#fff7ed;
+
+
+    border-radius:35px;
+
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+
+    flex-direction:column;
+
+
+
+    box-shadow:
+
+    0 15px 35px rgba(90,60,30,.12);
+
+
+
+    margin-bottom:25px;
+
+
+    padding:20px;
+
+
+    box-sizing:border-box;
+
+
+}
+
+
+
+
+
+
+
+#realClock{
+
+
+    font-size:90px;
+
+
+    font-weight:800;
+
+
+    letter-spacing:2px;
+
+
+    color:#b9895b;
+
+
+    white-space:nowrap;
+
+
+}
+
+
+
+
+
+
+#clockMode{
+
+
+    font-size:20px;
+
+
+    color:#8d7968;
+
+
+    margin-top:8px;
+
+
+}
+
+
+
+
+
+
+
+
+
+/* =====================================
+   POMODORO TIMER
+===================================== */
+
+
+.pomodoro-box{
+
+
+    width:520px;
+
+
+    background:#fff7ed;
+
+
+    padding:35px;
+
+
+    border-radius:30px;
+
+
+    text-align:center;
+
+
+    box-shadow:
+
+    0 10px 25px rgba(90,60,30,.08);
+
+
+    box-sizing:border-box;
+
+
+}
+
+
+
+#timer{
+
+
+    font-size:85px;
+
+
+    font-weight:800;
+
+
+    letter-spacing:3px;
+
+
+    color:#4a3526;
+
+
+    white-space:nowrap;
+
+
+}
+
+
+
+
+
+
+.timer-controls,
+.duration-buttons{
+
+
+    display:flex;
+
+
+    justify-content:center;
+
+
+    gap:15px;
+
+
+    margin-top:20px;
+
+
+}
+
+
+
+.timer-controls button,
+.duration-buttons button{
+
+
+    padding:12px 25px;
+
+
+    border-radius:18px;
+
+
+    background:#b9895b;
+
+
+    color:white;
+
+
+}
+
+
+
+.timer-controls button:hover,
+.duration-buttons button:hover{
+
+
+    background:#c99b6d;
+
+
+}
+
+
+
+
+
+
+
+
+
+/* =====================================
+   LOFI SPOTIFY ROOM
+===================================== */
+
+
+.focus-music{
+
+
+    position:fixed;
+
+
+    right:25px;
+
+
+    bottom:25px;
+
+
+    width:260px;
+
+
+    padding:18px;
+
+
+    padding-top:45px;
+
+
+    border-radius:25px;
+
+
+    background:#fff7ed;
+
+
+    box-shadow:
+
+    0 10px 30px rgba(0,0,0,.12);
+
+
+    z-index:20;
+
+
+}
+
+
+
+
+
+.spotify-title{
+
+
+    text-align:center;
+
+
+    font-size:15px;
+
+
+    font-weight:600;
+
+
+    color:#4a3526;
+
+
+    margin-bottom:10px;
+
+
+}
+
+
+
+
+
+
+
+
+/* =====================================
+   BUDDY ON PLAYER
+===================================== */
+
+
+.lofi-buddy{
+
+
+    position:absolute;
+
+
+    top:-55px;
+
+
+    left:50%;
+
+
+    transform:translateX(-50%);
+
+
+    z-index:30;
+
+
+}
+
+
+
+.lofi-buddy img{
+
+
+    width:85px;
+
+
+    height:85px;
+
+
+    object-fit:contain;
+
+
+}
+
+
+
+
+
+
+
+/* =====================================
+   STICKY NOTE
+===================================== */
+
+
+.focus-note{
+
+
+    position:fixed;
+
+
+    left:260px;
+
+
+    bottom:30px;
+
+
+    width:220px;
+
+
+    min-height:120px;
+
+
+    padding:20px;
+
+
+    background:#ffe9a8;
+
+
+    border-radius:20px;
+
+
+    box-shadow:
+
+    0 10px 25px rgba(0,0,0,.1);
+
+
+}
+
+
+
+
+
+/* =====================================
+   DARK MODE
+===================================== */
+
+
+body.dark .focus-music{
+
+
+    background:#2a211b;
+
+
+}
+
+
+
+body.dark .spotify-title{
+
+
+    color:#eee3d8;
+
+
+}
+
+
+
+
+
+
+/* =====================================
+   RESPONSIVE CLOCK FIX
+===================================== */
+
+
+@media(max-width:900px){
+
+
+.giant-clock-card{
+
+
+    width:90%;
+
+    min-width:0;
+
+
+}
+
+
+
+#realClock{
+
+
+    font-size:55px;
+
+
+}
+
+
+.pomodoro-box{
+
+
+    width:90%;
+
+
+}
+
+
+}
+
+/* =====================================
+   DARK MODE
+===================================== */
+
+
+body.dark .focus-page{
+
+    background:#1c1713;
+
+}
+
+
+
+body.dark .focus-sidebar{
+
+
+    background:#211b17;
+
+    border-color:#3d332b;
+
+
+}
+
+
+
+body.dark .focus-nav button{
+
+
+    color:#eee3d8;
+
+
+}
+
+
+
+body.dark .focus-nav button:hover{
+
+
+    background:#382e26;
+
+
+}
+
+
+
+
+body.dark .giant-clock-card,
+body.dark .pomodoro-box,
+body.dark .focus-music{
+
+
+    background:#2a211b;
+
+    color:#eee3d8;
+
+
+}
+
+
+
+
+body.dark #realClock,
+body.dark #timer{
+
+
+    color:#d9a46c;
+
+
+}
+
+
+
+body.dark .focus-note{
+
+
+    background:#594333;
+
+    color:#eee3d8;
+
+}
+
+
+
+
+
+
+
+/* =====================================
+   MOBILE
+===================================== */
+
+
+@media(max-width:900px){
+
+
+.focus-sidebar{
+
+    width:75px;
+
+}
+
+
+.focus-container{
+
+    margin-left:75px;
+
+    width:calc(100% - 75px);
+
+}
+
+
+
+.giant-clock-card,
+.pomodoro-box{
+
+    width:90%;
+
+}
+
+
+
+.focus-note{
+
+    display:none;
+
+}
+
+
+
+.focus-music{
+
+    width:150px;
+
+}
+
+
+
+}
+
+/* ===================================
+   STUDY BUDDY PAGE
+=================================== */
+
+
+.buddy-profile-header {
+
+    margin-bottom:30px;
+
+}
+
+
+
+.buddy-profile-header h1 {
+
+    font-size:40px;
+
+}
+
+
+
+
+.buddy-profile-header p {
+
+    opacity:0.7;
+
+}
+
+
+
+
+
+
+
+/* MAIN PROFILE CARD */
+
+
+.buddy-profile-card {
+
+
+    width:100%;
+
+
+    max-width:none;
+
+
+    display:flex;
+
+
+    align-items:center;
+
+
+    gap:40px;
+
+
+    padding:35px;
+
+
+    border-radius:25px;
+
+
+    background:var(--card-color);
+
+
+    box-shadow:0 10px 30px rgba(0,0,0,0.12);
+
+
+    margin-bottom:30px;
+
+
+}
+
+
+
+
+
+
+.buddy-profile-card img {
+
+
+    width:220px;
+
+
+    height:220px;
+
+
+    object-fit:contain;
+
+
+    border-radius:20px;
+
+
+    background:rgba(255,255,255,0.08);
+
+
+}
+
+
+
+
+
+
+
+.buddy-profile-info {
+
+
+    flex:1;
+
+}
+
+
+
+
+
+
+.buddy-profile-card h2 {
+
+
+    font-size:32px;
+
+
+    margin-bottom:10px;
+
+
+}
+
+
+
+
+
+
+
+.buddy-profile-card p {
+
+
+    font-size:18px;
+
+}
+
+
+
+
+
+
+
+.buddy-tags {
+
+
+    display:flex;
+
+
+    gap:12px;
+
+
+    margin-top:15px;
+
+}
+
+
+
+.buddy-tags span {
+
+
+    padding:8px 15px;
+
+
+    border-radius:20px;
+
+
+    background:var(--accent-color);
+
+
+}
+
+
+
+
+
+
+
+/* EXTRA INFO BESIDE IMAGE */
+
+
+.buddy-extra-grid {
+
+
+    display:grid;
+
+
+    grid-template-columns:repeat(3,1fr);
+
+
+    gap:15px;
+
+
+    margin-top:25px;
+
+
+}
+
+
+
+
+
+.buddy-extra-card {
+
+
+    padding:20px;
+
+
+    border-radius:18px;
+
+
+    background:var(--card-color);
+
+
+    box-shadow:0 5px 15px rgba(0,0,0,0.1);
+
+
+}
+
+
+
+.buddy-extra-card h3 {
+
+
+    margin-bottom:8px;
+
+}
+
+
+
+
+
+
+
+/* ABOUT SECTION */
+
+
+.buddy-details {
+
+
+    width:100%;
+
+
+    padding:35px;
+
+
+    border-radius:25px;
+
+
+    background:var(--card-color);
+
+
+    margin-top:30px;
+
+
+}
+
+
+
+
+
+
+
+.detail-grid {
+
+
+    display:grid;
+
+
+    grid-template-columns:repeat(2,1fr);
+
+
+    gap:20px;
+
+
+}
+
+
+
+
+
+.detail-grid div {
+
+
+    padding:20px;
+
+
+    border-radius:18px;
+
+
+    background:rgba(255,255,255,0.05);
+
+}
+
+
+
+
+
+
+
+/* MOTIVATION */
+
+
+.buddy-motivation {
+
+
+    width:100%;
+
+
+    padding:30px;
+
+
+    border-radius:25px;
+
+
+    margin-top:30px;
+
+
+    background:var(--card-color);
+
+
+}
+
+
+
+
+
+
+
+
+/* WARDROBE */
+
+
+.buddy-wardrobe {
+
+
+    width:100%;
+
+
+    padding:30px;
+
+
+    border-radius:25px;
+
+
+    margin-top:30px;
+
+
+    background:var(--card-color);
+
+
+}
+
+
+
+
+
+
+.clothes-grid {
+
+
+    display:flex;
+
+
+    gap:15px;
+
+
+}
+
+
+
+.clothes-grid button {
+
+
+    padding:12px 25px;
+
+
+    border-radius:15px;
+
+
+    border:none;
+
+
+    cursor:pointer;
+
+
+}
+
+
+
+
+
+
+/* EDIT BUTTON */
+
+
+.study-buddy-page .main-button {
+
+
+    margin-top:30px;
+
+
+    padding:15px 40px;
+
+
+    font-size:16px;
+
+
+    border-radius:20px;
+
+
+    cursor:pointer;
+
+
+    transition:.3s;
+
+
+}
+
+
+
+.study-buddy-page .main-button:hover {
+
+
+    transform:translateY(-3px);
+
+}
+
+
+/* ===================================
+   EDIT BUDDY PAGE
+=================================== */
+
+
+.buddy-edit-page {
+
+
+    max-width:none;
+
+}
+
+
+
+
+
+
+.buddy-edit-page h1 {
+
+
+    font-size:40px;
+
+}
+
+
+
+
+
+
+
+.edit-preview {
+
+
+    width:100%;
+
+
+    display:flex;
+
+
+    align-items:center;
+
+
+    gap:30px;
+
+
+    padding:30px;
+
+
+    border-radius:25px;
+
+
+    background:var(--card-color);
+
+
+    margin-bottom:30px;
+
+
+}
+
+
+
+
+.edit-preview img {
+
+
+    width:180px;
+
+
+    height:180px;
+
+
+    object-fit:contain;
+
+
+}
+
+
+
+
+
+
+/* INPUTS */
+
+
+.buddy-edit-page input,
+.buddy-edit-page textarea,
+.buddy-edit-page select {
+
+
+    width:100%;
+
+
+    padding:15px;
+
+
+    margin-top:8px;
+
+
+    margin-bottom:20px;
+
+
+    border-radius:15px;
+
+
+    border:1px solid rgba(186, 127, 33, 0.665);
+
+
+    background:var(--input-color);
+
+
+    color:var(--text-color);
+
+
+    font-size:16px;
+
+
+}
+
+
+
+
+
+
+.buddy-edit-page textarea {
+
+
+    min-height:120px;
+
+
+    resize:vertical;
+
+}
+
+
+
+
+
+
+
+/* prevent white text box problem */
+
+
+.buddy-edit-page input::placeholder,
+.buddy-edit-page textarea::placeholder {
+
+
+    color:rgba(255,255,255,0.5);
+
+}
+
+
+
+
+
+
+
+.buddy-edit-page label {
+
+
+    display:block;
+
+
+    font-size:17px;
+
+
+    font-weight:bold;
+
+
+    margin-bottom:5px;
+
+
+}
+
+
+
+
+
+
+
+/* make edit page fill space */
+
+
+.buddy-edit-page {
+
+
+    display:grid;
+
+
+    grid-template-columns:1fr 1fr;
+
+
+    gap:25px;
+
+
+}
+
+
+
+
+
+
+.buddy-edit-page h1,
+.buddy-edit-page .quote,
+.buddy-edit-page button,
+.buddy-edit-page #editMessage {
+
+
+    grid-column:1/-1;
+
+}
+
+
+
+
+
+
+.edit-preview {
+
+
+    grid-column:1/-1;
+
+}
+
+
+
+
+
+
+
+/* SAVE BUTTON */
+
+
+.buddy-edit-page .main-button {
+
+
+    width:250px;
+
+
+    justify-self:center;
+
+
+    padding:15px;
+
+
+    border-radius:20px;
+
+
+    font-size:18px;
+
+    color: #dac0a9;
+}
+
+/* ===================================
+   SIDEBAR COMPATIBILITY
+=================================== */
+
+.study-buddy-page,
+.buddy-edit-page {
+
+    margin-left: 260px; /* same width as sidebar */
+
+    width: calc(100% - 260px);
+
+    padding: 40px;
+
+    box-sizing: border-box;
+
+}
+
+
+/* ===============================
+   STUDY BUDDY PROFILE CARD
+================================ */
+
+
+.buddy-profile-card{
+
+width:100%;
+max-width:900px;
+
+display:flex;
+
+gap:35px;
+
+align-items:center;
+
+padding:35px;
+
+margin:auto;
+
+border-radius:25px;
+
+background:var(--card-bg);
+
+box-shadow:0 10px 30px rgba(0,0,0,.12);
+
+}
+
+
+
+
+.buddy-preview-left img{
+
+width:180px;
+
+height:180px;
+
+object-fit:contain;
+
+border-radius:20px;
+
+}
+
+
+
+
+.buddy-profile-info{
+
+flex:1;
+
+}
+
+
+
+.buddy-profile-info h2{
+
+font-size:32px;
+
+margin-bottom:5px;
+
+}
+
+
+
+.buddy-tags{
+
+display:flex;
+
+gap:10px;
+
+margin:15px 0;
+
+}
+
+
+
+.buddy-tags span{
+
+padding:8px 15px;
+
+border-radius:20px;
+
+background:var(--accent);
+
+color:rgb(138, 109, 19);
+
+font-size:14px;
+
+}
+
+
+
+
+/* FRIENDSHIP */
+
+
+.friendship-box{
+
+margin-top:20px;
+
+padding:20px;
+
+border-radius:18px;
+
+background:rgba(255,255,255,0.08);
+
+}
+
+
+
+.friendship-box h3{
+
+margin-bottom:15px;
+
+}
+
+
+
+.friendship-box p{
+
+margin:8px 0;
+
+}
+
+
+
+.friendship-bar{
+
+height:14px;
+
+width:100%;
+
+background:rgba(120,120,120,.25);
+
+border-radius:20px;
+
+overflow:hidden;
+
+}
+
+
+
+#friendshipProgress{
+
+height:100%;
+
+width:0%;
+
+border-radius:20px;
+
+background:hsl(140, 81%, 69%);
+
+transition:.5s;
+
+}
+
+
+
+
+
+
+/* EDIT BUTTON */
+
+.study-buddy-page .main-button{
+
+margin-top:25px;
+
+width:220px;
+
+padding:14px;
+
+border-radius:15px;
+
+font-size:16px;
+
+cursor:pointer;
+
+transition:.3s;
+
+}
+
+
+
+.study-buddy-page .main-button:hover{
+
+transform:translateY(-3px);
+
+}
+/* ===================================
+   BUDDY EDIT PAGE FIX
+=================================== */
+
+
+.buddy-edit-page{
+
+    margin-left:260px;
+    padding:50px;
+
+    min-height:100vh;
+
+}
+
+
+
+.buddy-edit-page h1{
+
+    margin-bottom:10px;
+
+}
+
+
+
+.buddy-edit-page .quote{
+
+    opacity:.7;
+
+    margin-bottom:35px;
+
+}
+
+
+
+/* PREVIEW CARD */
+
+.edit-preview{
+
+    width:100%;
+
+    max-width:900px;
+
+    background:var(--card-bg);
+
+    border-radius:25px;
+
+    padding:30px;
+
+    display:flex;
+
+    align-items:center;
+
+    gap:30px;
+
+    margin-bottom:35px;
+
+}
+
+
+
+.edit-preview img{
+
+    width:160px;
+
+    height:160px;
+
+    object-fit:contain;
+
+}
+
+
+
+
+
+/* LABEL */
+
+.buddy-edit-page label{
+
+    display:block;
+
+    margin-top:20px;
+
+    margin-bottom:8px;
+
+    font-weight:600;
+
+}
+
+
+
+
+
+/* ALL INPUTS SAME COLOUR */
+
+
+.buddy-edit-page input,
+.buddy-edit-page textarea,
+.buddy-edit-page select{
+
+
+    width:100%;
+
+    max-width:900px;
+
+    padding:15px 18px;
+
+
+    border-radius:15px;
+
+
+    border:1px solid rgba(120,90,50,.25);
+
+
+
+    background:var(--input-bg);
+
+
+    color:var(--text);
+
+
+
+    font-size:15px;
+
+
+    outline:none;
+
+
+}
+
+
+
+
+
+.buddy-edit-page textarea{
+
+    min-height:120px;
+
+    resize:vertical;
+
+}
+
+
+
+
+
+.buddy-edit-page input::placeholder,
+.buddy-edit-page textarea::placeholder{
+
+    color:var(--text);
+
+    opacity:.5;
+
+}
+
+
+
+
+
+/* BUTTON */
+
+
+.buddy-edit-page .main-button{
+
+
+    margin-top:35px;
+
+
+    padding:15px 35px;
+
+
+    background:#8b5e3c;
+
+
+    color:rgba(208, 189, 162, 0.818);
+
+
+    border-radius:20px;
+
+
+    border:none;
+
+
+    font-size:16px;
+
+
+    cursor:pointer;
+
+
+}
+
+
+
+
+
+.buddy-edit-page .main-button:hover{
+
+
+    background:#6f452b;
+
+
+}
+
+
+
+
+
+/* MOBILE */
+
+@media(max-width:900px){
+
+
+.buddy-edit-page{
+
+    margin-left:0;
+
+    padding:25px;
+
+}
+
+
+.edit-preview{
+
+    flex-direction:column;
+
+}
+
+
+}
+
+.buddy-profile-card{
+
+
+display:flex;
+
+
+gap:40px;
+
+
+align-items:center;
+
+
+width:100%;
+
+
+}
+
+
+
+.buddy-preview-left{
+
+
+width:220px;
+
+
+}
+
+
+
+.buddy-preview-left img{
+
+
+width:200px;
+
+
+height:200px;
+
+
+object-fit:contain;
+
+
+}
+
+
+
+.buddy-profile-info{
+
+
+flex:1;
+
+
+}
+
+
+
+.friendship-box{
+
+
+margin-top:20px;
+
+
+padding:20px;
+
+
+border-radius:20px;
+
+
+background:var(--card-bg);
+
+
+}
+
+
+
+.friendship-bar{
+
+
+height:12px;
+
+
+background:#ddd;
+
+
+border-radius:20px;
+
+
+overflow:hidden;
+
+
+}
+
+
+
+#friendshipProgress{
+
+
+height:100%;
+
+
+width:65%;
+
+
+background:#8b5e3c;
+
+
+border-radius:20px;
+
+
+}
+
+
+/* ===================================
+   CHANGE AVATAR BUTTON
+   SAME STYLE AS OTHER BUTTONS
+=================================== */
+
+
+.buddy-edit-page .avatar-change-btn{
+
+    margin-top:15px;
+
+    padding:12px 30px;
+
+    background:#8e7461;
+
+    color:#fff;
+
+    border:none;
+
+    border-radius:18px;
+
+    font-size:15px;
+
+    cursor:pointer;
+
+    transition:.2s ease;
+
+}
+
+
+
+.buddy-edit-page .avatar-change-btn:hover{
+
+    background:#967e6e;
+
+}
+
+
+.dark{
+
+--input-bg:#2a211b;
+--card-bg:#332820;
+--text:#eee3d8;
+
+}
+
+.dashboard-task{
+
+background:var(--input-bg);
+
+padding:12px 15px;
+
+border-radius:15px;
+
+margin-bottom:10px;
+
+}
+
+
+.dashboard-task h3{
+
+margin:0;
+
+font-size:16px;
+
+}
+
+
+.dashboard-task p{
+
+margin-top:5px;
+
+opacity:.7;
+
+font-size:13px;
+
+}
+
